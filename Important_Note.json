@@ -1,0 +1,78 @@
+I UNDERSTAND
+
+Type: Connect
+App name: NiftyVWAPRDas1402TradingBot
+Redirect URL: https://localhost:8080
+Zerodha Client ID: XEJ386 (your actual client ID)
+Postback URL: (leave blank)
+App Icon: (skip for now)
+
+
+zerodha.api.key=your_api_key_here
+zerodha.api.secret=your_api_secret_here
+zerodha.access.token=will_be_generated_after_login
+
+
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar=53231:C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\bin" -Dfile.encoding=UTF-8 -classpath D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\3.2.4\kiteconnect-3.2.4.jar;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar com.trading.util.ZerodhaLoginHelper
+Enter your API Secret: oqm11fvqp3rwdsvbwicaeo5jpahizvzk
+
+============================================================
+🚀 ZERODHA LOGIN PROCESS
+============================================================
+
+📋 STEP 1: OPEN THIS URL IN YOUR BROWSER (DO IT NOW):
+https://kite.trade/connect/login?api_key=e85ngsrd7lekw61v&v=3
+
+📋 STEP 2: LOGIN WITH YOUR ZERODHA CREDENTIALS
+📋 STEP 3: AFTER LOGIN, YOU'LL BE REDIRECTED
+📋 STEP 4: COPY THE request_token FROM THE URL BAR
+
+📍 The URL will look like:
+https://localhost:8080/?action=login&status=success&request_token=XXXXXXXXXX
+
+📍 Copy only the request_token value (the XXXXXXXXXX part)
+
+📋 STEP 5: PASTE THE REQUEST TOKEN HERE:
+➡️  Request Token: 7KqB5Pe2GhsoHwJhfzeK0Db6pajshrMR
+
+⏳ Generating access token...
+
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+🎉 LOGIN SUCCESSFUL!
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+
+📊 YOUR CREDENTIALS:
+┌─────────────────┬────────────────────────────────────────────┐
+│ Access Token    │ yjKc1vYPszKQJuTNsLLJKz0D6UYf9CNt           │
+│ User ID         │ XEJ386                                     │
+│ Public Token    │ aSzYDLYNf9HkKooGuwJoM303lRjMhdik           │
+└─────────────────┴────────────────────────────────────────────┘
+
+📝 UPDATE YOUR application.properties FILE:
+```properties
+zerodha.api.key=e85ngsrd7lekw61v
+zerodha.api.secret=oqm11fvqp3rwdsvbwicaeo5jpahizvzk
+zerodha.access.token=yjKc1vYPszKQJuTNsLLJKz0D6UYf9CNt
+```
+
+💡 The access token is valid until you logout from Kite.
+
+
+
+
+
+
+
+
+NSE has introduced NIFTY weekly options with which all the weekly instruments format has changed.
+Now the tradingsymbol BANKNIFTY14FEB1927500CE has become BANKNIFTY1921425000CE.
+The format is BANKNIFTY<YY><M><DD>strike<PE/CE>
+
+The month format is 1 for JAN, 2 for FEB, 3, 4, 5, 6, 7, 8, 9, O(capital o) for October, N for November, D for December.
+
+String[] ins = {"NFO:NIFTY25NOV25700CE", "NFO:NIFTY25NOV25700PE", "NFO:NIFTY25D0225700CE", "NFO:NIFTY25D1625700CE"};
+
+        Map<String, Quote> quoteData = kiteConnect.getQuote(ins);
+
+
+1. Change the entry price to market price in place order

@@ -1,0 +1,1626 @@
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:62689,suspend=y,server=n -javaagent:C:\Users\user\AppData\Local\JetBrains\IntelliJIdea2021.2\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\user\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\kiteconnect\3.5.1\kiteconnect-3.5.1.jar;C:\Users\user\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\user\.m2\repository\net\sf\supercsv\super-csv\2.4.0\super-csv-2.4.0.jar;C:\Users\user\.m2\repository\com\neovisionaries\nv-websocket-client\2.3\nv-websocket-client-2.3.jar;C:\Users\user\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\okhttp\4.4.0\okhttp-4.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio\3.4.0\okio-3.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio-jvm\3.4.0\okio-jvm-3.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.0\kotlin-stdlib-jdk8-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.0\kotlin-stdlib-jdk7-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.8.0\kotlin-stdlib-common-1.8.0.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\logging-interceptor\4.4.0\logging-interceptor-4.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.6.21\kotlin-stdlib-1.6.21.jar;C:\Users\user\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar" com.trading.TradingApplication
+Connected to the target VM, address: '127.0.0.1:62689', transport: 'socket'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+🚀 Starting Automated Trading Strategy with Batch Processing...
+setRoot method not available, using default configuration
+✅ VWAP Options Strategy initialized
+🔄 Daily P&L Reset to ₹0.00
+⏰ Initial delay: 129 seconds
+🕐 First execution at: Mon Dec 01 09:25:00 IST 2025
+🎯 Application is running...
+💡 Press Ctrl+C to stop the application
+⏰ Trading interval: 5 minutes
+🕒 Trading hours: 09:15 to 15:15
+💰 Max Daily Loss: ₹5000.0
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 09:25:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 09:25:00
+📊 Nifty Spot Price: 26292.7
+🔄 Preloading option tokens for Nifty spot: 26292.7
+🔍 Preloading token for CE: NFO:NIFTY25D0226150CE
+✅ Preloaded CE token: NFO:NIFTY25D0226150CE -> 11981058
+🔍 Preloading token for PE: NFO:NIFTY25D0226150PE
+✅ Preloaded PE token: NFO:NIFTY25D0226150PE -> 11981314
+🔍 Preloading token for CE: NFO:NIFTY25D0226200CE
+✅ Preloaded CE token: NFO:NIFTY25D0226200CE -> 11981570
+🔍 Preloading token for PE: NFO:NIFTY25D0226200PE
+✅ Preloaded PE token: NFO:NIFTY25D0226200PE -> 11981826
+🔍 Preloading token for CE: NFO:NIFTY25D0226250CE
+✅ Preloaded CE token: NFO:NIFTY25D0226250CE -> 11982594
+🔍 Preloading token for PE: NFO:NIFTY25D0226250PE
+✅ Preloaded PE token: NFO:NIFTY25D0226250PE -> 11982850
+🔍 Preloading token for CE: NFO:NIFTY25D0226300CE
+✅ Preloaded CE token: NFO:NIFTY25D0226300CE -> 11983106
+🔍 Preloading token for PE: NFO:NIFTY25D0226300PE
+✅ Preloaded PE token: NFO:NIFTY25D0226300PE -> 11983874
+🔍 Preloading token for CE: NFO:NIFTY25D0226350CE
+✅ Preloaded CE token: NFO:NIFTY25D0226350CE -> 11984130
+🔍 Preloading token for PE: NFO:NIFTY25D0226350PE
+✅ Preloaded PE token: NFO:NIFTY25D0226350PE -> 11985154
+🔍 Preloading token for CE: NFO:NIFTY25D0226400CE
+✅ Preloaded CE token: NFO:NIFTY25D0226400CE -> 11985410
+🔍 Preloading token for PE: NFO:NIFTY25D0226400PE
+✅ Preloaded PE token: NFO:NIFTY25D0226400PE -> 11985666
+🔍 Preloading token for CE: NFO:NIFTY25D0226450CE
+✅ Preloaded CE token: NFO:NIFTY25D0226450CE -> 11985922
+🔍 Preloading token for PE: NFO:NIFTY25D0226450PE
+✅ Preloaded PE token: NFO:NIFTY25D0226450PE -> 11987202
+✅ Preloaded 14 option tokens
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹192.2
+   NFO:NIFTY25D0226200CE: ₹153.45
+   NFO:NIFTY25D0226250CE: ₹116.95
+   NFO:NIFTY25D0226300CE: ₹86.0
+   NFO:NIFTY25D0226350CE: ₹59.8
+   NFO:NIFTY25D0226400CE: ₹40.15
+   NFO:NIFTY25D0226450CE: ₹24.7
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 116.95)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹24.55
+   NFO:NIFTY25D0226200PE: ₹35.15
+   NFO:NIFTY25D0226250PE: ₹49.6
+   NFO:NIFTY25D0226300PE: ₹69.0
+   NFO:NIFTY25D0226350PE: ₹92.9
+   NFO:NIFTY25D0226400PE: ₹123.3
+   NFO:NIFTY25D0226450PE: ₹157.65
+✅ Found suitable option: NFO:NIFTY25D0226400PE (Premium: 123.3)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226400PE
+📊 NFO:NIFTY25D0226250CE - Price: 117.65, VWAP: 115.86
+📊 NFO:NIFTY25D0226400PE - Price: 123.3, VWAP: 124.77
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 117.65, VWAP: 115.86
+📊 NFO:NIFTY25D0226400PE - Current Price: 122.5, VWAP: 124.76
+⚠️ Insufficient historical data for NFO:NIFTY25D0226250CE, skipping crossover check
+⚠️ Insufficient historical data for NFO:NIFTY25D0226400PE, skipping crossover check
+✅ Trading cycle completed at: 09:25:06
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 09:27:51 IST 2025
+   - Uptime: 5 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 3 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 09:30:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 09:30:00
+📊 Nifty Spot Price: 26284.75
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹186.1
+   NFO:NIFTY25D0226200CE: ₹147.0
+   NFO:NIFTY25D0226250CE: ₹111.95
+   NFO:NIFTY25D0226300CE: ₹81.65
+   NFO:NIFTY25D0226350CE: ₹56.15
+   NFO:NIFTY25D0226400CE: ₹36.65
+   NFO:NIFTY25D0226450CE: ₹22.5
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 111.95)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹25.45
+   NFO:NIFTY25D0226200PE: ₹36.7
+   NFO:NIFTY25D0226250PE: ₹51.65
+   NFO:NIFTY25D0226300PE: ₹71.65
+   NFO:NIFTY25D0226350PE: ₹96.6
+   NFO:NIFTY25D0226400PE: ₹127.25
+   NFO:NIFTY25D0226450PE: ₹162.9
+✅ Found suitable option: NFO:NIFTY25D0226400PE (Premium: 127.25)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226400PE
+📊 NFO:NIFTY25D0226250CE - Price: 111.95, VWAP: 115.54
+📊 NFO:NIFTY25D0226400PE - Price: 127.25, VWAP: 125.14
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 111.95, VWAP: 115.54
+📊 NFO:NIFTY25D0226400PE - Current Price: 127.25, VWAP: 125.14
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250CE:
+   Previous Candle - Price: 117.65, VWAP: 115.86
+   Current Candle  - Price: 111.95, VWAP: 115.54
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226400PE:
+   Previous Candle - Price: 122.5, VWAP: 124.76
+   Current Candle  - Price: 127.25, VWAP: 125.14
+🎯 VWAP CROSSOVER DETECTED for NFO:NIFTY25D0226400PE
+   Previous: Price(122.5) < VWAP(124.76)
+   Current:  Price(127.25) > VWAP(125.14)
+   Price-VWAP Difference: 1.69%
+   Time: 09:30:00
+📊 Historical Data for NFO:NIFTY25D0226400PE:
+   Candle 0: Price=122.5, VWAP=124.76
+   Candle 1: Price=127.25, VWAP=125.14
+🚀 EXECUTING BUY SIGNAL for: NFO:NIFTY25D0226400PE
+📊 VWAP Stop Loss Analysis:
+   Entry Price: 127.25
+   VWAP Price: 125.14
+   Difference: 2.1099999999999994 (1.66%)
+   Condition: <5% difference -> SL = VWAP + 2% = 127.64280000000001
+📊 Trade Details:
+   Instrument: NFO:NIFTY25D0226400PE
+   Entry Price: 127.25
+   VWAP: 125.14
+   Stop Loss: 127.64280000000001
+   Target: 146.33749999999998
+📋 Placing BUY Order:
+   Symbol: NIFTY25D0226400PE
+   Quantity: 75
+   Entry: 127.25
+   Stop Loss: 127.64280000000001
+   Target: 146.33749999999998
+✅ Order Placed Successfully:
+   Order ID: 1995342092552921088
+✅ Position cached: NFO:NIFTY25D0226400PE | Entry: 127.25 | SL: 127.64280000000001 | Target: 146.33749999999998 | VWAP: 125.14
+⏰ Target check timer started (30 second intervals)
+✅ Position opened and cached: NFO:NIFTY25D0226400PE
+✅ Trading cycle completed at: 09:30:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 09:32:51 IST 2025
+   - Uptime: 10 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 3 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 09:35:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 09:35:00
+🔍 Managing 1 existing positions...
+🔴 STOP LOSS TRIGGERED for: NFO:NIFTY25D0226400PE
+   Current: 123.05 | Stop Loss: 127.64280000000001
+🛑 STOP LOSS EXECUTED - P&L for NFO:NIFTY25D0226400PE: ₹-315.0000000000002
+   Entry: 127.25 | Exit: 123.05
+   Order ID: 1995343350126895104
+🗑️ Position removed from cache: NFO:NIFTY25D0226400PE
+📊 Nifty Spot Price: 26299.95
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹190.3
+   NFO:NIFTY25D0226200CE: ₹151.3
+   NFO:NIFTY25D0226250CE: ₹116.0
+   NFO:NIFTY25D0226300CE: ₹85.1
+   NFO:NIFTY25D0226350CE: ₹59.0
+   NFO:NIFTY25D0226400CE: ₹39.0
+   NFO:NIFTY25D0226450CE: ₹24.2
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 116.0)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹23.7
+   NFO:NIFTY25D0226200PE: ₹34.4
+   NFO:NIFTY25D0226250PE: ₹49.05
+   NFO:NIFTY25D0226300PE: ₹68.25
+   NFO:NIFTY25D0226350PE: ₹92.9
+   NFO:NIFTY25D0226400PE: ₹123.05
+   NFO:NIFTY25D0226450PE: ₹157.9
+✅ Found suitable option: NFO:NIFTY25D0226400PE (Premium: 123.05)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226400PE
+📊 NFO:NIFTY25D0226250CE - Price: 116.0, VWAP: 115.27
+📊 NFO:NIFTY25D0226400PE - Price: 123.05, VWAP: 125.32
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 116.0, VWAP: 115.27
+📊 NFO:NIFTY25D0226400PE - Current Price: 123.05, VWAP: 125.32
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250CE:
+   Previous Candle - Price: 111.95, VWAP: 115.54
+   Current Candle  - Price: 116.0, VWAP: 115.27
+🎯 VWAP CROSSOVER DETECTED for NFO:NIFTY25D0226250CE
+   Previous: Price(111.95) < VWAP(115.54)
+   Current:  Price(116.0) > VWAP(115.27)
+   Price-VWAP Difference: 0.63%
+   Time: 09:35:00
+📊 Historical Data for NFO:NIFTY25D0226250CE:
+   Candle 0: Price=117.65, VWAP=115.86
+   Candle 1: Price=111.95, VWAP=115.54
+   Candle 2: Price=116.0, VWAP=115.27
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226400PE:
+   Previous Candle - Price: 127.25, VWAP: 125.14
+   Current Candle  - Price: 123.05, VWAP: 125.32
+🚀 EXECUTING BUY SIGNAL for: NFO:NIFTY25D0226250CE
+📊 VWAP Stop Loss Analysis:
+   Entry Price: 116.0
+   VWAP Price: 115.27
+   Difference: 0.730000000000004 (0.63%)
+   Condition: <5% difference -> SL = VWAP + 2% = 117.5754
+📊 Trade Details:
+   Instrument: NFO:NIFTY25D0226250CE
+   Entry Price: 116.0
+   VWAP: 115.27
+   Stop Loss: 117.5754
+   Target: 133.39999999999998
+📋 Placing BUY Order:
+   Symbol: NIFTY25D0226250CE
+   Quantity: 75
+   Entry: 116.0
+   Stop Loss: 117.5754
+   Target: 133.39999999999998
+✅ Order Placed Successfully:
+   Order ID: 1995343351196442624
+✅ Position cached: NFO:NIFTY25D0226250CE | Entry: 116.0 | SL: 117.5754 | Target: 133.39999999999998 | VWAP: 115.27
+✅ Position opened and cached: NFO:NIFTY25D0226250CE
+✅ Trading cycle completed at: 09:35:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+Disconnected from the target VM, address: '127.0.0.1:62689', transport: 'socket'
+
+================================================================================
+🛑 SHUTDOWN SIGNAL RECEIVED - CLEANING UP
+================================================================================
+🧹 Cleaning up resources...
+   - Trading timer stopped
+   - Closing all open positions in VWAP Strategy...
+⏰ Target check timer stopped
+🗑️ All positions cleared from cache
+🔄 Closing all open positions...
+💰 P&L for NFO:NIFTY25D0226250CE: ₹-183.75000000000023
+   Entry: 116.0 | Exit: 113.55
+   Order ID: 1995343711042560000
+🛑 VWAP Options Trading Stopped
+   - VWAP Options Strategy stopped
+✅ Cleanup completed
+✅ Trading application stopped successfully.
+================================================================================
+
+Process finished with exit code 130
+
+
+================================================================================
+
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:54445,suspend=y,server=n -javaagent:C:\Users\user\AppData\Local\JetBrains\IntelliJIdea2021.2\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\user\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\kiteconnect\3.5.1\kiteconnect-3.5.1.jar;C:\Users\user\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\user\.m2\repository\net\sf\supercsv\super-csv\2.4.0\super-csv-2.4.0.jar;C:\Users\user\.m2\repository\com\neovisionaries\nv-websocket-client\2.3\nv-websocket-client-2.3.jar;C:\Users\user\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\okhttp\4.4.0\okhttp-4.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio\3.4.0\okio-3.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio-jvm\3.4.0\okio-jvm-3.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.0\kotlin-stdlib-jdk8-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.0\kotlin-stdlib-jdk7-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.8.0\kotlin-stdlib-common-1.8.0.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\logging-interceptor\4.4.0\logging-interceptor-4.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.6.21\kotlin-stdlib-1.6.21.jar;C:\Users\user\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar" com.trading.TradingApplication
+Connected to the target VM, address: '127.0.0.1:54445', transport: 'socket'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+🚀 Starting Automated Trading Strategy with Batch Processing...
+setRoot method not available, using default configuration
+✅ VWAP Options Strategy initialized
+🔄 Daily P&L Reset to ₹0.00
+⏰ Initial delay: 98 seconds
+🕐 First execution at: Mon Dec 01 09:50:00 IST 2025
+🎯 Application is running...
+💡 Press Ctrl+C to stop the application
+⏰ Trading interval: 5 minutes
+🕒 Trading hours: 09:15 to 15:15
+💰 Max Daily Loss: ₹5000.0
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 09:50:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 09:50:00
+📊 Nifty Spot Price: 26295.65
+🔄 Preloading option tokens for Nifty spot: 26295.65
+🔍 Preloading token for CE: NFO:NIFTY25D0226150CE
+✅ Preloaded CE token: NFO:NIFTY25D0226150CE -> 11981058
+🔍 Preloading token for PE: NFO:NIFTY25D0226150PE
+✅ Preloaded PE token: NFO:NIFTY25D0226150PE -> 11981314
+🔍 Preloading token for CE: NFO:NIFTY25D0226200CE
+✅ Preloaded CE token: NFO:NIFTY25D0226200CE -> 11981570
+🔍 Preloading token for PE: NFO:NIFTY25D0226200PE
+✅ Preloaded PE token: NFO:NIFTY25D0226200PE -> 11981826
+🔍 Preloading token for CE: NFO:NIFTY25D0226250CE
+✅ Preloaded CE token: NFO:NIFTY25D0226250CE -> 11982594
+🔍 Preloading token for PE: NFO:NIFTY25D0226250PE
+✅ Preloaded PE token: NFO:NIFTY25D0226250PE -> 11982850
+🔍 Preloading token for CE: NFO:NIFTY25D0226300CE
+✅ Preloaded CE token: NFO:NIFTY25D0226300CE -> 11983106
+🔍 Preloading token for PE: NFO:NIFTY25D0226300PE
+✅ Preloaded PE token: NFO:NIFTY25D0226300PE -> 11983874
+🔍 Preloading token for CE: NFO:NIFTY25D0226350CE
+✅ Preloaded CE token: NFO:NIFTY25D0226350CE -> 11984130
+🔍 Preloading token for PE: NFO:NIFTY25D0226350PE
+✅ Preloaded PE token: NFO:NIFTY25D0226350PE -> 11985154
+🔍 Preloading token for CE: NFO:NIFTY25D0226400CE
+✅ Preloaded CE token: NFO:NIFTY25D0226400CE -> 11985410
+🔍 Preloading token for PE: NFO:NIFTY25D0226400PE
+✅ Preloaded PE token: NFO:NIFTY25D0226400PE -> 11985666
+🔍 Preloading token for CE: NFO:NIFTY25D0226450CE
+✅ Preloaded CE token: NFO:NIFTY25D0226450CE -> 11985922
+🔍 Preloading token for PE: NFO:NIFTY25D0226450PE
+✅ Preloaded PE token: NFO:NIFTY25D0226450PE -> 11987202
+✅ Preloaded 14 option tokens
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹187.3
+   NFO:NIFTY25D0226200CE: ₹147.45
+   NFO:NIFTY25D0226250CE: ₹111.7
+   NFO:NIFTY25D0226300CE: ₹80.85
+   NFO:NIFTY25D0226350CE: ₹55.5
+   NFO:NIFTY25D0226400CE: ₹36.1
+   NFO:NIFTY25D0226450CE: ₹22.0
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 111.7)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹22.95
+   NFO:NIFTY25D0226200PE: ₹33.75
+   NFO:NIFTY25D0226250PE: ₹48.3
+   NFO:NIFTY25D0226300PE: ₹67.55
+   NFO:NIFTY25D0226350PE: ₹92.7
+   NFO:NIFTY25D0226400PE: ₹122.85
+   NFO:NIFTY25D0226450PE: ₹158.95
+✅ Found suitable option: NFO:NIFTY25D0226400PE (Premium: 122.85)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226400PE
+📊 NFO:NIFTY25D0226250CE - Price: 111.7, VWAP: 114.09
+📊 NFO:NIFTY25D0226400PE - Price: 122.85, VWAP: 125.59
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 111.7, VWAP: 114.09
+📊 NFO:NIFTY25D0226400PE - Current Price: 122.85, VWAP: 125.59
+⚠️ Insufficient historical data for NFO:NIFTY25D0226250CE, skipping crossover check
+⚠️ Insufficient historical data for NFO:NIFTY25D0226400PE, skipping crossover check
+✅ Trading cycle completed at: 09:50:06
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 09:53:21 IST 2025
+   - Uptime: 5 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 09:55:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 09:55:00
+📊 Nifty Spot Price: 26273.85
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹172.8
+   NFO:NIFTY25D0226200CE: ₹134.9
+   NFO:NIFTY25D0226250CE: ₹101.0
+   NFO:NIFTY25D0226300CE: ₹72.0
+   NFO:NIFTY25D0226350CE: ₹48.65
+   NFO:NIFTY25D0226400CE: ₹31.25
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 101.0)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹26.4
+   NFO:NIFTY25D0226200PE: ₹38.55
+   NFO:NIFTY25D0226250PE: ₹54.65
+   NFO:NIFTY25D0226300PE: ₹75.9
+   NFO:NIFTY25D0226350PE: ₹102.9
+   NFO:NIFTY25D0226400PE: ₹135.85
+✅ Found suitable option: NFO:NIFTY25D0226350PE (Premium: 102.9)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226350PE
+📊 NFO:NIFTY25D0226250CE - Price: 101.0, VWAP: 112.83
+📊 NFO:NIFTY25D0226350PE - Price: 102.65, VWAP: 96.32
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 101.0, VWAP: 112.83
+📊 NFO:NIFTY25D0226350PE - Current Price: 102.65, VWAP: 96.32
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250CE:
+   Previous Candle - Price: 111.7, VWAP: 114.09
+   Current Candle  - Price: 101.0, VWAP: 112.83
+⚠️ Insufficient historical data for NFO:NIFTY25D0226350PE, skipping crossover check
+✅ Trading cycle completed at: 09:55:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 09:58:21 IST 2025
+   - Uptime: 10 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 10:00:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 10:00:00
+📊 Nifty Spot Price: 26264.45
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹163.9
+   NFO:NIFTY25D0226200CE: ₹127.1
+   NFO:NIFTY25D0226250CE: ₹94.95
+   NFO:NIFTY25D0226300CE: ₹67.2
+   NFO:NIFTY25D0226350CE: ₹44.65
+   NFO:NIFTY25D0226400CE: ₹28.4
+✅ Found suitable option: NFO:NIFTY25D0226200CE (Premium: 127.1)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹29.65
+   NFO:NIFTY25D0226200PE: ₹42.95
+   NFO:NIFTY25D0226250PE: ₹60.2
+   NFO:NIFTY25D0226300PE: ₹82.55
+   NFO:NIFTY25D0226350PE: ₹111.2
+   NFO:NIFTY25D0226400PE: ₹144.4
+✅ Found suitable option: NFO:NIFTY25D0226350PE (Premium: 111.2)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226200CE
+   PE: NFO:NIFTY25D0226350PE
+📊 NFO:NIFTY25D0226200CE - Price: 127.1, VWAP: 147.2
+📊 NFO:NIFTY25D0226350PE - Price: 111.2, VWAP: 97.28
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226200CE - Current Price: 127.45, VWAP: 147.2
+📊 NFO:NIFTY25D0226350PE - Current Price: 111.2, VWAP: 97.28
+⚠️ Insufficient historical data for NFO:NIFTY25D0226200CE, skipping crossover check
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226350PE:
+   Previous Candle - Price: 102.65, VWAP: 96.32
+   Current Candle  - Price: 111.2, VWAP: 97.28
+✅ Trading cycle completed at: 10:00:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 10:03:21 IST 2025
+   - Uptime: 15 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 10:05:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 10:05:00
+📊 Nifty Spot Price: 26279.75
+🔍 Searching for CE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150CE: ₹176.45
+   NFO:NIFTY25D0226200CE: ₹138.5
+   NFO:NIFTY25D0226250CE: ₹103.65
+   NFO:NIFTY25D0226300CE: ₹73.85
+   NFO:NIFTY25D0226350CE: ₹50.15
+   NFO:NIFTY25D0226400CE: ₹31.95
+   NFO:NIFTY25D0226450CE: ₹18.9
+✅ Found suitable option: NFO:NIFTY25D0226250CE (Premium: 103.65)
+🔍 Searching for PE options with premium > 100.0
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226150PE: ₹25.2
+   NFO:NIFTY25D0226200PE: ₹36.7
+   NFO:NIFTY25D0226250PE: ₹52.2
+   NFO:NIFTY25D0226300PE: ₹73.0
+   NFO:NIFTY25D0226350PE: ₹99.05
+   NFO:NIFTY25D0226400PE: ₹131.05
+   NFO:NIFTY25D0226450PE: ₹168.45
+✅ Found suitable option: NFO:NIFTY25D0226400PE (Premium: 131.05)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226250CE
+   PE: NFO:NIFTY25D0226400PE
+📊 NFO:NIFTY25D0226250CE - Price: 103.65, VWAP: 110.67
+📊 NFO:NIFTY25D0226400PE - Price: 131.05, VWAP: 128.89
+🔍 Analyzing VWAP crossovers for 2 instruments...
+📊 NFO:NIFTY25D0226250CE - Current Price: 103.65, VWAP: 110.67
+📊 NFO:NIFTY25D0226400PE - Current Price: 131.05, VWAP: 128.89
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250CE:
+   Previous Candle - Price: 101.0, VWAP: 112.83
+   Current Candle  - Price: 103.65, VWAP: 110.67
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226400PE:
+   Previous Candle - Price: 122.85, VWAP: 125.59
+   Current Candle  - Price: 131.05, VWAP: 128.89
+🎯 VWAP CROSSOVER DETECTED for NFO:NIFTY25D0226400PE
+   Previous: Price(122.85) < VWAP(125.59)
+   Current:  Price(131.05) > VWAP(128.89)
+   Price-VWAP Difference: 1.68%
+   Time: 10:05:00
+📊 Historical Data for NFO:NIFTY25D0226400PE:
+   Candle 0: Price=122.85, VWAP=125.59
+   Candle 1: Price=131.05, VWAP=128.89
+🚀 EXECUTING BUY SIGNAL for: NFO:NIFTY25D0226400PE
+📊 VWAP Stop Loss Analysis:
+   Entry Price: 131.05
+   VWAP Price: 128.89
+   Difference: 2.160000000000025 (1.65%)
+   Condition: <5% difference -> SL = VWAP - 2% = 126.31219999999999
+📊 Trade Details:
+   Instrument: NFO:NIFTY25D0226400PE
+   Entry Price: 131.05
+   VWAP: 128.89
+   Stop Loss: 126.31219999999999
+   Target: 150.7075
+📋 Placing BUY Order:
+   Symbol: NIFTY25D0226400PE
+   Quantity: 75
+   Entry: 131.05
+   Stop Loss: 126.31219999999999
+   Target: 150.7075
+✅ Trading cycle completed at: 10:05:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+❌ KiteException placing buy order for NFO:NIFTY25D0226400PE: null (Code: 400)
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 10:08:21 IST 2025
+   - Uptime: 20 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+Disconnected from the target VM, address: '127.0.0.1:54445', transport: 'socket'
+
+================================================================================
+🛑 SHUTDOWN SIGNAL RECEIVED - CLEANING UP
+================================================================================
+🧹 Cleaning up resources...
+   - Trading timer stopped
+   - Closing all open positions in VWAP Strategy...
+🗑️ All positions cleared from cache
+🛑 VWAP Options Trading Stopped
+   - VWAP Options Strategy stopped
+✅ Cleanup completed
+✅ Trading application stopped successfully.
+================================================================================
+
+Process finished with exit code 130
+
+
+
+*********************************************************************************
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:60340,suspend=y,server=n -javaagent:C:\Users\user\AppData\Local\JetBrains\IntelliJIdea2021.2\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\user\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\kiteconnect\3.5.1\kiteconnect-3.5.1.jar;C:\Users\user\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\user\.m2\repository\net\sf\supercsv\super-csv\2.4.0\super-csv-2.4.0.jar;C:\Users\user\.m2\repository\com\neovisionaries\nv-websocket-client\2.3\nv-websocket-client-2.3.jar;C:\Users\user\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\okhttp\4.4.0\okhttp-4.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio\3.4.0\okio-3.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio-jvm\3.4.0\okio-jvm-3.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.0\kotlin-stdlib-jdk8-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.0\kotlin-stdlib-jdk7-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.8.0\kotlin-stdlib-common-1.8.0.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\logging-interceptor\4.4.0\logging-interceptor-4.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.6.21\kotlin-stdlib-1.6.21.jar;C:\Users\user\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar" com.trading.TradingApplication
+Connected to the target VM, address: '127.0.0.1:60340', transport: 'socket'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+🚀 Starting Automated Trading Strategy with Batch Processing...
+setRoot method not available, using default configuration
+✅ VWAP Options Strategy initialized
+🔄 Preloading option tokens for Nifty spot: 26203.75
+🔍 Preloading token for CE: NFO:NIFTY25D0226050CE
+✅ Preloaded CE token: NFO:NIFTY25D0226050CE -> 11980034
+🔍 Preloading token for PE: NFO:NIFTY25D0226050PE
+✅ Preloaded PE token: NFO:NIFTY25D0226050PE -> 11980290
+🔍 Preloading token for CE: NFO:NIFTY25D0226100CE
+✅ Preloaded CE token: NFO:NIFTY25D0226100CE -> 11980546
+🔍 Preloading token for PE: NFO:NIFTY25D0226100PE
+✅ Preloaded PE token: NFO:NIFTY25D0226100PE -> 11980802
+🔍 Preloading token for CE: NFO:NIFTY25D0226150CE
+✅ Preloaded CE token: NFO:NIFTY25D0226150CE -> 11981058
+🔍 Preloading token for PE: NFO:NIFTY25D0226150PE
+✅ Preloaded PE token: NFO:NIFTY25D0226150PE -> 11981314
+🔍 Preloading token for CE: NFO:NIFTY25D0226200CE
+✅ Preloaded CE token: NFO:NIFTY25D0226200CE -> 11981570
+🔍 Preloading token for PE: NFO:NIFTY25D0226200PE
+✅ Preloaded PE token: NFO:NIFTY25D0226200PE -> 11981826
+🔍 Preloading token for CE: NFO:NIFTY25D0226250CE
+✅ Preloaded CE token: NFO:NIFTY25D0226250CE -> 11982594
+🔍 Preloading token for PE: NFO:NIFTY25D0226250PE
+✅ Preloaded PE token: NFO:NIFTY25D0226250PE -> 11982850
+🔍 Preloading token for CE: NFO:NIFTY25D0226300CE
+✅ Preloaded CE token: NFO:NIFTY25D0226300CE -> 11983106
+🔍 Preloading token for PE: NFO:NIFTY25D0226300PE
+✅ Preloaded PE token: NFO:NIFTY25D0226300PE -> 11983874
+🔍 Preloading token for CE: NFO:NIFTY25D0226350CE
+✅ Preloaded CE token: NFO:NIFTY25D0226350CE -> 11984130
+🔍 Preloading token for PE: NFO:NIFTY25D0226350PE
+✅ Preloaded PE token: NFO:NIFTY25D0226350PE -> 11985154
+✅ Preloaded 14 option tokens
+📊 Initializing historical data for 14 instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 174.2 | VWAP: 180.17 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226050CE | Price: 174.2 | VWAP: 180.17
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 19.7 | VWAP: 20.35 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226050PE | Price: 19.7 | VWAP: 20.35
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 133.4 | VWAP: 147.81 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226100CE | Price: 133.4 | VWAP: 147.81
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 29.7 | VWAP: 30.27 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226100PE | Price: 29.7 | VWAP: 30.27
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 97.8 | VWAP: 106.9 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226150CE | Price: 97.8 | VWAP: 106.9
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 43.65 | VWAP: 44.93 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226150PE | Price: 43.65 | VWAP: 44.93
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 67.85 | VWAP: 83.98 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226200CE | Price: 67.85 | VWAP: 83.98
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 63.65 | VWAP: 59.05 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226200PE | Price: 63.65 | VWAP: 59.05
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 45.05 | VWAP: 67.95 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226250CE | Price: 45.05 | VWAP: 67.95
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 90.9 | VWAP: 72.37 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226250PE | Price: 90.9 | VWAP: 72.37
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 29.1 | VWAP: 52.09 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226300CE | Price: 29.1 | VWAP: 52.09
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 124.8 | VWAP: 92.96 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226300PE | Price: 124.8 | VWAP: 92.96
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350CE | Price: 17.9 | VWAP: 34.29 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226350CE | Price: 17.9 | VWAP: 34.29
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350PE | Price: 163.6 | VWAP: 119.38 | Time: 14:23:39
+📊 Initialized data for NFO:NIFTY25D0226350PE | Price: 163.6 | VWAP: 119.38
+🔄 Daily P&L Reset to ₹0.00
+⏰ Initial delay: 80 seconds
+🕐 First execution at: Mon Dec 01 14:25:00 IST 2025
+🎯 Application is running...
+💡 Press Ctrl+C to stop the application
+⏰ Trading interval: 5 minutes
+🕒 Trading hours: 09:15 to 15:15
+💰 Max Daily Loss: ₹5000.0
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:25:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:25:00
+📊 Nifty Spot Price: 26206.7
+🔍 Searching for CE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=179.35, VWAP=180.15
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=137.8, VWAP=147.76
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=101.65, VWAP=106.87
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=70.95, VWAP=83.91
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=47.4, VWAP=67.85
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=30.5, VWAP=52.03
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=18.95, VWAP=34.24
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹179.35
+   NFO:NIFTY25D0226100CE: ₹137.8
+   NFO:NIFTY25D0226150CE: ₹101.65
+   NFO:NIFTY25D0226200CE: ₹70.95
+   NFO:NIFTY25D0226250CE: ₹47.4
+   NFO:NIFTY25D0226300CE: ₹30.5
+   NFO:NIFTY25D0226350CE: ₹18.95
+✅ Found suitable option: NFO:NIFTY25D0226150CE (Premium: 101.65)
+🔍 Searching for PE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=18.65, VWAP=20.34
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=28.1, VWAP=30.26
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=41.55, VWAP=44.92
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=60.8, VWAP=59.07
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=87.55, VWAP=72.42
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=120.1, VWAP=93.01
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=159.1, VWAP=119.44
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹18.65
+   NFO:NIFTY25D0226100PE: ₹28.1
+   NFO:NIFTY25D0226150PE: ₹41.55
+   NFO:NIFTY25D0226200PE: ₹60.8
+   NFO:NIFTY25D0226250PE: ₹87.55
+   NFO:NIFTY25D0226300PE: ₹120.1
+   NFO:NIFTY25D0226350PE: ₹159.1
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 120.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226150CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 101.65 | VWAP: 106.87 | Time: 14:25:00
+📊 NFO:NIFTY25D0226150CE - Price: 101.65, VWAP: 106.87, Candles: 1
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 120.1 | VWAP: 93.01 | Time: 14:25:00
+📊 NFO:NIFTY25D0226300PE - Price: 120.1, VWAP: 93.01, Candles: 1
+📊 Historical Data Status for NFO:NIFTY25D0226150CE: 1 candles
+⏳ Waiting for more data for NFO:NIFTY25D0226150CE (currently 1 candles, need at least 2)
+📊 Historical Data Status for NFO:NIFTY25D0226300PE: 1 candles
+⏳ Waiting for more data for NFO:NIFTY25D0226300PE (currently 1 candles, need at least 2)
+✅ Trading cycle completed at: 14:25:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:28:39 IST 2025
+   - Uptime: 5 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:30:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:30:00
+📊 Nifty Spot Price: 26206.5
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 179.25 | VWAP: 180.17 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=179.25, VWAP=180.17
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 138.2 | VWAP: 147.64 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=138.2, VWAP=147.64
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 102.0 | VWAP: 106.81 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=102.0, VWAP=106.81
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 70.8 | VWAP: 83.7 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=70.8, VWAP=83.7
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 47.3 | VWAP: 67.55 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=47.3, VWAP=67.55
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 31.05 | VWAP: 51.83 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=31.05, VWAP=51.83
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350CE | Price: 18.9 | VWAP: 34.09 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=18.9, VWAP=34.09
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹179.25
+   NFO:NIFTY25D0226100CE: ₹138.2
+   NFO:NIFTY25D0226150CE: ₹102.0
+   NFO:NIFTY25D0226200CE: ₹70.8
+   NFO:NIFTY25D0226250CE: ₹47.3
+   NFO:NIFTY25D0226300CE: ₹31.05
+   NFO:NIFTY25D0226350CE: ₹18.9
+✅ Found suitable option: NFO:NIFTY25D0226150CE (Premium: 102.0)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 18.45 | VWAP: 20.31 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=18.45, VWAP=20.31
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 27.75 | VWAP: 30.22 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=27.75, VWAP=30.22
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 40.9 | VWAP: 44.86 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=40.9, VWAP=44.86
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 59.85 | VWAP: 59.07 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=59.85, VWAP=59.07
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 86.55 | VWAP: 72.56 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=86.55, VWAP=72.56
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 119.6 | VWAP: 93.18 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=119.6, VWAP=93.18
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350PE | Price: 158.05 | VWAP: 119.61 | Time: 14:30:00
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=158.05, VWAP=119.61
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹18.45
+   NFO:NIFTY25D0226100PE: ₹27.75
+   NFO:NIFTY25D0226150PE: ₹40.9
+   NFO:NIFTY25D0226200PE: ₹59.85
+   NFO:NIFTY25D0226250PE: ₹86.55
+   NFO:NIFTY25D0226300PE: ₹119.6
+   NFO:NIFTY25D0226350PE: ₹158.05
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 119.6)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226150CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 2 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 119.9 | VWAP: 93.18 | Time: 14:30:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 101.3 | VWAP: 106.81 | Time: 14:30:00
+📊 NFO:NIFTY25D0226150CE - Price: 101.3, VWAP: 106.81, Candles: 2
+📊 NFO:NIFTY25D0226300PE - Price: 119.9, VWAP: 93.18, Candles: 2
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226150CE:
+   Previous Candle - Price: 101.65, VWAP: 106.87
+   Current Candle  - Price: 101.3, VWAP: 106.81
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 120.1, VWAP: 93.01
+   Current Candle  - Price: 119.9, VWAP: 93.18
+✅ Trading cycle completed at: 14:30:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:33:39 IST 2025
+   - Uptime: 10 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:35:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:35:00
+📊 Nifty Spot Price: 26198.45
+🔍 Searching for CE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=173.45, VWAP=179.91
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=132.85, VWAP=147.18
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=97.05, VWAP=106.46
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=66.7, VWAP=83.14
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=44.05, VWAP=66.94
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=28.15, VWAP=51.4
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=17.25, VWAP=33.8
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹173.45
+   NFO:NIFTY25D0226100CE: ₹132.85
+   NFO:NIFTY25D0226150CE: ₹97.05
+   NFO:NIFTY25D0226200CE: ₹66.7
+   NFO:NIFTY25D0226250CE: ₹44.05
+   NFO:NIFTY25D0226300CE: ₹28.15
+   NFO:NIFTY25D0226350CE: ₹17.25
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 132.85)
+🔍 Searching for PE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=19.8, VWAP=20.32
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=29.75, VWAP=30.23
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=43.75, VWAP=44.86
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=63.35, VWAP=59.24
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=90.95, VWAP=72.91
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=124.8, VWAP=93.55
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=163.75, VWAP=119.99
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹19.8
+   NFO:NIFTY25D0226100PE: ₹29.75
+   NFO:NIFTY25D0226150PE: ₹43.75
+   NFO:NIFTY25D0226200PE: ₹63.35
+   NFO:NIFTY25D0226250PE: ₹90.95
+   NFO:NIFTY25D0226300PE: ₹124.8
+   NFO:NIFTY25D0226350PE: ₹163.75
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 124.8)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 2 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 132.85 | VWAP: 147.18 | Time: 14:35:00
+📊 NFO:NIFTY25D0226100CE - Price: 132.85, VWAP: 147.18, Candles: 1
+📊 NFO:NIFTY25D0226300PE - Price: 124.8, VWAP: 93.55, Candles: 2
+📊 Historical Data Status for NFO:NIFTY25D0226100CE: 1 candles
+⏳ Waiting for more data for NFO:NIFTY25D0226100CE (currently 1 candles, need at least 2)
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 120.1, VWAP: 93.01
+   Current Candle  - Price: 124.8, VWAP: 93.55
+✅ Trading cycle completed at: 14:35:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:38:39 IST 2025
+   - Uptime: 15 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:40:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:40:00
+📊 Nifty Spot Price: 26183.4
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 164.2 | VWAP: 179.71 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=164.2, VWAP=179.71
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 125.35 | VWAP: 146.86 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=125.35, VWAP=146.86
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 90.1 | VWAP: 106.23 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=90.1, VWAP=106.23
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 61.3 | VWAP: 82.78 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=61.3, VWAP=82.78
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 39.55 | VWAP: 66.58 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=39.55, VWAP=66.58
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 25.0 | VWAP: 51.11 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=25.0, VWAP=51.11
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350CE | Price: 15.0 | VWAP: 33.59 | Time: 14:40:00
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=15.0, VWAP=33.59
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹164.2
+   NFO:NIFTY25D0226100CE: ₹125.35
+   NFO:NIFTY25D0226150CE: ₹90.1
+   NFO:NIFTY25D0226200CE: ₹61.3
+   NFO:NIFTY25D0226250CE: ₹39.55
+   NFO:NIFTY25D0226300CE: ₹25.0
+   NFO:NIFTY25D0226350CE: ₹15.0
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 125.35)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 21.7 | VWAP: 20.32 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=21.7, VWAP=20.32
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 32.55 | VWAP: 30.25 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=32.55, VWAP=30.25
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 47.7 | VWAP: 44.88 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=47.7, VWAP=44.88
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 68.6 | VWAP: 59.37 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=68.6, VWAP=59.37
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 97.4 | VWAP: 73.15 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=97.4, VWAP=73.15
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 132.25 | VWAP: 93.82 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=132.25, VWAP=93.82
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350PE | Price: 172.0 | VWAP: 120.25 | Time: 14:40:01
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=172.0, VWAP=120.25
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹21.7
+   NFO:NIFTY25D0226100PE: ₹32.55
+   NFO:NIFTY25D0226150PE: ₹47.7
+   NFO:NIFTY25D0226200PE: ₹68.6
+   NFO:NIFTY25D0226250PE: ₹97.4
+   NFO:NIFTY25D0226300PE: ₹132.25
+   NFO:NIFTY25D0226350PE: ₹172.0
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 132.25)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 3 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 125.45 | VWAP: 146.86 | Time: 14:40:01
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 132.25 | VWAP: 93.82 | Time: 14:40:01
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 90.75 | VWAP: 106.23 | Time: 14:40:01
+📊 NFO:NIFTY25D0226100CE - Price: 125.45, VWAP: 146.86, Candles: 2
+📊 NFO:NIFTY25D0226300PE - Price: 132.35, VWAP: 93.82, Candles: 3
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 132.85, VWAP: 147.18
+   Current Candle  - Price: 125.45, VWAP: 146.86
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 124.8, VWAP: 93.55
+   Current Candle  - Price: 132.35, VWAP: 93.82
+✅ Trading cycle completed at: 14:40:01
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:43:39 IST 2025
+   - Uptime: 20 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:45:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:45:00
+📊 Nifty Spot Price: 26173.85
+🔍 Searching for CE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=154.0, VWAP=179.3
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=116.55, VWAP=146.29
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=83.5, VWAP=105.75
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=55.35, VWAP=82.22
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=36.0, VWAP=66.11
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=22.85, VWAP=50.72
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹154.0
+   NFO:NIFTY25D0226100CE: ₹116.55
+   NFO:NIFTY25D0226150CE: ₹83.5
+   NFO:NIFTY25D0226200CE: ₹55.35
+   NFO:NIFTY25D0226250CE: ₹36.0
+   NFO:NIFTY25D0226300CE: ₹22.85
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 116.55)
+🔍 Searching for PE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=24.55, VWAP=20.36
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=36.15, VWAP=30.32
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=52.85, VWAP=44.99
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=76.3, VWAP=59.61
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=106.1, VWAP=73.5
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=143.3, VWAP=94.16
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹24.55
+   NFO:NIFTY25D0226100PE: ₹36.15
+   NFO:NIFTY25D0226150PE: ₹52.85
+   NFO:NIFTY25D0226200PE: ₹76.3
+   NFO:NIFTY25D0226250PE: ₹106.1
+   NFO:NIFTY25D0226300PE: ₹143.3
+✅ Found suitable option: NFO:NIFTY25D0226250PE (Premium: 106.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226250PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 3 tracked instruments...
+📊 NFO:NIFTY25D0226100CE - Price: 116.1, VWAP: 146.29, Candles: 2
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 107.2 | VWAP: 73.52 | Time: 14:45:00
+📊 NFO:NIFTY25D0226250PE - Price: 107.2, VWAP: 73.52, Candles: 1
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 132.85, VWAP: 147.18
+   Current Candle  - Price: 116.1, VWAP: 146.29
+📊 Historical Data Status for NFO:NIFTY25D0226250PE: 1 candles
+⏳ Waiting for more data for NFO:NIFTY25D0226250PE (currently 1 candles, need at least 2)
+✅ Trading cycle completed at: 14:45:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:48:39 IST 2025
+   - Uptime: 25 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:50:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:50:00
+📊 Nifty Spot Price: 26174.75
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 157.7 | VWAP: 178.8 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=157.7, VWAP=178.8
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 119.1 | VWAP: 145.75 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=119.1, VWAP=145.75
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 85.35 | VWAP: 105.28 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=85.35, VWAP=105.28
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 57.55 | VWAP: 81.75 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=57.55, VWAP=81.75
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 37.45 | VWAP: 65.73 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=37.45, VWAP=65.73
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 23.8 | VWAP: 50.37 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=23.8, VWAP=50.37
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹157.7
+   NFO:NIFTY25D0226100CE: ₹119.1
+   NFO:NIFTY25D0226150CE: ₹85.35
+   NFO:NIFTY25D0226200CE: ₹57.55
+   NFO:NIFTY25D0226250CE: ₹37.45
+   NFO:NIFTY25D0226300CE: ₹23.8
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 119.1)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 23.35 | VWAP: 20.45 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=23.35, VWAP=20.45
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 34.9 | VWAP: 30.47 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=34.9, VWAP=30.47
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 51.2 | VWAP: 45.22 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=51.2, VWAP=45.22
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 73.35 | VWAP: 59.93 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=73.35, VWAP=59.93
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 103.75 | VWAP: 73.88 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=103.75, VWAP=73.88
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 139.3 | VWAP: 94.52 | Time: 14:50:00
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=139.3, VWAP=94.52
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹23.35
+   NFO:NIFTY25D0226100PE: ₹34.9
+   NFO:NIFTY25D0226150PE: ₹51.2
+   NFO:NIFTY25D0226200PE: ₹73.35
+   NFO:NIFTY25D0226250PE: ₹103.75
+   NFO:NIFTY25D0226300PE: ₹139.3
+✅ Found suitable option: NFO:NIFTY25D0226250PE (Premium: 103.75)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226250PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 119.1 | VWAP: 145.75 | Time: 14:50:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 139.3 | VWAP: 94.52 | Time: 14:50:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 85.35 | VWAP: 105.28 | Time: 14:50:00
+📊 NFO:NIFTY25D0226100CE - Price: 119.1, VWAP: 145.75, Candles: 3
+📊 NFO:NIFTY25D0226250PE - Price: 103.85, VWAP: 73.88, Candles: 1
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 116.1, VWAP: 146.29
+   Current Candle  - Price: 119.1, VWAP: 145.75
+📊 Historical Data Status for NFO:NIFTY25D0226250PE: 1 candles
+⏳ Waiting for more data for NFO:NIFTY25D0226250PE (currently 1 candles, need at least 2)
+✅ Trading cycle completed at: 14:50:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:53:39 IST 2025
+   - Uptime: 30 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 14:55:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 14:55:00
+📊 Nifty Spot Price: 26144.25
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 141.6 | VWAP: 177.47 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=141.6, VWAP=177.47
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 105.75 | VWAP: 144.17 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=105.75, VWAP=144.17
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 74.3 | VWAP: 103.87 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=74.3, VWAP=103.87
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 48.7 | VWAP: 80.73 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=48.7, VWAP=80.73
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 31.6 | VWAP: 64.9 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=31.6, VWAP=64.9
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 20.2 | VWAP: 49.8 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=20.2, VWAP=49.8
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹141.6
+   NFO:NIFTY25D0226100CE: ₹105.75
+   NFO:NIFTY25D0226150CE: ₹74.3
+   NFO:NIFTY25D0226200CE: ₹48.7
+   NFO:NIFTY25D0226250CE: ₹31.6
+   NFO:NIFTY25D0226300CE: ₹20.2
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 105.75)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 27.6 | VWAP: 20.69 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=27.6, VWAP=20.69
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 41.35 | VWAP: 30.88 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=41.35, VWAP=30.88
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 59.6 | VWAP: 45.86 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=59.6, VWAP=45.86
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 84.5 | VWAP: 60.66 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=84.5, VWAP=60.66
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 117.05 | VWAP: 74.67 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=117.05, VWAP=74.67
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 154.55 | VWAP: 95.2 | Time: 14:55:00
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=154.55, VWAP=95.2
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹27.6
+   NFO:NIFTY25D0226100PE: ₹41.35
+   NFO:NIFTY25D0226150PE: ₹59.6
+   NFO:NIFTY25D0226200PE: ₹84.5
+   NFO:NIFTY25D0226250PE: ₹117.05
+   NFO:NIFTY25D0226300PE: ₹154.55
+✅ Found suitable option: NFO:NIFTY25D0226250PE (Premium: 117.05)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226250PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 117.05 | VWAP: 74.67 | Time: 14:55:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 105.9 | VWAP: 144.17 | Time: 14:55:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 154.55 | VWAP: 95.2 | Time: 14:55:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 74.2 | VWAP: 103.86 | Time: 14:55:00
+📊 NFO:NIFTY25D0226100CE - Price: 104.8, VWAP: 144.17, Candles: 4
+📊 NFO:NIFTY25D0226250PE - Price: 118.05, VWAP: 74.67, Candles: 2
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 119.1, VWAP: 145.75
+   Current Candle  - Price: 104.8, VWAP: 144.17
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250PE:
+   Previous Candle - Price: 103.85, VWAP: 73.88
+   Current Candle  - Price: 118.05, VWAP: 74.67
+✅ Trading cycle completed at: 14:55:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 14:58:39 IST 2025
+   - Uptime: 35 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:00:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 15:00:00
+📊 Nifty Spot Price: 26148.4
+🔍 Searching for CE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=144.3, VWAP=175.59
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=106.8, VWAP=142.29
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=74.95, VWAP=102.2
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=49.1, VWAP=79.81
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=31.45, VWAP=64.21
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=19.95, VWAP=49.27
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹144.3
+   NFO:NIFTY25D0226100CE: ₹106.8
+   NFO:NIFTY25D0226150CE: ₹74.95
+   NFO:NIFTY25D0226200CE: ₹49.1
+   NFO:NIFTY25D0226250CE: ₹31.45
+   NFO:NIFTY25D0226300CE: ₹19.95
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 106.8)
+🔍 Searching for PE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=26.45, VWAP=20.97
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=39.0, VWAP=31.36
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=57.55, VWAP=46.44
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=81.6, VWAP=61.21
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=113.75, VWAP=75.22
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=152.3, VWAP=95.72
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹26.45
+   NFO:NIFTY25D0226100PE: ₹39.0
+   NFO:NIFTY25D0226150PE: ₹57.55
+   NFO:NIFTY25D0226200PE: ₹81.6
+   NFO:NIFTY25D0226250PE: ₹113.75
+   NFO:NIFTY25D0226300PE: ₹152.3
+✅ Found suitable option: NFO:NIFTY25D0226250PE (Premium: 113.75)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226250PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+📊 NFO:NIFTY25D0226100CE - Price: 107.45, VWAP: 142.29, Candles: 4
+📊 NFO:NIFTY25D0226250PE - Price: 113.75, VWAP: 75.22, Candles: 2
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 119.1, VWAP: 145.75
+   Current Candle  - Price: 107.45, VWAP: 142.29
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226250PE:
+   Previous Candle - Price: 103.85, VWAP: 73.88
+   Current Candle  - Price: 113.75, VWAP: 75.22
+✅ Trading cycle completed at: 15:00:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:03:39 IST 2025
+   - Uptime: 40 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:05:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 15:05:00
+📊 Nifty Spot Price: 26181.05
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 158.3 | VWAP: 174.4 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=158.3, VWAP=174.4
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 118.85 | VWAP: 140.74 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=118.85, VWAP=140.74
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 85.0 | VWAP: 100.8 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=85.0, VWAP=100.8
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 56.9 | VWAP: 78.9 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=56.9, VWAP=78.9
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 37.6 | VWAP: 63.56 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=37.6, VWAP=63.56
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 24.05 | VWAP: 48.78 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=24.05, VWAP=48.78
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350CE | Price: 14.6 | VWAP: 31.84 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=14.6, VWAP=31.84
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹158.3
+   NFO:NIFTY25D0226100CE: ₹118.85
+   NFO:NIFTY25D0226150CE: ₹85.0
+   NFO:NIFTY25D0226200CE: ₹56.9
+   NFO:NIFTY25D0226250CE: ₹37.6
+   NFO:NIFTY25D0226300CE: ₹24.05
+   NFO:NIFTY25D0226350CE: ₹14.6
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 118.85)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 20.45 | VWAP: 21.07 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=20.45, VWAP=21.07
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 31.15 | VWAP: 31.54 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=31.15, VWAP=31.54
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 46.85 | VWAP: 46.67 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=46.85, VWAP=46.67
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 69.3 | VWAP: 61.5 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=69.3, VWAP=61.5
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 99.6 | VWAP: 75.56 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=99.6, VWAP=75.56
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 135.5 | VWAP: 96.11 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=135.5, VWAP=96.11
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350PE | Price: 176.3 | VWAP: 122.6 | Time: 15:05:00
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=176.3, VWAP=122.6
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹20.45
+   NFO:NIFTY25D0226100PE: ₹31.15
+   NFO:NIFTY25D0226150PE: ₹46.85
+   NFO:NIFTY25D0226200PE: ₹69.3
+   NFO:NIFTY25D0226250PE: ₹99.6
+   NFO:NIFTY25D0226300PE: ₹135.5
+   NFO:NIFTY25D0226350PE: ₹176.3
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 135.5)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 99.6 | VWAP: 75.56 | Time: 15:05:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 119.4 | VWAP: 140.74 | Time: 15:05:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 135.5 | VWAP: 96.11 | Time: 15:05:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 85.0 | VWAP: 100.8 | Time: 15:05:00
+📊 NFO:NIFTY25D0226100CE - Price: 119.4, VWAP: 140.74, Candles: 5
+📊 NFO:NIFTY25D0226300PE - Price: 135.15, VWAP: 96.11, Candles: 6
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 107.45, VWAP: 142.29
+   Current Candle  - Price: 119.4, VWAP: 140.74
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 151.3, VWAP: 95.72
+   Current Candle  - Price: 135.15, VWAP: 96.11
+✅ Trading cycle completed at: 15:05:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:08:39 IST 2025
+   - Uptime: 45 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:10:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 15:10:00
+📊 Nifty Spot Price: 26179.0
+🔍 Searching for CE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=159.0, VWAP=173.93
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=118.7, VWAP=140.09
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=84.7, VWAP=100.22
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=57.4, VWAP=78.31
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=37.6, VWAP=63.12
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=24.25, VWAP=48.42
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=14.6, VWAP=31.58
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹159.0
+   NFO:NIFTY25D0226100CE: ₹118.7
+   NFO:NIFTY25D0226150CE: ₹84.7
+   NFO:NIFTY25D0226200CE: ₹57.4
+   NFO:NIFTY25D0226250CE: ₹37.6
+   NFO:NIFTY25D0226300CE: ₹24.25
+   NFO:NIFTY25D0226350CE: ₹14.6
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 118.7)
+🔍 Searching for PE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050PE | Price: 20.2 | VWAP: 21.06 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=20.2, VWAP=21.06
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100PE | Price: 30.9 | VWAP: 31.54 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=30.9, VWAP=31.54
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150PE | Price: 46.65 | VWAP: 46.68 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=46.65, VWAP=46.68
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200PE | Price: 69.35 | VWAP: 61.62 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=69.35, VWAP=61.62
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 99.4 | VWAP: 75.71 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=99.4, VWAP=75.71
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 135.7 | VWAP: 96.31 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=135.7, VWAP=96.31
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350PE | Price: 176.0 | VWAP: 122.82 | Time: 15:10:00
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=176.0, VWAP=122.82
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹20.2
+   NFO:NIFTY25D0226100PE: ₹30.9
+   NFO:NIFTY25D0226150PE: ₹46.65
+   NFO:NIFTY25D0226200PE: ₹69.35
+   NFO:NIFTY25D0226250PE: ₹99.4
+   NFO:NIFTY25D0226300PE: ₹135.7
+   NFO:NIFTY25D0226350PE: ₹176.0
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 135.7)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250PE | Price: 99.35 | VWAP: 75.71 | Time: 15:10:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 119.45 | VWAP: 140.09 | Time: 15:10:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300PE | Price: 135.7 | VWAP: 96.31 | Time: 15:10:00
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 85.25 | VWAP: 100.22 | Time: 15:10:00
+📊 NFO:NIFTY25D0226100CE - Price: 119.45, VWAP: 140.09, Candles: 6
+📊 NFO:NIFTY25D0226300PE - Price: 135.7, VWAP: 96.31, Candles: 7
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 119.4, VWAP: 140.74
+   Current Candle  - Price: 119.45, VWAP: 140.09
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 135.15, VWAP: 96.11
+   Current Candle  - Price: 135.7, VWAP: 96.31
+✅ Trading cycle completed at: 15:10:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:13:39 IST 2025
+   - Uptime: 50 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:15:00 IST 2025
+================================================================================
+🎯 EXECUTING BATCH TRADING CYCLE...
+🔄 Executing VWAP Options Trading Cycle at: 15:15:00
+📊 Nifty Spot Price: 26179.65
+🔍 Searching for CE options with premium > 100.0
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226050CE | Price: 161.6 | VWAP: 173.6 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226050CE: Price=161.6, VWAP=173.6
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226100CE | Price: 122.3 | VWAP: 139.63 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226100CE: Price=122.3, VWAP=139.63
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226150CE | Price: 87.3 | VWAP: 99.79 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226150CE: Price=87.3, VWAP=99.79
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226200CE | Price: 59.0 | VWAP: 77.77 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226200CE: Price=59.0, VWAP=77.77
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226250CE | Price: 39.2 | VWAP: 62.65 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226250CE: Price=39.2, VWAP=62.65
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226300CE | Price: 25.1 | VWAP: 48.02 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226300CE: Price=25.1, VWAP=48.02
+🕯️ NEW 5-min Candle created for NFO:NIFTY25D0226350CE | Price: 15.3 | VWAP: 31.3 | Time: 15:15:00
+📊 Stored historical data for NFO:NIFTY25D0226350CE: Price=15.3, VWAP=31.3
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050CE: ₹161.6
+   NFO:NIFTY25D0226100CE: ₹122.3
+   NFO:NIFTY25D0226150CE: ₹87.3
+   NFO:NIFTY25D0226200CE: ₹59.0
+   NFO:NIFTY25D0226250CE: ₹39.2
+   NFO:NIFTY25D0226300CE: ₹25.1
+   NFO:NIFTY25D0226350CE: ₹15.3
+✅ Found suitable option: NFO:NIFTY25D0226100CE (Premium: 122.3)
+🔍 Searching for PE options with premium > 100.0
+📊 Stored historical data for NFO:NIFTY25D0226050PE: Price=19.15, VWAP=21.03
+📊 Stored historical data for NFO:NIFTY25D0226100PE: Price=29.35, VWAP=31.51
+📊 Stored historical data for NFO:NIFTY25D0226150PE: Price=44.1, VWAP=46.65
+📊 Stored historical data for NFO:NIFTY25D0226200PE: Price=66.6, VWAP=61.69
+📊 Stored historical data for NFO:NIFTY25D0226250PE: Price=95.95, VWAP=75.85
+📊 Stored historical data for NFO:NIFTY25D0226300PE: Price=131.8, VWAP=96.5
+📊 Stored historical data for NFO:NIFTY25D0226350PE: Price=172.65, VWAP=123.01
+📊 Batch premium fetch results:
+   NFO:NIFTY25D0226050PE: ₹19.15
+   NFO:NIFTY25D0226100PE: ₹29.35
+   NFO:NIFTY25D0226150PE: ₹44.1
+   NFO:NIFTY25D0226200PE: ₹66.6
+   NFO:NIFTY25D0226250PE: ₹95.95
+   NFO:NIFTY25D0226300PE: ₹131.8
+   NFO:NIFTY25D0226350PE: ₹172.65
+✅ Found suitable option: NFO:NIFTY25D0226300PE (Premium: 131.8)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0226100CE
+   PE: NFO:NIFTY25D0226300PE
+🔍 Analyzing VWAP crossovers for 2 instruments...
+🔄 Updating data for 4 tracked instruments...
+📊 NFO:NIFTY25D0226100CE - Price: 122.3, VWAP: 139.63, Candles: 6
+📊 NFO:NIFTY25D0226300PE - Price: 131.8, VWAP: 96.5, Candles: 7
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226100CE:
+   Previous Candle - Price: 119.4, VWAP: 140.74
+   Current Candle  - Price: 122.3, VWAP: 139.63
+🔍 VWAP Crossover Analysis for NFO:NIFTY25D0226300PE:
+   Previous Candle - Price: 135.15, VWAP: 96.11
+   Current Candle  - Price: 131.8, VWAP: 96.5
+✅ Trading cycle completed at: 15:15:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:18:39 IST 2025
+   - Uptime: 55 minutes
+   - Trading Hours: ❌ CLOSED
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   ⚠️  TRADING NOT ALLOWED - Outside trading hours
+   --------------------------------------------------
+🕒 Trading hours ended. Stopping VWAP Strategy...
+🗑️ All positions cleared from cache
+🛑 VWAP Options Trading Stopped
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:20:00 IST 2025
+================================================================================
+⏸️ Outside trading hours. Skipping cycle...
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:23:39 IST 2025
+   - Uptime: 60 minutes
+   - Trading Hours: ❌ CLOSED
+   - VWAP Strategy: ⏸️ INACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   ⚠️  TRADING NOT ALLOWED - Outside trading hours
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:25:00 IST 2025
+================================================================================
+⏸️ Outside trading hours. Skipping cycle...
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Mon Dec 01 15:28:39 IST 2025
+   - Uptime: 65 minutes
+   - Trading Hours: ❌ CLOSED
+   - VWAP Strategy: ⏸️ INACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 2 minutes
+   ⚠️  TRADING NOT ALLOWED - Outside trading hours
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Mon Dec 01 15:30:00 IST 2025
+================================================================================
+⏸️ Outside trading hours. Skipping cycle...
+================================================================================
+

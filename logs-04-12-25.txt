@@ -1,0 +1,3617 @@
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:57155,suspend=y,server=n -javaagent:C:\Users\user\AppData\Local\JetBrains\IntelliJIdea2021.2\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\user\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\kiteconnect\3.5.1\kiteconnect-3.5.1.jar;C:\Users\user\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\user\.m2\repository\net\sf\supercsv\super-csv\2.4.0\super-csv-2.4.0.jar;C:\Users\user\.m2\repository\com\neovisionaries\nv-websocket-client\2.3\nv-websocket-client-2.3.jar;C:\Users\user\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\okhttp\4.4.0\okhttp-4.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio\3.4.0\okio-3.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio-jvm\3.4.0\okio-jvm-3.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.0\kotlin-stdlib-jdk8-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.0\kotlin-stdlib-jdk7-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.8.0\kotlin-stdlib-common-1.8.0.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\logging-interceptor\4.4.0\logging-interceptor-4.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.6.21\kotlin-stdlib-1.6.21.jar;C:\Users\user\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar" com.trading.TradingApplication
+Connected to the target VM, address: '127.0.0.1:57155', transport: 'socket'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+🚀 Starting Automated Trading Strategy with Real-time Candle Analysis...
+setRoot method not available, using default configuration
+✅ VWAP Options Strategy initialized
+🔄 Preloading option tokens for Nifty spot: 26027.5
+🔍 Preloading token for CE: NFO:NIFTY25D0925900CE
+✅ Preloaded CE token: NFO:NIFTY25D0925900CE -> 10721026
+🔍 Preloading token for PE: NFO:NIFTY25D0925900PE
+✅ Preloaded PE token: NFO:NIFTY25D0925900PE -> 10721282
+🔍 Preloading token for CE: NFO:NIFTY25D0925950CE
+✅ Preloaded CE token: NFO:NIFTY25D0925950CE -> 10721538
+🔍 Preloading token for PE: NFO:NIFTY25D0925950PE
+✅ Preloaded PE token: NFO:NIFTY25D0925950PE -> 10721794
+🔍 Preloading token for CE: NFO:NIFTY25D0926000CE
+✅ Preloaded CE token: NFO:NIFTY25D0926000CE -> 10727170
+🔍 Preloading token for PE: NFO:NIFTY25D0926000PE
+✅ Preloaded PE token: NFO:NIFTY25D0926000PE -> 10727426
+🔍 Preloading token for CE: NFO:NIFTY25D0926050CE
+✅ Preloaded CE token: NFO:NIFTY25D0926050CE -> 10727682
+🔍 Preloading token for PE: NFO:NIFTY25D0926050PE
+✅ Preloaded PE token: NFO:NIFTY25D0926050PE -> 10727938
+🔍 Preloading token for CE: NFO:NIFTY25D0926100CE
+✅ Preloaded CE token: NFO:NIFTY25D0926100CE -> 10728194
+🔍 Preloading token for PE: NFO:NIFTY25D0926100PE
+✅ Preloaded PE token: NFO:NIFTY25D0926100PE -> 10728450
+🔍 Preloading token for CE: NFO:NIFTY25D0926150CE
+✅ Preloaded CE token: NFO:NIFTY25D0926150CE -> 10728706
+🔍 Preloading token for PE: NFO:NIFTY25D0926150PE
+✅ Preloaded PE token: NFO:NIFTY25D0926150PE -> 10728962
+🔍 Preloading token for CE: NFO:NIFTY25D0926200CE
+✅ Preloaded CE token: NFO:NIFTY25D0926200CE -> 10729730
+🔍 Preloading token for PE: NFO:NIFTY25D0926200PE
+✅ Preloaded PE token: NFO:NIFTY25D0926200PE -> 10729986
+✅ Preloaded 14 option tokens
+🔄 Daily P&L Reset to ₹0.00
+⏰ Next execution aligned to: Thu Dec 04 12:40:00 IST 2025
+   Current time: Thu Dec 04 12:35:21 IST 2025
+   Delay: 278 seconds
+⏰ Initial delay: 278 seconds
+🕐 First execution at: Thu Dec 04 12:40:00 IST 2025
+🎯 Application is running...
+💡 Press Ctrl+C to stop the application
+⏰ Trading interval: 5 minutes
+🕒 Trading hours: 09:15 to 15:15
+💰 Max Daily Loss: ₹5000.0
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 12:40:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 12:40:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26023.95
+🔍 Searching for CE options with premium > 100.0
+📝 Added to real-time tracking: NFO:NIFTY25D0925900CE
+➕ Added to continuous tracking: NFO:NIFTY25D0925900CE
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925950CE
+➕ Added to continuous tracking: NFO:NIFTY25D0925950CE
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926000CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926000CE
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926050CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926050CE
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926100CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926100CE
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926150CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926150CE
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 12:40:00
+🚀 Starting real-time candle builder for 6 instruments
+🚀 Starting RealTimeCandleBuilder for 6 instruments
+⏰ Next candle finalization at 12:45:00 (in 300 seconds)
+✅ RealTimeCandleBuilder started - Continuously tracking 6 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 107.95)
+🔍 Searching for PE options with premium > 100.0
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 12:40:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 12:40:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 12:40:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 12:40:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 12:40:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925900PE
+➕ Added to continuous tracking: NFO:NIFTY25D0925900PE
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925950PE
+➕ Added to continuous tracking: NFO:NIFTY25D0925950PE
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926000PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926000PE
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926050PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926050PE
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926100PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926100PE
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 12:40:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926150PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926150PE
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 12:40:00
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 107.05)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050CE (currently 0 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 0 candles, need at least 2)
+✅ Trading cycle completed at: 12:40:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 12:40:21 IST 2025
+   - Uptime: 5 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 12:45:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 12:45:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26009.55
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 123.9)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 116.4)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926000CE (currently 0 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 0 candles, need at least 2)
+✅ Trading cycle completed at: 12:45:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 12:45:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 12:40 to 12:45:00
+   O:83.75 H:91.7 L:82.9 C:91.1 VWAP:86.93
+   Stats: Range=8.80, Close at 93.18% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 12:40 to 12:45:00
+   O:165.6 H:167.2 L:152.65 C:152.9 VWAP:167.38
+   Stats: Range=14.55, Close at 1.72% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 12:40 to 12:45:00
+   O:108.25 H:109.25 L:97.95 C:98.3 VWAP:119.70
+   Stats: Range=11.30, Close at 3.10% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 12:40 to 12:45:00
+   O:84.8 H:85.8 L:76.6 C:77.1 VWAP:97.17
+   Stats: Range=9.20, Close at 5.43% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 12:40 to 12:45:00
+   O:200.3 H:202.0 L:186.0 C:186.0 VWAP:204.71
+   Stats: Range=16.00, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 12:40 to 12:45:00
+   O:134.0 H:145.1 L:132.8 C:144.05 VWAP:125.55
+   Stats: Range=12.30, Close at 91.46% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 12:40 to 12:45:00
+   O:164.8 H:177.2 L:163.35 C:176.4 VWAP:153.95
+   Stats: Range=13.85, Close at 94.22% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 12:40 to 12:45:00
+   O:134.55 H:136.0 L:123.15 C:123.9 VWAP:142.04
+   Stats: Range=12.85, Close at 5.84% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 12:40 to 12:45:00
+   O:107.05 H:116.6 L:106.15 C:116.1 VWAP:103.83
+   Stats: Range=10.45, Close at 95.22% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 12:40 to 12:45:00
+   O:65.65 H:66.2 L:58.8 C:59.2 VWAP:76.62
+   Stats: Range=7.40, Close at 5.41% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 12:40 to 12:45:00
+   O:64.6 H:71.15 L:64.05 C:70.65 VWAP:72.62
+   Stats: Range=7.10, Close at 92.96% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 12:40 to 12:45:00
+   O:49.3 H:54.5 L:49.0 C:54.1 VWAP:55.53
+   Stats: Range=5.50, Close at 92.73% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 12:45:02
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 12:45:02
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 12:45:21 IST 2025
+   - Uptime: 10 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 12:50:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 12:50:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 25993.35
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 114.15)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 125.45)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926000CE (currently 1 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 1 candles, need at least 2)
+✅ Trading cycle completed at: 12:50:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 12:50:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 12:45 to 12:50:00
+   O:91.5 H:100.3 L:91.5 C:99.55 VWAP:87.28
+   Stats: Range=8.80, Close at 91.48% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 12:45 to 12:50:00
+   O:151.55 H:151.55 L:141.25 C:142.5 VWAP:167.00
+   Stats: Range=10.30, Close at 12.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 12:45 to 12:50:00
+   O:97.2 H:97.2 L:89.75 C:90.45 VWAP:119.03
+   Stats: Range=7.45, Close at 9.40% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 12:45 to 12:50:00
+   O:76.1 H:76.1 L:69.7 C:70.2 VWAP:96.54
+   Stats: Range=6.40, Close at 7.81% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 12:45 to 12:50:00
+   O:186.15 H:186.15 L:173.5 C:174.8 VWAP:204.16
+   Stats: Range=12.65, Close at 10.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 12:45 to 12:50:00
+   O:145.4 H:156.6 L:145.4 C:155.3 VWAP:126.36
+   Stats: Range=11.20, Close at 88.39% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 12:45 to 12:50:00
+   O:177.5 H:190.15 L:177.5 C:189.3 VWAP:155.01
+   Stats: Range=12.65, Close at 93.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 12:45 to 12:50:00
+   O:122.8 H:122.8 L:112.9 C:114.15 VWAP:141.38
+   Stats: Range=9.90, Close at 12.63% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 12:45 to 12:50:00
+   O:116.85 H:126.25 L:116.85 C:125.45 VWAP:104.50
+   Stats: Range=9.40, Close at 91.49% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 12:45 to 12:50:00
+   O:58.75 H:58.75 L:53.1 C:53.75 VWAP:76.05
+   Stats: Range=5.65, Close at 11.50% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 12:45 to 12:50:00
+   O:71.2 H:78.3 L:71.2 C:77.6 VWAP:72.65
+   Stats: Range=7.10, Close at 90.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 12:45 to 12:50:00
+   O:54.6 H:60.25 L:54.6 C:59.7 VWAP:55.57
+   Stats: Range=5.65, Close at 90.27% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 12:50:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 12:50:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 12:50:21 IST 2025
+   - Uptime: 15 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 12:55:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 12:55:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 25992.85
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 115.0)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 125.5)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=134.55 H=136.0 L=123.15 C=123.9 VWAP=142.04
+   Last Completed: O=122.8 H=122.8 L=112.9 C=114.15 VWAP=141.38
+   Current Candle: O=114.2 H=117.3 L=111.35 C=115.0 VWAP=140.91
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=114.2 H=117.3 L=111.35 C=115.0 VWAP=140.91193333333328
+   ❌ Current price not above VWAP: 115.0 <= 140.91193333333328
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=123.9 | VWAP=142.04
+      - Last Candle: Close=114.15 | VWAP=141.38 | High=122.8
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=107.05 H=116.6 L=106.15 C=116.1 VWAP=103.83
+   Last Completed: O=116.85 H=126.25 L=116.85 C=125.45 VWAP=104.50
+   Current Candle: O=125.45 H=129.8 L=122.35 C=125.5 VWAP=104.97
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=125.45 H=129.8 L=122.35 C=125.5 VWAP=104.97179999999993
+   ❌ Price never went below VWAP:
+      Open=125.45 vs VWAP=104.97179999999993 (above)
+      Low=122.35 vs VWAP=104.97179999999993 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=116.1 | VWAP=103.83
+      - Last Candle: Close=125.45 | VWAP=104.50 | High=126.25
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 12:55:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 12:55:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 12:50 to 12:55:00
+   O:99.65 H:103.15 L:97.0 C:99.6 VWAP:87.64
+   Stats: Range=6.15, Close at 42.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 12:50 to 12:55:00
+   O:142.2 H:145.95 L:139.1 C:143.4 VWAP:166.68
+   Stats: Range=6.85, Close at 62.77% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 12:50 to 12:55:00
+   O:90.45 H:93.3 L:88.15 C:91.05 VWAP:118.60
+   Stats: Range=5.15, Close at 56.31% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 12:50 to 12:55:00
+   O:70.2 H:72.5 L:68.5 C:71.0 VWAP:96.14
+   Stats: Range=4.00, Close at 62.50% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 12:50 to 12:55:00
+   O:174.4 H:178.35 L:170.5 C:175.8 VWAP:203.73
+   Stats: Range=7.85, Close at 67.52% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 12:50 to 12:55:00
+   O:155.85 H:160.0 L:152.0 C:155.5 VWAP:127.02
+   Stats: Range=8.00, Close at 43.75% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 12:50 to 12:55:00
+   O:189.3 H:193.95 L:184.85 C:188.8 VWAP:155.70
+   Stats: Range=9.10, Close at 43.41% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 12:50 to 12:55:00
+   O:114.2 H:117.3 L:111.35 C:115.0 VWAP:140.91
+   Stats: Range=5.95, Close at 61.34% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 12:50 to 12:55:00
+   O:125.45 H:129.8 L:122.35 C:125.5 VWAP:104.97
+   Stats: Range=7.45, Close at 42.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 12:50 to 12:55:00
+   O:53.75 H:55.55 L:52.3 C:54.15 VWAP:75.72
+   Stats: Range=3.25, Close at 56.92% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 12:50 to 12:55:00
+   O:77.65 H:80.9 L:75.5 C:78.0 VWAP:72.79
+   Stats: Range=5.40, Close at 46.30% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 12:50 to 12:55:00
+   O:59.8 H:62.6 L:58.05 C:60.0 VWAP:55.69
+   Stats: Range=4.55, Close at 42.86% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 12:55:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 12:55:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 12:55:21 IST 2025
+   - Uptime: 20 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:00:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:00:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26002.45
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 120.5)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 120.05)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=122.8 H=122.8 L=112.9 C=114.15 VWAP=141.38
+   Last Completed: O=114.2 H=117.3 L=111.35 C=115.0 VWAP=140.91
+   Current Candle: O=115.0 H=123.3 L=115.0 C=120.5 VWAP=140.51
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=115.0 H=123.3 L=115.0 C=120.5 VWAP=140.50543046357615
+   ❌ Current price not above VWAP: 120.5 <= 140.50543046357615
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=114.15 | VWAP=141.38
+      - Last Candle: Close=115.0 | VWAP=140.91 | High=117.3
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=116.85 H=126.25 L=116.85 C=125.45 VWAP=104.50
+   Last Completed: O=125.45 H=129.8 L=122.35 C=125.5 VWAP=104.97
+   Current Candle: O=125.5 H=125.6 L=116.3 C=120.05 VWAP=105.29
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=125.5 H=125.6 L=116.3 C=120.05 VWAP=105.29086092715238
+   ❌ Price never went below VWAP:
+      Open=125.5 vs VWAP=105.29086092715238 (above)
+      Low=116.3 vs VWAP=105.29086092715238 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=125.45 | VWAP=104.50
+      - Last Candle: Close=125.5 | VWAP=104.97 | High=129.8
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:00:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:00:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 12:55 to 13:00:00
+   O:99.75 H:99.75 L:92.0 C:94.95 VWAP:87.89
+   Stats: Range=7.75, Close at 38.06% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 12:55 to 13:00:00
+   O:143.4 H:153.0 L:143.4 C:149.45 VWAP:166.40
+   Stats: Range=9.60, Close at 63.02% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 12:55 to 13:00:00
+   O:91.05 H:98.15 L:91.05 C:95.65 VWAP:118.22
+   Stats: Range=7.10, Close at 64.79% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 12:55 to 13:00:00
+   O:71.0 H:76.45 L:70.95 C:74.6 VWAP:95.83
+   Stats: Range=5.50, Close at 66.36% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 12:55 to 13:00:00
+   O:175.45 H:186.5 L:175.45 C:182.55 VWAP:203.36
+   Stats: Range=11.05, Close at 64.25% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 12:55 to 13:00:00
+   O:155.5 H:155.5 L:144.9 C:148.5 VWAP:127.45
+   Stats: Range=10.60, Close at 33.96% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 12:55 to 13:00:00
+   O:188.8 H:188.8 L:176.85 C:181.5 VWAP:156.21
+   Stats: Range=11.95, Close at 38.91% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 12:55 to 13:00:00
+   O:115.0 H:123.3 L:115.0 C:120.5 VWAP:140.51
+   Stats: Range=8.30, Close at 66.27% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 12:55 to 13:00:00
+   O:125.5 H:125.6 L:116.3 C:120.05 VWAP:105.29
+   Stats: Range=9.30, Close at 40.32% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 12:55 to 13:00:00
+   O:54.2 H:58.55 L:54.2 C:56.85 VWAP:75.48
+   Stats: Range=4.35, Close at 60.92% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 12:55 to 13:00:00
+   O:77.95 H:77.95 L:71.5 C:74.0 VWAP:72.90
+   Stats: Range=6.45, Close at 38.76% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 12:55 to 13:00:00
+   O:60.15 H:60.15 L:55.0 C:57.2 VWAP:55.77
+   Stats: Range=5.15, Close at 42.72% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:00:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:00:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:00:21 IST 2025
+   - Uptime: 25 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:05:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:05:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26005.6
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 122.1)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 117.9)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=114.2 H=117.3 L=111.35 C=115.0 VWAP=140.91
+   Last Completed: O=115.0 H=123.3 L=115.0 C=120.5 VWAP=140.51
+   Current Candle: O=120.1 H=124.75 L=117.15 C=122.1 VWAP=140.23
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=120.1 H=124.75 L=117.15 C=122.1 VWAP=140.22927152317877
+   ❌ Current price not above VWAP: 122.1 <= 140.22927152317877
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=115.0 | VWAP=140.91
+      - Last Candle: Close=120.5 | VWAP=140.51 | High=123.3
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=125.45 H=129.8 L=122.35 C=125.5 VWAP=104.97
+   Last Completed: O=125.5 H=125.6 L=116.3 C=120.05 VWAP=105.29
+   Current Candle: O=119.85 H=123.25 L=115.5 C=117.9 VWAP=105.46
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=119.85 H=123.25 L=115.5 C=117.9 VWAP=105.45973509933764
+   ❌ Price never went below VWAP:
+      Open=119.85 vs VWAP=105.45973509933764 (above)
+      Low=115.5 vs VWAP=105.45973509933764 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=125.5 | VWAP=104.97
+      - Last Candle: Close=120.05 | VWAP=105.29 | High=125.6
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:05:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:05:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:00 to 13:05:00
+   O:95.2 H:97.6 L:90.9 C:93.65 VWAP:88.00
+   Stats: Range=6.70, Close at 41.04% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:00 to 13:05:00
+   O:149.2 H:154.5 L:146.15 C:151.55 VWAP:166.24
+   Stats: Range=8.35, Close at 64.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:00 to 13:05:00
+   O:95.75 H:99.4 L:93.0 C:97.35 VWAP:117.95
+   Stats: Range=6.40, Close at 67.97% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:00 to 13:05:00
+   O:74.25 H:77.7 L:72.25 C:75.75 VWAP:95.62
+   Stats: Range=5.45, Close at 64.22% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:00 to 13:05:00
+   O:182.35 H:188.35 L:178.5 C:185.0 VWAP:203.16
+   Stats: Range=9.85, Close at 65.99% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:00 to 13:05:00
+   O:149.15 H:152.5 L:143.8 C:146.95 VWAP:127.66
+   Stats: Range=8.70, Close at 36.21% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:00 to 13:05:00
+   O:181.5 H:185.5 L:175.6 C:179.1 VWAP:156.46
+   Stats: Range=9.90, Close at 35.35% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:00 to 13:05:00
+   O:120.1 H:124.75 L:117.15 C:122.1 VWAP:140.23
+   Stats: Range=7.60, Close at 65.13% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:00 to 13:05:00
+   O:119.85 H:123.25 L:115.5 C:117.9 VWAP:105.46
+   Stats: Range=7.75, Close at 30.97% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:00 to 13:05:00
+   O:56.85 H:59.65 L:55.15 C:58.2 VWAP:75.28
+   Stats: Range=4.50, Close at 67.78% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:00 to 13:05:00
+   O:74.15 H:76.5 L:70.9 C:72.7 VWAP:72.91
+   Stats: Range=5.60, Close at 32.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:00 to 13:05:00
+   O:57.25 H:59.15 L:54.5 C:56.15 VWAP:55.79
+   Stats: Range=4.65, Close at 35.48% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:05:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:05:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:05:21 IST 2025
+   - Uptime: 30 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:10:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:10:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 25997.95
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 121.35)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 119.85)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=115.0 H=123.3 L=115.0 C=120.5 VWAP=140.51
+   Last Completed: O=120.1 H=124.75 L=117.15 C=122.1 VWAP=140.23
+   Current Candle: O=122.1 H=125.2 L=119.55 C=121.35 VWAP=140.03
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=122.1 H=125.2 L=119.55 C=121.35 VWAP=140.03406666666694
+   ❌ Current price not above VWAP: 121.35 <= 140.03406666666694
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=120.5 | VWAP=140.51
+      - Last Candle: Close=122.1 | VWAP=140.23 | High=124.75
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=125.5 H=125.6 L=116.3 C=120.05 VWAP=105.29
+   Last Completed: O=119.85 H=123.25 L=115.5 C=117.9 VWAP=105.46
+   Current Candle: O=117.9 H=121.15 L=114.95 C=119.85 VWAP=105.59
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=117.9 H=121.15 L=114.95 C=119.85 VWAP=105.59460000000003
+   ❌ Price never went below VWAP:
+      Open=117.9 vs VWAP=105.59460000000003 (above)
+      Low=114.95 vs VWAP=105.59460000000003 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=120.05 | VWAP=105.29
+      - Last Candle: Close=117.9 | VWAP=105.46 | High=123.25
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:10:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:10:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:05 to 13:10:00
+   O:93.3 H:95.85 L:90.55 C:94.85 VWAP:88.07
+   Stats: Range=5.30, Close at 81.13% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:05 to 13:10:00
+   O:151.55 H:155.2 L:149.0 C:150.6 VWAP:166.12
+   Stats: Range=6.20, Close at 25.81% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:05 to 13:10:00
+   O:97.5 H:99.7 L:95.1 C:96.25 VWAP:117.72
+   Stats: Range=4.60, Close at 25.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:05 to 13:10:00
+   O:75.95 H:77.8 L:74.05 C:75.15 VWAP:95.45
+   Stats: Range=3.75, Close at 29.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:05 to 13:10:00
+   O:185.0 H:188.9 L:182.05 C:183.5 VWAP:202.99
+   Stats: Range=6.85, Close at 21.17% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:05 to 13:10:00
+   O:146.6 H:149.85 L:143.15 C:148.55 VWAP:127.84
+   Stats: Range=6.70, Close at 80.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:05 to 13:10:00
+   O:179.1 H:182.15 L:175.05 C:181.05 VWAP:156.64
+   Stats: Range=7.10, Close at 84.51% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:05 to 13:10:00
+   O:122.1 H:125.2 L:119.55 C:121.35 VWAP:140.03
+   Stats: Range=5.65, Close at 31.86% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:05 to 13:10:00
+   O:117.9 H:121.15 L:114.95 C:119.85 VWAP:105.59
+   Stats: Range=6.20, Close at 79.03% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:05 to 13:10:00
+   O:58.2 H:59.85 L:56.85 C:57.55 VWAP:75.12
+   Stats: Range=3.00, Close at 23.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:05 to 13:10:00
+   O:72.7 H:75.0 L:70.6 C:73.95 VWAP:72.91
+   Stats: Range=4.40, Close at 76.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:05 to 13:10:00
+   O:56.15 H:57.65 L:54.2 C:57.1 VWAP:55.80
+   Stats: Range=3.45, Close at 84.06% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:10:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:10:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:10:21 IST 2025
+   - Uptime: 35 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:15:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:15:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26000.8
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 122.15)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 118.3)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=120.1 H=124.75 L=117.15 C=122.1 VWAP=140.23
+   Last Completed: O=122.1 H=125.2 L=119.55 C=121.35 VWAP=140.03
+   Current Candle: O=121.35 H=124.7 L=116.25 C=122.15 VWAP=139.81
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=121.35 H=124.7 L=116.25 C=122.15 VWAP=139.8101986754966
+   ❌ Current price not above VWAP: 122.15 <= 139.8101986754966
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=122.1 | VWAP=140.23
+      - Last Candle: Close=121.35 | VWAP=140.03 | High=125.2
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=119.85 H=123.25 L=115.5 C=117.9 VWAP=105.46
+   Last Completed: O=117.9 H=121.15 L=114.95 C=119.85 VWAP=105.59
+   Current Candle: O=119.7 H=125.05 L=115.5 C=118.3 VWAP=105.77
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=119.7 H=125.05 L=115.5 C=118.3 VWAP=105.7690066225166
+   ❌ Price never went below VWAP:
+      Open=119.7 vs VWAP=105.7690066225166 (above)
+      Low=115.5 vs VWAP=105.7690066225166 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=117.9 | VWAP=105.46
+      - Last Candle: Close=119.85 | VWAP=105.59 | High=121.15
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:15:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:15:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:10 to 13:15:00
+   O:94.85 H:99.15 L:91.1 C:93.35 VWAP:88.20
+   Stats: Range=8.05, Close at 27.95% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:10 to 13:15:00
+   O:150.75 H:154.55 L:144.5 C:151.3 VWAP:165.98
+   Stats: Range=10.05, Close at 67.66% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:10 to 13:15:00
+   O:96.5 H:99.5 L:92.25 C:96.85 VWAP:117.52
+   Stats: Range=7.25, Close at 63.45% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:10 to 13:15:00
+   O:75.15 H:77.5 L:71.7 C:75.75 VWAP:95.28
+   Stats: Range=5.80, Close at 69.83% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:10 to 13:15:00
+   O:183.5 H:188.35 L:177.15 C:184.6 VWAP:202.80
+   Stats: Range=11.20, Close at 66.52% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:10 to 13:15:00
+   O:148.55 H:154.6 L:144.4 C:146.8 VWAP:128.07
+   Stats: Range=10.20, Close at 23.53% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:10 to 13:15:00
+   O:181.05 H:187.65 L:175.95 C:179.4 VWAP:156.92
+   Stats: Range=11.70, Close at 29.49% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:10 to 13:15:00
+   O:121.35 H:124.7 L:116.25 C:122.15 VWAP:139.81
+   Stats: Range=8.45, Close at 69.82% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:10 to 13:15:00
+   O:119.7 H:125.05 L:115.5 C:118.3 VWAP:105.77
+   Stats: Range=9.55, Close at 29.32% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:10 to 13:15:00
+   O:57.55 H:59.55 L:55.0 C:58.15 VWAP:74.96
+   Stats: Range=4.55, Close at 69.23% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:10 to 13:15:00
+   O:73.85 H:77.5 L:71.0 C:72.65 VWAP:72.93
+   Stats: Range=6.50, Close at 25.38% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:10 to 13:15:00
+   O:57.1 H:59.85 L:54.4 C:55.9 VWAP:55.82
+   Stats: Range=5.45, Close at 27.52% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:15:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:15:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:15:21 IST 2025
+   - Uptime: 40 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:20:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:20:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 25996.35
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 119.1)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 120.75)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=122.1 H=125.2 L=119.55 C=121.35 VWAP=140.03
+   Last Completed: O=121.35 H=124.7 L=116.25 C=122.15 VWAP=139.81
+   Current Candle: O=122.15 H=125.35 L=117.55 C=119.1 VWAP=139.58
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=122.15 H=125.35 L=117.55 C=119.1 VWAP=139.57619999999994
+   ❌ Current price not above VWAP: 119.1 <= 139.57619999999994
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=121.35 | VWAP=140.03
+      - Last Candle: Close=122.15 | VWAP=139.81 | High=124.7
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=117.9 H=121.15 L=114.95 C=119.85 VWAP=105.59
+   Last Completed: O=119.7 H=125.05 L=115.5 C=118.3 VWAP=105.77
+   Current Candle: O=118.3 H=123.0 L=114.3 C=120.75 VWAP=105.92
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=118.3 H=123.0 L=114.3 C=120.75 VWAP=105.9235333333332
+   ❌ Price never went below VWAP:
+      Open=118.3 vs VWAP=105.9235333333332 (above)
+      Low=114.3 vs VWAP=105.9235333333332 (above)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=119.85 | VWAP=105.59
+      - Last Candle: Close=118.3 | VWAP=105.77 | High=125.05
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:20:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:20:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:15 to 13:20:00
+   O:93.35 H:97.6 L:90.2 C:95.8 VWAP:88.29
+   Stats: Range=7.40, Close at 75.68% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:15 to 13:20:00
+   O:151.35 H:155.05 L:146.55 C:148.1 VWAP:165.80
+   Stats: Range=8.50, Close at 18.24% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:15 to 13:20:00
+   O:96.8 H:99.8 L:93.45 C:95.0 VWAP:117.29
+   Stats: Range=6.35, Close at 24.41% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:15 to 13:20:00
+   O:75.75 H:77.85 L:72.65 C:73.75 VWAP:95.10
+   Stats: Range=5.20, Close at 21.15% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:15 to 13:20:00
+   O:184.65 H:189.05 L:179.3 C:181.8 VWAP:202.59
+   Stats: Range=9.75, Close at 25.64% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:15 to 13:20:00
+   O:146.8 H:152.0 L:142.45 C:149.65 VWAP:128.28
+   Stats: Range=9.55, Close at 75.39% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:15 to 13:20:00
+   O:179.4 H:185.25 L:174.3 C:182.5 VWAP:157.17
+   Stats: Range=10.95, Close at 74.89% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:15 to 13:20:00
+   O:122.15 H:125.35 L:117.55 C:119.1 VWAP:139.58
+   Stats: Range=7.80, Close at 19.87% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:15 to 13:20:00
+   O:118.3 H:123.0 L:114.3 C:120.75 VWAP:105.92
+   Stats: Range=8.70, Close at 74.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:15 to 13:20:00
+   O:58.15 H:59.65 L:55.35 C:56.35 VWAP:74.80
+   Stats: Range=4.30, Close at 23.26% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:15 to 13:20:00
+   O:72.55 H:76.0 L:70.2 C:74.7 VWAP:72.94
+   Stats: Range=5.80, Close at 77.59% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:15 to 13:20:00
+   O:56.05 H:58.65 L:53.9 C:57.55 VWAP:55.84
+   Stats: Range=4.75, Close at 76.84% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:20:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:20:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:20:21 IST 2025
+   - Uptime: 45 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:25:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:25:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26017.85
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 105.7)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 105.9)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+   Previous Candle: O=96.5 H=99.5 L=92.25 C=96.85 VWAP=117.52
+   Last Completed: O=96.8 H=99.8 L=93.45 C=95.0 VWAP=117.29
+   Current Candle: O=94.6 H=106.75 L=93.75 C=105.7 VWAP=117.03
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=94.6 H=106.75 L=93.75 C=105.7 VWAP=117.0345695364239
+   ❌ Current price not above VWAP: 105.7 <= 117.0345695364239
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050CE:
+   Data Points:
+      - Previous Candle: Close=96.85 | VWAP=117.52
+      - Last Candle: Close=95.0 | VWAP=117.29 | High=99.8
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=119.7 H=125.05 L=115.5 C=118.3 VWAP=105.77
+   Last Completed: O=118.3 H=123.0 L=114.3 C=120.75 VWAP=105.92
+   Current Candle: O=120.7 H=122.4 L=105.4 C=105.9 VWAP=106.07
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=120.7 H=122.4 L=105.4 C=105.9 VWAP=106.06569536423861
+   ❌ Current price not above VWAP: 105.9 <= 106.06569536423861
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=118.3 | VWAP=105.77
+      - Last Candle: Close=120.75 | VWAP=105.92 | High=123.0
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:25:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:25:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:20 to 13:25:00
+   O:95.6 H:97.05 L:82.55 C:83.0 VWAP:88.36
+   Stats: Range=14.50, Close at 3.10% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:20 to 13:25:00
+   O:148.1 H:164.3 L:146.8 C:163.7 VWAP:165.66
+   Stats: Range=17.50, Close at 96.57% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:20 to 13:25:00
+   O:94.6 H:106.75 L:93.75 C:105.7 VWAP:117.03
+   Stats: Range=13.00, Close at 91.92% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:20 to 13:25:00
+   O:73.8 H:83.0 L:73.0 C:82.8 VWAP:94.90
+   Stats: Range=10.00, Close at 98.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:20 to 13:25:00
+   O:181.8 H:198.85 L:179.8 C:198.7 VWAP:202.39
+   Stats: Range=19.05, Close at 99.21% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:20 to 13:25:00
+   O:149.7 H:151.8 L:132.5 C:133.15 VWAP:128.47
+   Stats: Range=19.30, Close at 3.37% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:20 to 13:25:00
+   O:182.5 H:184.5 L:163.3 C:164.2 VWAP:157.40
+   Stats: Range=21.20, Close at 4.25% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:20 to 13:25:00
+   O:119.1 H:133.35 L:118.0 C:132.9 VWAP:139.34
+   Stats: Range=15.35, Close at 97.07% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:20 to 13:25:00
+   O:120.7 H:122.4 L:105.4 C:105.9 VWAP:106.07
+   Stats: Range=17.00, Close at 2.94% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:20 to 13:25:00
+   O:56.35 H:64.25 L:55.7 C:63.35 VWAP:74.62
+   Stats: Range=8.55, Close at 89.47% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:20 to 13:25:00
+   O:74.7 H:75.7 L:64.0 C:64.25 VWAP:72.91
+   Stats: Range=11.70, Close at 2.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:20 to 13:25:00
+   O:57.55 H:58.55 L:49.1 C:49.45 VWAP:55.83
+   Stats: Range=9.45, Close at 3.70% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:25:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:25:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:25:21 IST 2025
+   - Uptime: 50 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:30:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:30:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26015.65
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 104.1)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 108.7)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+   Previous Candle: O=96.8 H=99.8 L=93.45 C=95.0 VWAP=117.29
+   Last Completed: O=94.6 H=106.75 L=93.75 C=105.7 VWAP=117.03
+   Current Candle: O=106.15 H=107.55 L=102.85 C=104.1 VWAP=116.75
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=106.15 H=107.55 L=102.85 C=104.1 VWAP=116.75186666666649
+   ❌ Current price not above VWAP: 104.1 <= 116.75186666666649
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050CE:
+   Data Points:
+      - Previous Candle: Close=95.0 | VWAP=117.29
+      - Last Candle: Close=105.7 | VWAP=117.03 | High=106.75
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=118.3 H=123.0 L=114.3 C=120.75 VWAP=105.92
+   Last Completed: O=120.7 H=122.4 L=105.4 C=105.9 VWAP=106.07
+   Current Candle: O=105.9 H=110.25 L=104.85 C=108.7 VWAP=106.12
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=105.9 H=110.25 L=104.85 C=108.7 VWAP=106.11953333333342
+   ✓ Price went below VWAP: Low=104.85 < 106.11953333333342
+   ❌ No clear downtrend: Last below VWAP=true, Prev below VWAP=false
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=120.75 | VWAP=105.92
+      - Last Candle: Close=105.9 | VWAP=106.07 | High=122.4
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:30:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:30:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:25 to 13:30:00
+   O:83.25 H:86.55 L:82.25 C:85.4 VWAP:88.31
+   Stats: Range=4.30, Close at 73.26% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:25 to 13:30:00
+   O:163.6 H:165.4 L:159.2 C:161.15 VWAP:165.57
+   Stats: Range=6.20, Close at 31.45% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:25 to 13:30:00
+   O:106.15 H:107.55 L:102.85 C:104.1 VWAP:116.75
+   Stats: Range=4.70, Close at 26.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:25 to 13:30:00
+   O:82.9 H:84.0 L:80.25 C:81.1 VWAP:94.66
+   Stats: Range=3.75, Close at 22.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:25 to 13:30:00
+   O:198.6 H:200.45 L:193.85 C:195.75 VWAP:202.25
+   Stats: Range=6.60, Close at 28.79% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:25 to 13:30:00
+   O:133.3 H:138.0 L:131.95 C:136.2 VWAP:128.59
+   Stats: Range=6.05, Close at 70.25% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:25 to 13:30:00
+   O:163.95 H:169.35 L:162.25 C:168.0 VWAP:157.57
+   Stats: Range=7.10, Close at 80.99% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:25 to 13:30:00
+   O:132.85 H:134.1 L:129.0 C:130.4 VWAP:139.13
+   Stats: Range=5.10, Close at 27.45% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:25 to 13:30:00
+   O:105.9 H:110.25 L:104.85 C:108.7 VWAP:106.12
+   Stats: Range=5.40, Close at 71.30% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:25 to 13:30:00
+   O:63.75 H:64.4 L:61.45 C:62.35 VWAP:74.41
+   Stats: Range=2.95, Close at 30.51% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:25 to 13:30:00
+   O:64.25 H:67.3 L:63.5 C:66.1 VWAP:72.79
+   Stats: Range=3.80, Close at 68.42% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:25 to 13:30:00
+   O:49.15 H:51.6 L:48.7 C:50.75 VWAP:55.73
+   Stats: Range=2.90, Close at 70.69% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:30:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:30:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:30:21 IST 2025
+   - Uptime: 55 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 13:35:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 13:35:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26002.4
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 119.05)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 12 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 119.2)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=119.1 H=133.35 L=118.0 C=132.9 VWAP=139.34
+   Last Completed: O=132.85 H=134.1 L=129.0 C=130.4 VWAP=139.13
+   Current Candle: O=131.7 H=135.7 L=118.9 C=119.05 VWAP=138.99
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=131.7 H=135.7 L=118.9 C=119.05 VWAP=138.98713333333316
+   ❌ Current price not above VWAP: 119.05 <= 138.98713333333316
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=132.9 | VWAP=139.34
+      - Last Candle: Close=130.4 | VWAP=139.13 | High=134.1
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=120.7 H=122.4 L=105.4 C=105.9 VWAP=106.07
+   Last Completed: O=105.9 H=110.25 L=104.85 C=108.7 VWAP=106.12
+   Current Candle: O=107.65 H=119.2 L=103.7 C=119.2 VWAP=106.16
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=107.65 H=119.2 L=103.7 C=119.2 VWAP=106.15926666666672
+   ✓ Price went below VWAP: Low=103.7 < 106.15926666666672
+   ❌ No clear downtrend: Last below VWAP=false, Prev below VWAP=true
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=105.9 | VWAP=106.07
+      - Last Candle: Close=108.7 | VWAP=106.12 | High=110.25
+   ✅ VWAP CROSSOVER DETECTED!
+      ✓ Previous: Close(105.9) < VWAP(106.07)
+      ✓ Last: Close(108.7) > VWAP(106.12)
+      📈 Breakout Level: 110.25 + 1 = 111.25
+   🚀 Starting real-time breakout monitor...
+      - Instrument: NFO:NIFTY25D0926050PE
+      - Breakout Level: 111.25
+      - Check Interval: 5 seconds
+      - Max Duration: 5 minutes
+🔍 Starting breakout monitor for NFO:NIFTY25D0926050PE | Breakout Level: 111.25 | Duration: 5 minutes
+✅ Breakout monitor started successfully
+   ⏳ Waiting for breakout confirmation...
+   ℹ️  Buy signal will be generated when LTP > 111.25
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 13:35:00
+
+============================================================
+📈 MARKET STATUS:
+🕯️ 5-MINUTE CANDLE BOUNDARY: 13:35:00
+============================================================
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 13:30 to 13:35:00
+   O:85.4 H:94.15 L:80.75 C:93.9 VWAP:88.27
+   Stats: Range=13.40, Close at 98.13% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 13:30 to 13:35:00
+   O:163.55 H:167.45 L:148.25 C:148.25 VWAP:165.51
+   Stats: Range=19.20, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 13:30 to 13:35:00
+   O:105.05 H:108.25 L:94.15 C:94.15 VWAP:116.53
+   Stats: Range=14.10, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 13:30 to 13:35:00
+   O:83.0 H:85.15 L:73.2 C:73.2 VWAP:94.42
+   Stats: Range=11.95, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 13:30 to 13:35:00
+   O:195.75 H:202.9 L:181.05 C:181.05 VWAP:202.15
+   Stats: Range=21.85, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 13:30 to 13:35:00
+   O:136.2 H:148.5 L:129.95 C:148.1 VWAP:128.69
+   Stats: Range=18.55, Close at 97.84% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 13:30 to 13:35:00
+   O:168.0 H:181.2 L:161.15 C:181.2 VWAP:157.70
+   Stats: Range=20.05, Close at 100.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 13:30 to 13:35:00
+   O:131.7 H:135.7 L:118.9 C:119.05 VWAP:138.99
+   Stats: Range=16.80, Close at 0.89% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 13:30 to 13:35:00
+   O:107.65 H:119.2 L:103.7 C:119.2 VWAP:106.16
+   Stats: Range=15.50, Close at 100.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 13:30 to 13:35:00
+   O:62.45 H:65.45 L:55.8 C:55.9 VWAP:74.21
+   Stats: Range=9.65, Close at 1.04% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 13:30 to 13:35:00
+   O:66.1 H:73.2 L:62.3 C:73.2 VWAP:72.70
+   Stats: Range=10.90, Close at 100.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 13:30 to 13:35:00
+   O:50.75 H:56.45 L:47.85 C:56.45 VWAP:55.66
+   Stats: Range=8.60, Close at 100.00% of range
+✅ Finalized 12 candles at boundary
+   CE Options: 6 | PE Options: 6
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 13:35:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 13:35:00
+
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+🎯 BREAKOUT CONFIRMED! NFO:NIFTY25D0926050PE
+   Current: 118.65 > Breakout: 111.25
+   Difference: +7.40
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+
+🚀 GENERATING INSTANT BUY SIGNAL!
+🛑 Breakout monitor stopped for NFO:NIFTY25D0926050PE
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 13:35:21 IST 2025
+   - Uptime: 60 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 0 minutes
+   --------------------------------------------------
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+C:\Users\user\.jdks\ms-17.0.16\bin\java.exe -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:63590,suspend=y,server=n -javaagent:C:\Users\user\AppData\Local\JetBrains\IntelliJIdea2021.2\captureAgent\debugger-agent.jar -Dfile.encoding=UTF-8 -classpath "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\classes;C:\Users\user\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar;C:\Users\user\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\user\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\user\.m2\repository\com\zerodhatech\kiteconnect\kiteconnect\3.5.1\kiteconnect-3.5.1.jar;C:\Users\user\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\user\.m2\repository\net\sf\supercsv\super-csv\2.4.0\super-csv-2.4.0.jar;C:\Users\user\.m2\repository\com\neovisionaries\nv-websocket-client\2.3\nv-websocket-client-2.3.jar;C:\Users\user\.m2\repository\org\json\json\20230227\json-20230227.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\okhttp\4.4.0\okhttp-4.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio\3.4.0\okio-3.4.0.jar;C:\Users\user\.m2\repository\com\squareup\okio\okio-jvm\3.4.0\okio-jvm-3.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk8\1.8.0\kotlin-stdlib-jdk8-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-jdk7\1.8.0\kotlin-stdlib-jdk7-1.8.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib-common\1.8.0\kotlin-stdlib-common-1.8.0.jar;C:\Users\user\.m2\repository\com\squareup\okhttp3\logging-interceptor\4.4.0\logging-interceptor-4.4.0.jar;C:\Users\user\.m2\repository\org\jetbrains\kotlin\kotlin-stdlib\1.6.21\kotlin-stdlib-1.6.21.jar;C:\Users\user\.m2\repository\org\jetbrains\annotations\13.0\annotations-13.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.2.3\lib\idea_rt.jar" com.trading.TradingApplication
+Connected to the target VM, address: '127.0.0.1:63590', transport: 'socket'
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+🚀 Starting Automated Trading Strategy with Real-time Candle Analysis...
+setRoot method not available, using default configuration
+✅ VWAP Options Strategy initialized
+🔄 Preloading option tokens for Nifty spot: 26001.85
+🔍 Preloading token for CE: NFO:NIFTY25D0925850CE
+✅ Preloaded CE token: NFO:NIFTY25D0925850CE -> 10720514
+🔍 Preloading token for PE: NFO:NIFTY25D0925850PE
+✅ Preloaded PE token: NFO:NIFTY25D0925850PE -> 10720770
+🔍 Preloading token for CE: NFO:NIFTY25D0925900CE
+✅ Preloaded CE token: NFO:NIFTY25D0925900CE -> 10721026
+🔍 Preloading token for PE: NFO:NIFTY25D0925900PE
+✅ Preloaded PE token: NFO:NIFTY25D0925900PE -> 10721282
+🔍 Preloading token for CE: NFO:NIFTY25D0925950CE
+✅ Preloaded CE token: NFO:NIFTY25D0925950CE -> 10721538
+🔍 Preloading token for PE: NFO:NIFTY25D0925950PE
+✅ Preloaded PE token: NFO:NIFTY25D0925950PE -> 10721794
+🔍 Preloading token for CE: NFO:NIFTY25D0926000CE
+✅ Preloaded CE token: NFO:NIFTY25D0926000CE -> 10727170
+🔍 Preloading token for PE: NFO:NIFTY25D0926000PE
+✅ Preloaded PE token: NFO:NIFTY25D0926000PE -> 10727426
+🔍 Preloading token for CE: NFO:NIFTY25D0926050CE
+✅ Preloaded CE token: NFO:NIFTY25D0926050CE -> 10727682
+🔍 Preloading token for PE: NFO:NIFTY25D0926050PE
+✅ Preloaded PE token: NFO:NIFTY25D0926050PE -> 10727938
+🔍 Preloading token for CE: NFO:NIFTY25D0926100CE
+✅ Preloaded CE token: NFO:NIFTY25D0926100CE -> 10728194
+🔍 Preloading token for PE: NFO:NIFTY25D0926100PE
+✅ Preloaded PE token: NFO:NIFTY25D0926100PE -> 10728450
+🔍 Preloading token for CE: NFO:NIFTY25D0926150CE
+✅ Preloaded CE token: NFO:NIFTY25D0926150CE -> 10728706
+🔍 Preloading token for PE: NFO:NIFTY25D0926150PE
+✅ Preloaded PE token: NFO:NIFTY25D0926150PE -> 10728962
+✅ Preloaded 14 option tokens
+🔄 Daily P&L Reset to ₹0.00
+⏰ Next execution aligned to: Thu Dec 04 14:10:00 IST 2025
+   Current time: Thu Dec 04 14:09:10 IST 2025
+   Delay: 49 seconds
+⏰ Initial delay: 49 seconds
+🕐 First execution at: Thu Dec 04 14:10:00 IST 2025
+🎯 Application is running...
+💡 Press Ctrl+C to stop the application
+⏰ Trading interval: 5 minutes
+🕒 Trading hours: 09:15 to 15:15
+💰 Max Daily Loss: ₹5000.0
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:10:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:10:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26005.1
+🔍 Searching for CE options with premium > 100.0
+📝 Added to real-time tracking: NFO:NIFTY25D0925850CE
+➕ Added to continuous tracking: NFO:NIFTY25D0925850CE
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925900CE
+➕ Added to continuous tracking: NFO:NIFTY25D0925900CE
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925950CE
+➕ Added to continuous tracking: NFO:NIFTY25D0925950CE
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926000CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926000CE
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926050CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926050CE
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926100CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926100CE
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926150CE
+➕ Added to continuous tracking: NFO:NIFTY25D0926150CE
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:10:00
+🚀 Starting real-time candle builder for 7 instruments
+🚀 Starting RealTimeCandleBuilder for 7 instruments
+⏰ Next candle finalization at 14:15:00 (in 300 seconds)
+✅ RealTimeCandleBuilder started - Continuously tracking 7 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 115.4)
+🔍 Searching for PE options with premium > 100.0
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:10:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925850PE
+➕ Added to continuous tracking: NFO:NIFTY25D0925850PE
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925900PE
+➕ Added to continuous tracking: NFO:NIFTY25D0925900PE
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0925950PE
+➕ Added to continuous tracking: NFO:NIFTY25D0925950PE
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926000PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926000PE
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926050PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926050PE
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926100PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926100PE
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:10:00
+📝 Added to real-time tracking: NFO:NIFTY25D0926150PE
+➕ Added to continuous tracking: NFO:NIFTY25D0926150PE
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:10:00
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 121.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926000CE (currently 0 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 0 candles, need at least 2)
+✅ Trading cycle completed at: 14:10:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:14:11 IST 2025
+   - Uptime: 5 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:15:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:15:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26004.05
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 121.85)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 114.65)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926000CE (currently 0 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 0 candles, need at least 2)
+✅ Trading cycle completed at: 14:15:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:15:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:10 to 14:15:00
+   O:95.2 H:95.45 L:85.9 C:90.3 VWAP:90.37
+   Stats: Range=9.55, Close at 46.07% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:10 to 14:15:00
+   O:143.9 H:158.8 L:143.9 C:152.55 VWAP:161.64
+   Stats: Range=14.90, Close at 58.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:10 to 14:15:00
+   O:91.1 H:102.6 L:91.0 C:96.9 VWAP:113.11
+   Stats: Range=11.60, Close at 50.86% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:10 to 14:15:00
+   O:70.6 H:79.85 L:70.6 C:74.65 VWAP:91.49
+   Stats: Range=9.25, Close at 43.78% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:10 to 14:15:00
+   O:176.0 H:193.15 L:176.0 C:186.05 VWAP:197.70
+   Stats: Range=17.15, Close at 58.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:10 to 14:15:00
+   O:42.8 H:42.8 L:38.25 C:40.3 VWAP:42.49
+   Stats: Range=4.55, Close at 45.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:10 to 14:15:00
+   O:211.55 H:230.55 L:211.55 C:221.2 VWAP:232.66
+   Stats: Range=19.00, Close at 50.79% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:10 to 14:15:00
+   O:150.9 H:150.9 L:137.35 C:143.8 VWAP:132.12
+   Stats: Range=13.55, Close at 47.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:10 to 14:15:00
+   O:184.0 H:184.0 L:168.6 C:175.15 VWAP:161.61
+   Stats: Range=15.40, Close at 42.53% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:10 to 14:15:00
+   O:115.4 H:128.9 L:115.3 C:122.2 VWAP:134.98
+   Stats: Range=13.60, Close at 50.74% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:10 to 14:15:00
+   O:121.1 H:121.1 L:109.85 C:114.35 VWAP:108.59
+   Stats: Range=11.25, Close at 40.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:10 to 14:15:00
+   O:53.5 H:61.65 L:53.5 C:57.45 VWAP:71.63
+   Stats: Range=8.15, Close at 48.47% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:10 to 14:15:00
+   O:74.1 H:74.1 L:66.1 C:69.5 VWAP:73.98
+   Stats: Range=8.00, Close at 42.50% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:10 to 14:15:00
+   O:57.15 H:57.15 L:51.0 C:53.4 VWAP:56.59
+   Stats: Range=6.15, Close at 39.02% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:15:02
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:15:02
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:19:11 IST 2025
+   - Uptime: 10 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:20:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:20:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26001.0
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 119.7)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 117.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926000CE (currently 1 candles, need at least 2)
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+⏳ Waiting for more candle data for NFO:NIFTY25D0926050PE (currently 1 candles, need at least 2)
+✅ Trading cycle completed at: 14:20:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:20:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:15 to 14:20:00
+   O:89.3 H:94.0 L:86.75 C:91.65 VWAP:90.37
+   Stats: Range=7.25, Close at 67.59% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:15 to 14:20:00
+   O:153.2 H:155.25 L:146.1 C:148.55 VWAP:161.50
+   Stats: Range=9.15, Close at 26.78% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:15 to 14:20:00
+   O:97.7 H:99.6 L:92.5 C:94.5 VWAP:112.83
+   Stats: Range=7.10, Close at 28.17% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:15 to 14:20:00
+   O:76.0 H:77.55 L:71.8 C:73.3 VWAP:91.28
+   Stats: Range=5.75, Close at 26.09% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:15 to 14:20:00
+   O:186.5 H:189.9 L:179.3 C:182.15 VWAP:197.54
+   Stats: Range=10.60, Close at 26.89% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:15 to 14:20:00
+   O:39.95 H:42.5 L:38.55 C:41.35 VWAP:42.46
+   Stats: Range=3.95, Close at 70.89% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:15 to 14:20:00
+   O:223.9 H:227.0 L:215.0 C:218.2 VWAP:232.53
+   Stats: Range=12.00, Close at 26.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:15 to 14:20:00
+   O:142.4 H:148.35 L:139.0 C:145.85 VWAP:132.24
+   Stats: Range=9.35, Close at 73.26% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:15 to 14:20:00
+   O:174.25 H:181.2 L:170.7 C:178.2 VWAP:161.78
+   Stats: Range=10.50, Close at 71.43% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:15 to 14:20:00
+   O:123.3 H:125.3 L:117.1 C:119.7 VWAP:134.76
+   Stats: Range=8.20, Close at 31.71% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:15 to 14:20:00
+   O:113.65 H:119.05 L:110.9 C:117.1 VWAP:108.66
+   Stats: Range=8.15, Close at 76.07% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:15 to 14:20:00
+   O:57.9 H:59.05 L:54.55 C:55.6 VWAP:71.43
+   Stats: Range=4.50, Close at 23.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:15 to 14:20:00
+   O:68.95 H:73.05 L:67.2 C:71.6 VWAP:73.93
+   Stats: Range=5.85, Close at 75.21% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:15 to 14:20:00
+   O:53.15 H:56.1 L:51.2 C:54.75 VWAP:56.55
+   Stats: Range=4.90, Close at 72.45% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:20:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:20:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:24:11 IST 2025
+   - Uptime: 15 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:25:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:25:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26002.3
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 121.8)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 115.45)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:25:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:20 to 14:25:00
+   O:91.65 H:97.15 L:85.55 C:90.8 VWAP:90.39
+   Stats: Range=11.60, Close at 45.26% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:20 to 14:25:00
+   O:148.55 H:157.95 L:141.85 C:150.75 VWAP:161.34
+   Stats: Range=16.10, Close at 55.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:20 to 14:25:00
+   O:94.5 H:101.5 L:89.55 C:96.65 VWAP:112.56
+   Stats: Range=11.95, Close at 59.41% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:20 to 14:25:00
+   O:73.55 H:79.15 L:69.1 C:75.35 VWAP:91.07
+   Stats: Range=10.05, Close at 62.19% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:20 to 14:25:00
+   O:182.3 H:192.05 L:174.65 C:184.0 VWAP:197.35
+   Stats: Range=17.40, Close at 53.74% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:20 to 14:25:00
+   O:41.35 H:44.15 L:37.85 C:40.8 VWAP:42.44
+   Stats: Range=6.30, Close at 46.83% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:20 to 14:25:00
+   O:218.2 H:229.45 L:209.7 C:220.4 VWAP:232.37
+   Stats: Range=19.75, Close at 54.18% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:20 to 14:25:00
+   O:145.85 H:153.15 L:136.75 C:143.85 VWAP:132.42
+   Stats: Range=16.40, Close at 43.29% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:20 to 14:25:00
+   O:178.2 H:186.4 L:168.65 C:176.85 VWAP:161.99
+   Stats: Range=17.75, Close at 46.20% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:20 to 14:25:00
+   O:119.7 H:127.95 L:113.45 C:121.8 VWAP:134.53
+   Stats: Range=14.50, Close at 57.59% of range
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:20 to 14:25:00
+   O:117.1 H:123.4 L:109.4 C:115.45 VWAP:108.76
+   Previous Candle: O=115.4 H=128.9 L=115.3 C=122.2 VWAP=134.98
+   Stats: Range=14.00, Close at 43.21% of range
+   Last Completed: O=123.3 H=125.3 L=117.1 C=119.7 VWAP=134.76
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:20 to 14:25:00
+   O:55.6 H:60.45 L:52.5 C:56.9 VWAP:71.24
+   Current Candle: O=119.7 H=127.95 L=113.45 C=121.8 VWAP=134.53
+   Stats: Range=7.95, Close at 55.35% of range
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:20 to 14:25:00
+   O:71.6 H:76.25 L:66.15 C:70.35 VWAP:73.89
+   Stats: Range=10.10, Close at 41.58% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:20 to 14:25:00
+   O:54.75 H:58.4 L:50.45 C:54.15 VWAP:56.53
+   Stats: Range=7.95, Close at 46.54% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+   Current Candle: O=119.7 H=127.95 L=113.45 C=121.8 VWAP=134.53052980132438
+   ❌ Current price not above VWAP: 121.8 <= 134.53052980132438
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:25:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:25:00
+      - Previous Candle: Close=122.2 | VWAP=134.98
+      - Last Candle: Close=119.7 | VWAP=134.76 | High=125.3
+      - Candle Period: 14:15 to 14:20
+      - Detection Time: 14:25:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=113.65 H=119.05 L=110.9 C=117.1 VWAP=108.66
+   Last Completed: O=117.1 H=123.4 L=109.4 C=115.45 VWAP=108.76
+   Current Candle: O=115.45 H=115.45 L=115.45 C=115.45 VWAP=108.80
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=115.45 H=115.45 L=115.45 C=115.45 VWAP=108.8
+   ❌ VWAP not touched during candle:
+      VWAP=108.8 (Candle Range: 115.45 to 115.45)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=117.1 | VWAP=108.66
+      - Last Candle: Close=115.45 | VWAP=108.76 | High=123.4
+      - Candle Period: 14:20 to 14:25
+      - Detection Time: 14:25:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:25:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:29:11 IST 2025
+   - Uptime: 20 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:30:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:30:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26014.0
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 101.5)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+
+============================================================
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 109.55)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:30:00
+============================================================
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:25 to 14:30:00
+   O:90.8 H:91.9 L:85.35 C:85.45 VWAP:90.39
+   Previous Candle: O=97.7 H=99.6 L=92.5 C=94.5 VWAP=112.83
+   Stats: Range=6.55, Close at 1.53% of range
+   Last Completed: O=94.5 H=101.5 L=89.55 C=96.65 VWAP=112.56
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:25 to 14:30:00
+   O:150.75 H:158.85 L:148.8 C:157.8 VWAP:161.22
+   Current Candle: O=96.65 H=102.15 L=94.95 C=101.5 VWAP=112.34
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=96.65 H=102.15 L=94.95 C=101.5 VWAP=112.34013333333328
+   Stats: Range=10.05, Close at 89.55% of range
+   ❌ Current price not above VWAP: 101.5 <= 112.34013333333328
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050CE:
+   Data Points:
+      - Previous Candle: Close=94.5 | VWAP=112.83
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:25 to 14:30:00
+      - Last Candle: Close=96.65 | VWAP=112.56 | High=101.5
+      - Candle Period: 14:20 to 14:25
+      - Detection Time: 14:30:00
+   ❌ No VWAP Crossover
+   O:96.65 H:102.15 L:94.95 C:101.5 VWAP:112.34
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Stats: Range=7.20, Close at 90.97% of range
+   Previous Candle: O=113.65 H=119.05 L=110.9 C=117.1 VWAP=108.66
+   Last Completed: O=117.1 H=123.4 L=109.4 C=115.45 VWAP=108.76
+   Current Candle: O=115.45 H=117.0 L=108.8 C=109.55 VWAP=108.82
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:25 to 14:30:00
+   Current Candle: O=115.45 H=117.0 L=108.8 C=109.55 VWAP=108.81866666666653
+   O:75.35 H:80.1 L:73.7 C:79.35 VWAP:90.89
+   Stats: Range=6.40, Close at 88.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:25 to 14:30:00
+   O:184.0 H:193.45 L:181.9 C:192.0 VWAP:197.20
+   Stats: Range=11.55, Close at 87.45% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:25 to 14:30:00
+   O:40.8 H:41.25 L:37.45 C:37.7 VWAP:42.42
+   Stats: Range=3.80, Close at 6.58% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:25 to 14:30:00
+   O:220.4 H:230.85 L:218.1 C:229.95 VWAP:232.22
+   Stats: Range=12.75, Close at 92.94% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:25 to 14:30:00
+   O:143.85 H:145.5 L:136.4 C:137.3 VWAP:132.54
+   Stats: Range=9.10, Close at 9.89% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:25 to 14:30:00
+   O:176.85 H:178.45 L:167.7 C:169.05 VWAP:162.11
+   ✓ VWAP touched during candle: 108.8 ≤ 108.81866666666653 ≤ 117.0
+   Stats: Range=10.75, Close at 12.56% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   ✓ Closest approach to VWAP: 0.02%
+   Time: 14:25 to 14:30:00
+   O:121.8 H:128.55 L:119.8 C:127.65 VWAP:134.35
+   ❌ No clear downtrend: Last below VWAP=false, Prev below VWAP=false
+   Stats: Range=8.75, Close at 89.71% of range
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=117.1 | VWAP=108.66
+      - Last Candle: Close=115.45 | VWAP=108.76 | High=123.4
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:25 to 14:30:00
+      - Candle Period: 14:20 to 14:25
+      - Detection Time: 14:30:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:30:00
+📈 MARKET STATUS:
+   O:115.45 H:117.0 L:108.8 C:109.55 VWAP:108.82
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   Stats: Range=8.20, Close at 9.15% of range
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:25 to 14:30:00
+   O:56.9 H:61.2 L:55.95 C:60.55 VWAP:71.07
+   Stats: Range=5.25, Close at 87.62% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:25 to 14:30:00
+   O:70.35 H:71.15 L:65.6 C:66.1 VWAP:73.84
+   Stats: Range=5.55, Close at 9.01% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:25 to 14:30:00
+   O:54.15 H:54.6 L:50.0 C:50.45 VWAP:56.49
+   Stats: Range=4.60, Close at 9.78% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:30:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:30:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:34:11 IST 2025
+   - Uptime: 25 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:35:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:35:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26008.65
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 124.85)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 112.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=119.7 H=127.95 L=113.45 C=121.8 VWAP=134.53
+   Last Completed: O=121.8 H=128.55 L=119.8 C=127.65 VWAP=134.35
+   Current Candle: O=127.65 H=130.7 L=123.0 C=124.85 VWAP=134.23
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=127.65 H=130.7 L=123.0 C=124.85 VWAP=134.23238410596014
+   ❌ Current price not above VWAP: 124.85 <= 134.23238410596014
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+      - Previous Candle: Close=121.8 | VWAP=134.53
+      - Last Candle: Close=127.65 | VWAP=134.35 | High=128.55
+      - Candle Period: 14:25 to 14:30
+      - Detection Time: 14:35:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=117.1 H=123.4 L=109.4 C=115.45 VWAP=108.76
+   Last Completed: O=115.45 H=117.0 L=108.8 C=109.55 VWAP=108.82
+   Current Candle: O=109.55 H=114.2 L=107.0 C=112.1 VWAP=108.83
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=109.55 H=114.2 L=107.0 C=112.1 VWAP=108.83437086092718
+   ✓ VWAP touched during candle: 107.0 ≤ 108.83437086092718 ≤ 114.2
+   ✓ Closest approach to VWAP: 1.69%
+   ❌ No clear downtrend: Last below VWAP=false, Prev below VWAP=false
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=115.45 | VWAP=108.76
+      - Last Candle: Close=109.55 | VWAP=108.82 | High=117.0
+      - Candle Period: 14:25 to 14:30
+      - Detection Time: 14:35:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:35:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:35:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:30 to 14:35:00
+   O:85.45 H:89.65 L:83.5 C:87.9 VWAP:90.34
+   Stats: Range=6.15, Close at 71.54% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:30 to 14:35:00
+   O:157.8 H:161.2 L:152.95 C:154.95 VWAP:161.17
+   Stats: Range=8.25, Close at 24.24% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:30 to 14:35:00
+   O:101.65 H:104.0 L:97.5 C:99.2 VWAP:112.15
+   Stats: Range=6.50, Close at 26.15% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:30 to 14:35:00
+   O:79.35 H:81.3 L:75.9 C:77.55 VWAP:90.73
+   Stats: Range=5.40, Close at 30.56% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:30 to 14:35:00
+   O:192.0 H:195.85 L:186.3 C:189.0 VWAP:197.13
+   Stats: Range=9.55, Close at 28.27% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:30 to 14:35:00
+   O:37.7 H:40.0 L:36.7 C:39.0 VWAP:42.37
+   Stats: Range=3.30, Close at 69.70% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:30 to 14:35:00
+   O:229.95 H:233.45 L:223.2 C:226.0 VWAP:232.17
+   Stats: Range=10.25, Close at 27.32% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:30 to 14:35:00
+   O:137.3 H:142.55 L:134.1 C:139.95 VWAP:132.59
+   Stats: Range=8.45, Close at 69.23% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:30 to 14:35:00
+   O:169.05 H:174.4 L:165.6 C:172.2 VWAP:162.17
+   Stats: Range=8.80, Close at 75.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:30 to 14:35:00
+   O:127.65 H:130.7 L:123.0 C:124.85 VWAP:134.23
+   Stats: Range=7.70, Close at 24.03% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:30 to 14:35:00
+   O:109.55 H:114.2 L:107.0 C:112.1 VWAP:108.83
+   Stats: Range=7.20, Close at 70.83% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:30 to 14:35:00
+   O:60.55 H:62.1 L:57.8 C:58.8 VWAP:70.93
+   Stats: Range=4.30, Close at 23.26% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:30 to 14:35:00
+   O:66.1 H:69.55 L:64.3 C:68.0 VWAP:73.76
+   Stats: Range=5.25, Close at 70.48% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:30 to 14:35:00
+   O:50.45 H:53.2 L:48.95 C:51.9 VWAP:56.43
+   Stats: Range=4.25, Close at 69.41% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:35:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:35:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:39:11 IST 2025
+   - Uptime: 30 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:40:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:40:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26014.8
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 102.0)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 107.65)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+   Previous Candle: O=96.65 H=102.15 L=94.95 C=101.5 VWAP=112.34
+   Last Completed: O=101.65 H=104.0 L=97.5 C=99.2 VWAP=112.15
+   Current Candle: O=99.2 H=104.6 L=94.75 C=102.0 VWAP=112.01
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=99.2 H=104.6 L=94.75 C=102.0 VWAP=112.00926666666662
+   ❌ Current price not above VWAP: 102.0 <= 112.00926666666662
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050CE:
+   Data Points:
+      - Previous Candle: Close=101.5 | VWAP=112.34
+      - Last Candle: Close=99.2 | VWAP=112.15 | High=104.0
+      - Candle Period: 14:30 to 14:35
+      - Detection Time: 14:40:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=115.45 H=117.0 L=108.8 C=109.55 VWAP=108.82
+   Last Completed: O=109.55 H=114.2 L=107.0 C=112.1 VWAP=108.83
+   Current Candle: O=112.1 H=116.95 L=105.5 C=107.65 VWAP=108.87
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=112.1 H=116.95 L=105.5 C=107.65 VWAP=108.86979999999959
+   ❌ Current price not above VWAP: 107.65 <= 108.86979999999959
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=109.55 | VWAP=108.82
+      - Last Candle: Close=112.1 | VWAP=108.83 | High=114.2
+      - Candle Period: 14:30 to 14:35
+      - Detection Time: 14:40:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:40:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:40:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:35 to 14:40:00
+   O:87.9 H:92.0 L:82.25 C:84.35 VWAP:90.32
+   Stats: Range=9.75, Close at 21.54% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:35 to 14:40:00
+   O:154.95 H:162.45 L:148.7 C:158.85 VWAP:161.12
+   Stats: Range=13.75, Close at 73.82% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:35 to 14:40:00
+   O:99.2 H:104.6 L:94.75 C:102.0 VWAP:112.01
+   Stats: Range=9.85, Close at 73.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:35 to 14:40:00
+   O:77.45 H:81.6 L:73.65 C:79.55 VWAP:90.59
+   Stats: Range=7.95, Close at 74.21% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:35 to 14:40:00
+   O:189.0 H:197.2 L:182.0 C:193.45 VWAP:197.04
+   Stats: Range=15.20, Close at 75.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:35 to 14:40:00
+   O:39.0 H:41.2 L:36.15 C:37.05 VWAP:42.35
+   Stats: Range=5.05, Close at 17.82% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:35 to 14:40:00
+   O:226.0 H:235.1 L:218.05 C:231.15 VWAP:232.11
+   Stats: Range=17.05, Close at 76.83% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:35 to 14:40:00
+   O:139.95 H:145.8 L:132.85 C:135.6 VWAP:132.67
+   Stats: Range=12.95, Close at 21.24% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:35 to 14:40:00
+   O:172.2 H:178.25 L:163.5 C:166.9 VWAP:162.25
+   Stats: Range=14.75, Close at 23.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:35 to 14:40:00
+   O:124.85 H:131.1 L:119.6 C:128.3 VWAP:134.13
+   Stats: Range=11.50, Close at 75.65% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:35 to 14:40:00
+   O:112.1 H:116.95 L:105.5 C:107.65 VWAP:108.87
+   Stats: Range=11.45, Close at 18.78% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:35 to 14:40:00
+   O:59.0 H:62.2 L:55.8 C:60.55 VWAP:70.80
+   Stats: Range=6.40, Close at 74.22% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:35 to 14:40:00
+   O:68.0 H:71.4 L:63.4 C:65.0 VWAP:73.71
+   Stats: Range=8.00, Close at 20.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:35 to 14:40:00
+   O:51.9 H:54.7 L:48.2 C:49.6 VWAP:56.39
+   Stats: Range=6.50, Close at 21.54% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:40:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:40:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:44:11 IST 2025
+   - Uptime: 35 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:45:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:45:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26000.6
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 122.85)
+🔍 Searching for PE options with premium > 100.0
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:45:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:40 to 14:45:00
+   O:84.35 H:88.2 L:81.75 C:88.0 VWAP:90.27
+   Stats: Range=6.45, Close at 96.90% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:40 to 14:45:00
+   O:158.85 H:162.6 L:152.3 C:152.3 VWAP:161.09
+   Stats: Range=10.30, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:40 to 14:45:00
+   O:102.0 H:105.25 L:97.45 C:97.45 VWAP:111.86
+   Stats: Range=7.80, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:40 to 14:45:00
+   O:79.7 H:81.8 L:75.85 C:75.9 VWAP:90.46
+   Stats: Range=5.95, Close at 0.84% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:40 to 14:45:00
+   O:193.45 H:197.65 L:185.7 C:185.7 VWAP:196.99
+   Stats: Range=11.95, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:40 to 14:45:00
+   O:37.05 H:38.65 L:35.75 C:38.35 VWAP:42.30
+   Stats: Range=2.90, Close at 89.66% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:40 to 14:45:00
+   O:231.15 H:235.65 L:222.4 C:222.4 VWAP:232.07
+   Stats: Range=13.25, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:40 to 14:45:00
+   O:135.6 H:140.95 L:131.9 C:139.4 VWAP:132.72
+   Stats: Range=9.05, Close at 82.87% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:40 to 14:45:00
+   O:166.9 H:173.0 L:162.85 C:171.4 VWAP:162.31
+   Stats: Range=10.15, Close at 84.24% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:40 to 14:45:00
+   O:128.3 H:131.75 L:122.85 C:122.85 VWAP:134.04
+   Stats: Range=8.90, Close at 0.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:40 to 14:45:00
+   O:107.65 H:112.3 L:104.7 C:112.0 VWAP:108.88
+   Stats: Range=7.60, Close at 96.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:40 to 14:45:00
+   O:60.55 H:62.55 L:57.8 C:57.85 VWAP:70.68
+   Stats: Range=4.75, Close at 1.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:40 to 14:45:00
+   O:65.0 H:68.35 L:62.95 C:67.35 VWAP:73.63
+   Stats: Range=5.40, Close at 81.48% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:40 to 14:45:00
+   O:49.6 H:51.7 L:48.05 C:51.35 VWAP:56.33
+   Stats: Range=3.65, Close at 90.41% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:45:00
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 113.45)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+❌ Insufficient candle data for analysis
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=112.1 H=116.95 L=105.5 C=107.65 VWAP=108.87
+   Last Completed: O=107.65 H=112.3 L=104.7 C=112.0 VWAP=108.88
+   Current Candle: O=113.45 H=113.45 L=113.45 C=113.45 VWAP=108.88
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=113.45 H=113.45 L=113.45 C=113.45 VWAP=108.88
+   ❌ VWAP not touched during candle:
+      VWAP=108.88 (Candle Range: 113.45 to 113.45)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=107.65 | VWAP=108.87
+      - Last Candle: Close=112.0 | VWAP=108.88 | High=112.3
+      - Candle Period: 14:40 to 14:45
+      - Detection Time: 14:45:00
+   ✅ VWAP CROSSOVER DETECTED!
+      ✓ Previous: Close(107.65) < VWAP(108.87)
+      ✓ Last: Close(112.0) > VWAP(108.88)
+      📈 Breakout Level: 112.3 + 1 = 113.3
+      ⏰ Signal Time: 14:45:00
+   🚀 Starting real-time breakout monitor...
+      - Instrument: NFO:NIFTY25D0926050PE
+      - Breakout Level: 113.3
+      - Signal Detection Time: 14:45:00
+      - Check Interval: 5 seconds
+      - Max Duration: 5 minutes
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:45:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:45:00
+🔍 Starting breakout monitor for NFO:NIFTY25D0926050PE
+   - Signal Detected At: 14:45:00
+   - Breakout Level: 113.3
+   - Duration: 5 minutes
+   🔄 Performing immediate breakout check...
+✅ Breakout monitor started successfully
+   ⏳ Waiting for breakout confirmation...
+   ℹ️  Buy signal will be generated when LTP > 113.3
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:45:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+📊 Breakout Check: NFO:NIFTY25D0926050PE | Current: 113.45 | Breakout: 113.3 | Time: 14:45:00
+
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+🎯 BREAKOUT CONFIRMED! NFO:NIFTY25D0926050PE
+   Signal Time: 14:45:00
+   Breakout Time: 14:45:00
+   Current: 113.45 > Breakout: 113.3
+   Difference: +0.15
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+
+🚀 GENERATING INSTANT BUY SIGNAL!
+🛑 Breakout monitor stopped for NFO:NIFTY25D0926050PE
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:49:11 IST 2025
+   - Uptime: 40 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:50:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:50:00
+🛑 Stopping 1 active breakout monitors...
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26003.65
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926000CE (Premium: 122.3)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 114.7)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926000CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926000CE
+📊 Candle Data for NFO:NIFTY25D0926000CE:
+   Previous Candle: O=124.85 H=131.1 L=119.6 C=128.3 VWAP=134.13
+   Last Completed: O=128.3 H=131.75 L=122.85 C=122.85 VWAP=134.04
+   Current Candle: O=122.85 H=126.2 L=116.4 C=122.3 VWAP=133.87
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926000CE:
+   Current Candle: O=122.85 H=126.2 L=116.4 C=122.3 VWAP=133.86833333333325
+   ❌ Current price not above VWAP: 122.3 <= 133.86833333333325
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926000CE:
+   Data Points:
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:50:00
+============================================================
+      - Previous Candle: Close=128.3 | VWAP=134.13
+      - Last Candle: Close=122.85 | VWAP=134.04 | High=131.75
+      - Candle Period: 14:40 to 14:45
+      - Detection Time: 14:50:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926000CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=112.1 H=116.95 L=105.5 C=107.65 VWAP=108.87
+   Last Completed: O=107.65 H=112.3 L=104.7 C=112.0 VWAP=108.88
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:45 to 14:50:00
+   Current Candle: O=113.45 H=120.75 L=112.1 C=114.7 VWAP=108.95
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=113.45 H=120.75 L=112.1 C=114.7 VWAP=108.95304635761568
+   ❌ VWAP not touched during candle:
+      VWAP=108.95304635761568 (Candle Range: 112.1 to 120.75)
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=107.65 | VWAP=108.87
+      - Last Candle: Close=112.0 | VWAP=108.88 | High=112.3
+      - Candle Period: 14:40 to 14:45
+      - Detection Time: 14:50:00
+   ✅ VWAP CROSSOVER DETECTED!
+      ✓ Previous: Close(107.65) < VWAP(108.87)
+      ✓ Last: Close(112.0) > VWAP(108.88)
+      📈 Breakout Level: 112.3 + 1 = 113.3
+      ⏰ Signal Time: 14:50:00
+   🚀 Starting real-time breakout monitor...
+      - Instrument: NFO:NIFTY25D0926050PE
+      - Breakout Level: 113.3
+      - Signal Detection Time: 14:50:00
+      - Check Interval: 5 seconds
+      - Max Duration: 5 minutes
+   O:88.85 H:95.1 L:87.9 C:89.85 VWAP:90.26
+   Stats: Range=7.20, Close at 27.08% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:45 to 14:50:00
+🔍 Starting breakout monitor for NFO:NIFTY25D0926050PE
+   - Signal Detected At: 14:50:00
+   - Breakout Level: 113.3
+   - Duration: 5 minutes
+   🔄 Performing immediate breakout check...
+   O:152.25 H:155.15 L:145.25 C:152.1 VWAP:160.99
+   Stats: Range=9.90, Close at 69.19% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:45 to 14:50:00
+   O:97.9 H:99.7 L:92.1 C:97.4 VWAP:111.64
+   Stats: Range=7.60, Close at 69.74% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:45 to 14:50:00
+   O:75.9 H:77.9 L:71.3 C:75.75 VWAP:90.27
+   Stats: Range=6.60, Close at 67.42% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:45 to 14:50:00
+   O:185.7 H:190.35 L:177.55 C:185.1 VWAP:196.85
+   Stats: Range=12.80, Close at 58.98% of range
+✅ Breakout monitor started successfully
+   ⏳ Waiting for breakout confirmation...
+   ℹ️  Buy signal will be generated when LTP > 113.3
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+✅ Trading cycle completed at: 14:50:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:45 to 14:50:00
+   O:39.05 H:42.0 L:38.1 C:39.35 VWAP:42.26
+   Stats: Range=3.90, Close at 32.05% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:45 to 14:50:00
+   O:141.5 H:149.9 L:138.95 C:143.1 VWAP:132.87
+   Stats: Range=10.95, Close at 37.90% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:45 to 14:50:00
+   O:222.4 H:228.4 L:213.4 C:222.0 VWAP:231.96
+   Stats: Range=15.00, Close at 57.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:45 to 14:50:00
+   O:174.0 H:183.2 L:171.75 C:175.3 VWAP:162.46
+   Stats: Range=11.45, Close at 31.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:45 to 14:50:00
+   O:113.45 H:120.75 L:112.1 C:114.7 VWAP:108.95
+   Stats: Range=8.65, Close at 30.06% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:45 to 14:50:00
+   O:122.85 H:126.2 L:116.4 C:122.3 VWAP:133.87
+   Stats: Range=9.80, Close at 60.20% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:45 to 14:50:00
+   O:68.55 H:73.7 L:67.6 C:69.3 VWAP:73.56
+   Stats: Range=6.10, Close at 27.87% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:45 to 14:50:00
+   O:57.85 H:59.65 L:54.35 C:57.75 VWAP:70.49
+   Stats: Range=5.30, Close at 64.15% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:45 to 14:50:00
+   O:52.25 H:56.2 L:51.3 C:52.9 VWAP:56.28
+   Stats: Range=4.90, Close at 32.65% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:50:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:50:00
+📊 Breakout Check: NFO:NIFTY25D0926050PE | Current: 114.5 | Breakout: 113.3 | Time: 14:50:00
+
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+🎯 BREAKOUT CONFIRMED! NFO:NIFTY25D0926050PE
+   Signal Time: 14:50:00
+   Breakout Time: 14:50:00
+   Current: 114.5 > Breakout: 113.3
+   Difference: +1.20
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+
+🚀 GENERATING INSTANT BUY SIGNAL!
+🛑 Breakout monitor stopped for NFO:NIFTY25D0926050PE
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:54:11 IST 2025
+   - Uptime: 45 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 14:55:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 14:55:00
+🛑 Stopping 1 active breakout monitors...
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26025.85
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 108.2)
+🔍 Searching for PE options with premium > 100.0
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 14:55:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:50 to 14:55:00
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050PE (Premium: 100.1)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926050PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+   O:89.85 H:91.1 L:76.4 C:77.35 VWAP:90.19
+   Previous Candle: O=102.0 H=105.25 L=97.45 C=97.45 VWAP=111.86
+   Last Completed: O=97.9 H=99.7 L=92.1 C=97.4 VWAP=111.64
+   Current Candle: O=97.4 H=109.2 L=97.2 C=108.2 VWAP=111.47
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=97.4 H=109.2 L=97.2 C=108.2 VWAP=111.47100000000003
+   ❌ Current price not above VWAP: 108.2 <= 111.47100000000003
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050CE:
+   Data Points:
+      - Previous Candle: Close=97.45 | VWAP=111.86
+      - Last Candle: Close=97.4 | VWAP=111.64 | High=99.7
+      - Candle Period: 14:45 to 14:50
+      - Detection Time: 14:55:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+   Stats: Range=14.70, Close at 6.46% of range
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050PE
+📊 Candle Data for NFO:NIFTY25D0926050PE:
+   Previous Candle: O=107.65 H=112.3 L=104.7 C=112.0 VWAP=108.88
+   Last Completed: O=113.45 H=120.75 L=112.1 C=114.7 VWAP=108.95
+   Current Candle: O=114.7 H=114.95 L=98.75 C=100.1 VWAP=108.97
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050PE:
+   Current Candle: O=114.7 H=114.95 L=98.75 C=100.1 VWAP=108.96559999999995
+   ❌ Current price not above VWAP: 100.1 <= 108.96559999999995
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926050PE:
+   Data Points:
+      - Previous Candle: Close=112.0 | VWAP=108.88
+      - Last Candle: Close=114.7 | VWAP=108.95 | High=120.75
+      - Candle Period: 14:45 to 14:50
+      - Detection Time: 14:55:00
+   ❌ No VWAP Crossover
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+      - Previous was below VWAP: false
+      - Last is above VWAP: true
+   Time: 14:50 to 14:55:00
+📊 No trading signal detected for NFO:NIFTY25D0926050PE
+   O:152.1 H:168.65 L:151.55 C:167.5 VWAP:160.94
+✅ Trading cycle completed at: 14:55:00
+📈 MARKET STATUS:
+   Stats: Range=17.10, Close at 93.27% of range
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:50 to 14:55:00
+   O:97.4 H:109.2 L:97.2 C:108.2 VWAP:111.47
+   Stats: Range=12.00, Close at 91.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:50 to 14:55:00
+   O:75.75 H:85.65 L:75.4 C:84.25 VWAP:90.11
+   Stats: Range=10.25, Close at 86.34% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:50 to 14:55:00
+   O:185.1 H:204.5 L:184.3 C:203.1 VWAP:196.78
+   Stats: Range=20.20, Close at 93.07% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:50 to 14:55:00
+   O:39.35 H:39.45 L:32.95 C:33.45 VWAP:42.18
+   Stats: Range=6.50, Close at 7.69% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:50 to 14:55:00
+   O:222.0 H:243.0 L:221.45 C:241.45 VWAP:231.90
+   Stats: Range=21.55, Close at 92.81% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:50 to 14:55:00
+   O:143.1 H:143.8 L:124.55 C:125.8 VWAP:132.93
+   Stats: Range=19.25, Close at 6.49% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:50 to 14:55:00
+   O:175.3 H:177.0 L:155.1 C:156.05 VWAP:162.53
+   Stats: Range=21.90, Close at 4.34% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:50 to 14:55:00
+   O:122.3 H:137.4 L:121.6 C:135.65 VWAP:133.76
+   Stats: Range=15.80, Close at 88.92% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:50 to 14:55:00
+   O:114.7 H:114.95 L:98.75 C:100.1 VWAP:108.97
+   Stats: Range=16.20, Close at 8.33% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:50 to 14:55:00
+   O:57.75 H:65.45 L:57.55 C:64.7 VWAP:70.35
+   Stats: Range=7.90, Close at 90.51% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:50 to 14:55:00
+   O:69.3 H:69.55 L:58.65 C:59.35 VWAP:73.45
+   Stats: Range=10.90, Close at 6.42% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:50 to 14:55:00
+   O:52.9 H:53.0 L:44.1 C:45.0 VWAP:56.19
+   Stats: Range=8.90, Close at 10.11% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 14:55:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 14:55:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 14:59:11 IST 2025
+   - Uptime: 50 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 15:00:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 15:00:00
+🛑 Cleared all previous breakout monitors
+📊 Nifty Spot Price: 26043.65
+🔍 Searching for CE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926050CE (Premium: 116.55)
+🔍 Searching for PE options with premium > 100.0
+🔄 Real-time candle builder is already running, tracking 14 instruments
+✅ Found suitable option: NFO:NIFTY25D0926100PE (Premium: 116.9)
+✅ Selected Options for this cycle:
+   CE: NFO:NIFTY25D0926050CE
+   PE: NFO:NIFTY25D0926100PE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926050CE
+📊 Candle Data for NFO:NIFTY25D0926050CE:
+   Previous Candle: O=97.9 H=99.7 L=92.1 C=97.4 VWAP=111.64
+   Last Completed: O=97.4 H=109.2 L=97.2 C=108.2 VWAP=111.47
+   Current Candle: O=108.2 H=119.6 L=107.2 C=116.55 VWAP=111.43
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926050CE:
+   Current Candle: O=108.2 H=119.6 L=107.2 C=116.55 VWAP=111.42834437086105
+   ✓ VWAP touched during candle: 107.2 ≤ 111.42834437086105 ≤ 119.6
+   ✓ Closest approach to VWAP: 3.79%
+   ✅ VWAP REVERSAL PATTERN CONFIRMED:
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 15:00:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 14:55 to 15:00:00
+   O:77.65 H:78.35 L:69.8 C:71.45 VWAP:89.97
+   Stats: Range=8.55, Close at 19.30% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 14:55 to 15:00:00
+   O:167.5 H:182.15 L:166.05 C:178.1 VWAP:161.07
+   Stats: Range=16.10, Close at 74.84% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 14:55 to 15:00:00
+   O:108.2 H:119.6 L:107.2 C:116.55 VWAP:111.43
+   Stats: Range=12.40, Close at 75.40% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 14:55 to 15:00:00
+   O:84.25 H:93.8 L:83.5 C:91.45 VWAP:90.02
+   Stats: Range=10.30, Close at 77.18% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 14:55 to 15:00:00
+   O:203.1 H:219.05 L:201.6 C:214.25 VWAP:196.92
+   Stats: Range=17.45, Close at 72.49% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 14:55 to 15:00:00
+   O:33.4 H:33.75 L:29.85 C:30.55 VWAP:41.99
+   Stats: Range=3.90, Close at 17.95% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 14:55 to 15:00:00
+   O:241.75 H:258.15 L:240.35 C:254.0 VWAP:232.10
+   Stats: Range=17.80, Close at 76.69% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 14:55 to 15:00:00
+   O:125.8 H:127.4 L:114.95 C:116.9 VWAP:132.82
+   Stats: Range=12.45, Close at 15.66% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 14:55 to 15:00:00
+   O:156.05 H:157.75 L:143.35 C:146.55 VWAP:162.41
+   Stats: Range=14.40, Close at 22.22% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 14:55 to 15:00:00
+   O:135.65 H:148.55 L:134.45 C:145.5 VWAP:133.83
+   Stats: Range=14.10, Close at 78.37% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 14:55 to 15:00:00
+   O:100.1 H:101.2 L:90.35 C:92.6 VWAP:108.80
+   Stats: Range=10.85, Close at 20.74% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 14:55 to 15:00:00
+   O:64.7 H:72.25 L:63.7 C:69.95 VWAP:70.26
+   Stats: Range=8.55, Close at 73.10% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 14:55 to 15:00:00
+   O:59.35 H:59.9 L:53.35 C:54.7 VWAP:73.21
+   Stats: Range=6.55, Close at 20.61% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 14:55 to 15:00:00
+   O:45.0 H:45.5 L:40.2 C:41.45 VWAP:56.02
+   Stats: Range=5.30, Close at 23.58% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 15:00:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 15:00:00
+      ✓ Price above VWAP: 116.55 > 111.42834437086105 (+4.60%)
+      ✓ VWAP touched: Range 107.2 to 119.6
+      ✓ Downtrend confirmed: Previous candles below VWAP
+      ✓ Strong reversal momentum
+      Pattern: Price touched VWAP(111.42834437086105) and reversed to 116.55
+🎯 VWAP REVERSAL PATTERN DETECTED for NFO:NIFTY25D0926050CE
+🔍 Analyzing with Real-time Candles for: NFO:NIFTY25D0926100PE
+📊 Candle Data for NFO:NIFTY25D0926100PE:
+   Previous Candle: O=143.1 H=143.8 L=124.55 C=125.8 VWAP=132.93
+   Last Completed: O=125.8 H=127.4 L=114.95 C=116.9 VWAP=132.82
+   Current Candle: O=116.9 H=116.9 L=116.9 C=116.9 VWAP=132.70
+🔍 Checking VWAP Reversal Pattern for NFO:NIFTY25D0926100PE:
+   Current Candle: O=116.9 H=116.9 L=116.9 C=116.9 VWAP=132.7
+   ❌ Current price not above VWAP: 116.9 <= 132.7
+🔍 Checking ORIGINAL VWAP Crossover for NFO:NIFTY25D0926100PE:
+   Data Points:
+      - Previous Candle: Close=125.8 | VWAP=132.93
+      - Last Candle: Close=116.9 | VWAP=132.82 | High=127.4
+      - Candle Period: 14:55 to 15:00
+      - Detection Time: 15:00:00
+   ❌ No VWAP Crossover
+      - Previous was below VWAP: true
+      - Last is above VWAP: false
+📊 No trading signal detected for NFO:NIFTY25D0926100PE
+🚀 EXECUTING BUY SIGNAL for: NFO:NIFTY25D0926050CE
+📊 Pattern Type: REVERSAL
+📊 Detected as VWAP REVERSAL PATTERN trade
+   Pattern: VWAP Reversal | SL: 116.55 | Target: +20%
+📊 Trade Details:
+   Instrument: NFO:NIFTY25D0926050CE
+   Entry Price: 116.55
+   VWAP: 111.49
+   Stop Loss: 116.55
+   Target: 139.85999999999999 (+20.00%)
+📋 Placing BUY Order:
+   Symbol: NIFTY25D0926050CE
+   Quantity: 75
+   Entry: 116.55
+   Stop Loss: 116.55
+   Target: 139.85999999999999
+✅ Order Placed Successfully:
+   Order ID: 1996512303725436928
+✅ Position cached: NFO:NIFTY25D0926050CE | Entry: 116.55 | SL: 116.55 | Target: 139.85999999999999 | VWAP: 111.49
+⏰ Target check timer started (30 second intervals)
+✅ Position opened and cached: NFO:NIFTY25D0926050CE
+✅ Trading cycle completed at: 15:00:00
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 15:04:11 IST 2025
+   - Uptime: 55 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 15:05:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 15:05:00
+🛑 Cleared all previous breakout monitors
+🔍 Managing 1 existing positions...
+⏸️ Open positions exist (1). Skipping new signals.
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 15:05:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 15:00 to 15:05:00
+   O:71.45 H:71.45 L:64.9 C:68.1 VWAP:89.63
+   Stats: Range=6.55, Close at 48.85% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 15:00 to 15:05:00
+   O:178.1 H:187.0 L:178.1 C:181.0 VWAP:161.38
+   Stats: Range=8.90, Close at 32.58% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 15:00 to 15:05:00
+   O:116.55 H:122.8 L:115.65 C:117.8 VWAP:111.61
+   Stats: Range=7.15, Close at 30.07% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 15:00 to 15:05:00
+   O:91.45 H:95.95 L:90.4 C:92.35 VWAP:90.07
+   Stats: Range=5.55, Close at 35.14% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 15:00 to 15:05:00
+   O:214.25 H:224.5 L:214.25 C:218.0 VWAP:197.32
+   Stats: Range=10.25, Close at 36.59% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 15:00 to 15:05:00
+   O:30.7 H:30.7 L:27.55 C:28.8 VWAP:41.72
+   Stats: Range=3.15, Close at 39.68% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 15:00 to 15:05:00
+   O:253.6 H:264.8 L:253.6 C:258.0 VWAP:232.47
+   Stats: Range=11.20, Close at 39.29% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 15:00 to 15:05:00
+   O:116.9 H:116.9 L:108.15 C:112.95 VWAP:132.51
+   Stats: Range=8.75, Close at 54.86% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 15:00 to 15:05:00
+   O:146.55 H:146.55 L:135.55 C:141.4 VWAP:162.02
+   Stats: Range=11.00, Close at 53.18% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 15:00 to 15:05:00
+   O:145.5 H:152.5 L:144.8 C:146.95 VWAP:134.14
+   Stats: Range=7.70, Close at 27.92% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 15:00 to 15:05:00
+   O:92.6 H:92.6 L:84.65 C:88.5 VWAP:108.44
+   Stats: Range=7.95, Close at 48.43% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 15:00 to 15:05:00
+   O:69.95 H:73.8 L:69.25 C:70.85 VWAP:70.27
+   Stats: Range=4.55, Close at 35.16% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 15:00 to 15:05:00
+   O:54.7 H:54.7 L:49.2 C:51.6 VWAP:72.86
+   Stats: Range=5.50, Close at 43.64% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 15:00 to 15:05:00
+   O:41.45 H:41.45 L:36.95 C:38.7 VWAP:55.72
+   Stats: Range=4.50, Close at 38.89% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 15:05:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 15:05:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 15:09:11 IST 2025
+   - Uptime: 60 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 15:10:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 15:10:00
+🛑 Cleared all previous breakout monitors
+🔍 Managing 1 existing positions...
+🔴 STOP LOSS TRIGGERED for: NFO:NIFTY25D0926050CE
+   Current: 115.2 | Stop Loss: 116.55
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 15:10:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 15:05 to 15:10:00
+   O:68.2 H:71.4 L:66.9 C:70.95 VWAP:89.36
+   Stats: Range=4.50, Close at 90.00% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 15:05 to 15:10:00
+   O:181.0 H:184.15 L:174.55 C:176.0 VWAP:161.58
+   Stats: Range=9.60, Close at 15.10% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 15:05 to 15:10:00
+   O:118.15 H:120.5 L:113.55 C:114.65 VWAP:111.72
+   Stats: Range=6.95, Close at 15.83% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 15:05 to 15:10:00
+   O:92.45 H:94.4 L:88.4 C:89.4 VWAP:90.12
+   Stats: Range=6.00, Close at 16.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 15:05 to 15:10:00
+   O:218.5 H:221.4 L:211.0 C:212.6 VWAP:197.56
+   Stats: Range=10.40, Close at 15.38% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 15:05 to 15:10:00
+   O:28.8 H:30.2 L:28.2 C:29.95 VWAP:41.53
+   Stats: Range=2.00, Close at 87.50% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 15:05 to 15:10:00
+   O:258.2 H:261.35 L:250.45 C:251.8 VWAP:232.72
+   Stats: Range=10.90, Close at 12.39% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 15:05 to 15:10:00
+   O:112.45 H:117.55 L:111.0 C:117.0 VWAP:132.23
+   Stats: Range=6.55, Close at 91.60% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 15:05 to 15:10:00
+   O:141.4 H:147.2 L:139.35 C:146.0 VWAP:161.63
+   Stats: Range=7.85, Close at 84.71% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 15:05 to 15:10:00
+   O:147.35 H:149.65 L:141.4 C:142.8 VWAP:134.32
+   Stats: Range=8.25, Close at 16.97% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 15:05 to 15:10:00
+   O:88.1 H:92.7 L:87.05 C:92.1 VWAP:108.08
+   Stats: Range=5.65, Close at 89.38% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 15:05 to 15:10:00
+   O:70.95 H:72.6 L:68.0 C:68.8 VWAP:70.28
+   Stats: Range=4.60, Close at 17.39% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 15:05 to 15:10:00
+   O:51.65 H:54.25 L:50.65 C:53.75 VWAP:72.60
+   Stats: Range=3.60, Close at 86.11% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 15:05 to 15:10:00
+   O:38.8 H:40.8 L:38.0 C:40.45 VWAP:55.51
+   Stats: Range=2.80, Close at 87.50% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+⏸️ Open positions exist (1). Skipping new signals.
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 15:10:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 15:10:00
+❌ Error closing position due to stop loss: null
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 15:14:11 IST 2025
+   - Uptime: 65 minutes
+   - Trading Hours: ✅ OPEN
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   --------------------------------------------------
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 15:15:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+🎯 EXECUTING TRADING CYCLE WITH REAL-TIME ANALYSIS...
+🔄 Executing VWAP Options Trading Cycle at: 15:15:00
+🛑 Cleared all previous breakout monitors
+🔍 Managing 1 existing positions...
+🔴 STOP LOSS TRIGGERED for: NFO:NIFTY25D0926050CE
+   Current: 115.3 | Stop Loss: 116.55
+⏸️ Open positions exist (1). Skipping new signals.
+📈 MARKET STATUS:
+   - Trading Hours: OPEN ✅
+   - VWAP Strategy: ACTIVE 🎯
+   - Trading Allowed: YES ✅
+   - Daily P&L: ₹0.00
+   - Max Daily Loss: ₹5000.0
+✅ Trading cycle completed.
+⏰ Next execution in 5 minutes.
+================================================================================
+
+
+============================================================
+🕯️ 5-MINUTE CANDLE BOUNDARY: 15:15:00
+============================================================
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000PE
+   Time: 15:10 to 15:15:00
+❌ Error closing position due to stop loss: null
+   O:70.8 H:71.4 L:67.75 C:70.5 VWAP:89.11
+   Stats: Range=3.65, Close at 75.34% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950CE
+   Time: 15:10 to 15:15:00
+   O:176.45 H:183.4 L:175.1 C:176.2 VWAP:161.70
+   Stats: Range=8.30, Close at 13.25% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050CE
+   Time: 15:10 to 15:15:00
+   O:115.2 H:120.4 L:114.0 C:114.85 VWAP:111.79
+   Stats: Range=6.40, Close at 13.28% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100CE
+   Time: 15:10 to 15:15:00
+   O:89.9 H:94.35 L:89.0 C:90.1 VWAP:90.14
+   Stats: Range=5.35, Close at 20.56% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900CE
+   Time: 15:10 to 15:15:00
+   O:213.2 H:220.55 L:211.75 C:213.2 VWAP:197.72
+   Stats: Range=8.80, Close at 16.48% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850PE
+   Time: 15:10 to 15:15:00
+   O:29.8 H:30.15 L:28.55 C:29.25 VWAP:41.38
+   Stats: Range=1.60, Close at 43.75% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925850CE
+   Time: 15:10 to 15:15:00
+   O:251.8 H:260.6 L:251.1 C:252.2 VWAP:232.90
+   Stats: Range=9.50, Close at 11.58% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926100PE
+   Time: 15:10 to 15:15:00
+   O:116.75 H:117.6 L:112.1 C:116.25 VWAP:132.01
+   Stats: Range=5.50, Close at 75.45% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150PE
+   Time: 15:10 to 15:15:00
+   O:146.05 H:146.95 L:140.4 C:145.55 VWAP:161.38
+   Stats: Range=6.55, Close at 78.63% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926000CE
+   Time: 15:10 to 15:15:00
+   O:143.4 H:149.3 L:142.25 C:143.2 VWAP:134.44
+   Stats: Range=7.05, Close at 13.48% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926050PE
+   Time: 15:10 to 15:15:00
+   O:91.95 H:92.7 L:88.0 C:91.55 VWAP:107.77
+   Stats: Range=4.70, Close at 75.53% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0926150CE
+   Time: 15:10 to 15:15:00
+   O:69.05 H:72.5 L:68.0 C:68.75 VWAP:70.28
+   Stats: Range=4.50, Close at 16.67% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925950PE
+   Time: 15:10 to 15:15:00
+   O:53.7 H:54.35 L:51.5 C:53.35 VWAP:72.39
+   Stats: Range=2.85, Close at 64.91% of range
+✅ Finalized 5-min Candle for NFO:NIFTY25D0925900PE
+   Time: 15:10 to 15:15:00
+   O:40.5 H:40.8 L:38.55 C:40.0 VWAP:55.34
+   Stats: Range=2.25, Close at 64.44% of range
+✅ Finalized 14 candles at boundary
+   CE Options: 7 | PE Options: 7
+============================================================
+
+🕯️ New candle started for NFO:NIFTY25D0926000PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925950CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926050CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926100CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925900CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925850PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925850CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926100PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926150PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926000CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926050PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0926150CE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925950PE at 15:15:00
+🕯️ New candle started for NFO:NIFTY25D0925900PE at 15:15:00
+
+❤️  APPLICATION HEARTBEAT - Thu Dec 04 15:19:11 IST 2025
+   - Uptime: 70 minutes
+   - Trading Hours: ❌ CLOSED
+   - VWAP Strategy: ✅ ACTIVE
+   - Daily P&L: ₹0.00
+   - Next Execution: in 1 minutes
+   ⚠️  TRADING NOT ALLOWED - Outside trading hours
+   --------------------------------------------------
+🕒 Trading hours ended. Stopping VWAP Strategy...
+⏰ Target check timer stopped
+🛑 RealTimeCandleBuilder stopped
+🕯️ Real-time candle builder stopped
+🗑️ All positions cleared from cache
+🔄 Closing all open positions...
+🛑 VWAP Options Trading Stopped
+❌ Error closing position: null
+
+================================================================================
+🔄 STARTING VWAP OPTIONS STRATEGY AT: Thu Dec 04 15:20:00 IST 2025
+🎯 NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+⏸️ Outside trading hours. Skipping cycle...
+================================================================================
+
