@@ -111,7 +111,7 @@ public class RealLiveTickerTest {
         System.out.println("🎯 ATM Strike: " + atmStrike);
 
         // Generate strikes around ATM (3 strikes each side)
-        for (int i = -3; i <= 3; i++) {
+        for (int i = -5; i <= 5; i++) {
             double strike = atmStrike + (i * 50);
 
             // Use current month expiry format

@@ -396,7 +396,7 @@ public class TradingApplication {
             int minute = cal.get(Calendar.MINUTE);
 
             // Stop application after market close (after 3:30 PM)
-            return hour > 15 || (hour == 15 && minute >= 15);
+            return hour > 15 || (hour == 15 && minute >= 00);
         } catch (Exception e) {
             return false;
         }

@@ -26,6 +26,10 @@ public class VWAPOptionsStrategy {
     private Timer targetCheckTimer;
     private boolean isTargetCheckRunning = false;
     private HistoricalDataManager historicalDataManager;
+    private Timer tokenRefreshTimer;
+    private boolean isTokenRefreshRunning = false;
+    private double lastPreloadedSpotPrice = 0;
+    private final Object tokenRefreshLock = new Object();
 
     // NEW: Real-time candle builder
     private RealTimeCandleBuilder realTimeCandleBuilder;
@@ -71,6 +75,13 @@ public class VWAPOptionsStrategy {
         try {
             double niftySpot = getNiftySpotPrice();
             preloadOptionTokens(niftySpot);
+            lastPreloadedSpotPrice = niftySpot;
+            updateLastTokenUpdateTime();
+
+            // Start the token refresh timer
+            startTokenRefreshTimer();
+
+            System.out.println("✅ Token refresh timer initialized");
         } catch (Exception | KiteException e) {
             System.err.println("❌ Error initializing instruments: " + e.getMessage());
         }
@@ -557,7 +568,7 @@ public class VWAPOptionsStrategy {
                             System.out.println("📊 Fallback Stop Loss adjusted to 20%: " + stopLoss);
                         }
 
-                        target = entryPrice * 1.12;
+                        target = entryPrice * 1.20;
                         System.out.println("📊 Detected as VWAP REVERSAL PATTERN trade (fallback)");
                         System.out.println("   Pattern: VWAP Reversal | SL: " + stopLoss + " | Target: +20%");
                     }
@@ -626,7 +637,7 @@ public class VWAPOptionsStrategy {
      * Calculate target price based on stop loss multiplier
      */
     private double calculateTarget(double entryPrice, double stopLoss) {
-        return entryPrice * 1.12;
+        return entryPrice * 1.20;
     }
 
     /**
@@ -904,7 +915,7 @@ public class VWAPOptionsStrategy {
 
             // Only check symbols that we successfully preloaded tokens for
             List<String> validOptionSymbols = new ArrayList<>();
-            for (int i = -3; i <= 3; i++) {
+            for (int i = -5; i <= 5; i++) {
                 double strike = atmStrike + (i * strikeStep);
                 String optionSymbol = buildOptionSymbol(strike, isCall);
                 if (symbolToTokenMap.containsKey(optionSymbol)) {
@@ -1084,7 +1095,7 @@ public class VWAPOptionsStrategy {
             // Preload 7 CE and 7 PE options around ATM
             List<String> allInstruments = new ArrayList<>();
 
-            for (int i = -3; i <= 3; i++) {
+            for (int i = -5; i <= 5; i++) {
                 double strike = atmStrike + (i * strikeStep);
 
                 // Preload CE option
@@ -1147,6 +1158,14 @@ public class VWAPOptionsStrategy {
      */
     public void stopVWAPOptionsTrading() {
         try {
+            // Stop token refresh timer
+            if (tokenRefreshTimer != null) {
+                tokenRefreshTimer.cancel();
+                tokenRefreshTimer = null;
+                isTokenRefreshRunning = false;
+                System.out.println("⏰ Token refresh timer stopped");
+            }
+
             // Stop all breakout monitors
             emergencyKillAllBreakoutMonitors();
 
@@ -2295,7 +2314,7 @@ public class VWAPOptionsStrategy {
                     }
                 }
 
-                // Log every 30 seconds only
+                // Log every 15 seconds only
                 long timeSinceStart = System.currentTimeMillis() - startTime.getTime();
                 if (timeSinceStart % 15000 < 5000) {
                     System.out.println("📊 Breakout Check: " + instrument +
@@ -2479,5 +2498,99 @@ public class VWAPOptionsStrategy {
         synchronized(currentPositions) {
             return currentPositions.isEmpty();
         }
+    }
+
+    // Add this method to start token refresh timer:
+    private void startTokenRefreshTimer() {
+        if (isTokenRefreshRunning) {
+            return;
+        }
+
+        tokenRefreshTimer = new Timer();
+
+        // Calculate initial delay to align with specific times
+        Calendar cal = Calendar.getInstance();
+        int minute = cal.get(Calendar.MINUTE);
+
+        // Calculate minutes to next refresh time (0, 30 minutes past the hour)
+        int minutesToNextRefresh;
+        if (minute < 30) {
+            minutesToNextRefresh = 30 - minute;
+        } else {
+            minutesToNextRefresh = 60 - minute;
+        }
+
+        long initialDelay = minutesToNextRefresh * 60 * 1000L;
+        long interval = 30 * 60 * 1000L; // 30 minutes
+
+        System.out.println("⏰ Token refresh timer initialized");
+        System.out.println("   Next refresh in: " + minutesToNextRefresh + " minutes");
+
+        tokenRefreshTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                refreshTokensIfNeeded();
+            }
+        }, initialDelay, interval);
+
+        isTokenRefreshRunning = true;
+        System.out.println("✅ Token refresh timer started (every 30 minutes at :00 and :30)");
+    }
+
+    // Add this method to refresh tokens when needed:
+    private void refreshTokensIfNeeded() {
+        try {
+            synchronized(tokenRefreshLock) {
+                Calendar cal = Calendar.getInstance();
+                int hour = cal.get(Calendar.HOUR_OF_DAY);
+                int minute = cal.get(Calendar.MINUTE);
+
+                // Only refresh during market hours (9:15 AM to 3:30 PM)
+                if (hour < 9 || (hour == 9 && minute < 15) || hour > 15 || (hour == 15 && minute > 30)) {
+                    System.out.println("⏸️ Outside market hours, skipping token refresh");
+                    return;
+                }
+
+                double currentSpot = getNiftySpotPrice();
+                double priceChange = Math.abs(currentSpot - lastPreloadedSpotPrice);
+
+                // Check if it's scheduled refresh time OR price moved by 50 points
+                boolean isScheduledTime = (minute == 0) || (minute == 30);
+                boolean priceMovedSignificantly = priceChange >= 50.0;
+
+                if (isScheduledTime || priceMovedSignificantly) {
+                    System.out.println("🔄 Refreshing option tokens...");
+                    System.out.println("   Reason: " +
+                            (isScheduledTime ? "Scheduled refresh time" :
+                                    "Price moved by " + String.format("%.2f", priceChange) + " points"));
+                    System.out.println("   Previous Spot: " + lastPreloadedSpotPrice);
+                    System.out.println("   Current Spot: " + currentSpot);
+                    System.out.println("   Change: " + String.format("%.2f", priceChange) + " points");
+
+                    preloadOptionTokens(currentSpot);
+                    lastPreloadedSpotPrice = currentSpot;
+                    updateLastTokenUpdateTime();
+                } else {
+                    System.out.println("⏸️ Token refresh skipped:");
+                    System.out.println("   - Not scheduled time (current minute: " + minute + ")");
+                    System.out.println("   - Price change: " + String.format("%.2f", priceChange) +
+                            " points (< 50 points threshold)");
+                }
+            }
+        } catch (Exception | KiteException e) {
+            System.err.println("❌ Error in token refresh: " + e.getMessage());
+        }
+    }
+
+    // Add helper methods for tracking token update time:
+    private Date lastTokenUpdateTime = new Date();
+
+    private Date getLastTokenUpdateTime() {
+        return lastTokenUpdateTime;
+    }
+
+    private void updateLastTokenUpdateTime() {
+        lastTokenUpdateTime = new Date();
+        System.out.println("✅ Token update time set to: " + dateFormat.format(lastTokenUpdateTime));
     }
 }
