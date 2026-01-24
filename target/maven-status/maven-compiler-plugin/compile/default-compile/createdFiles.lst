@@ -1,6 +1,0 @@
-com\trading\config\AppConfig.class
-com\trading\strategy\CandleData.class
-com\trading\strategy\Position.class
-com\trading\strategy\VWAPCalculator_delete.class
-com\trading\strategy\SignalType.class
-com\trading\strategy\TradingSignal.class

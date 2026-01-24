@@ -63,7 +63,7 @@ public class AppConfig {
     }
 
     public static int getVWAPOptionsLotSize() {
-        return Integer.parseInt(properties.getProperty("vwap.options.lot.size", "75"));
+        return Integer.parseInt(properties.getProperty("vwap.options.lot.size"));
     }
 
     public static int getVWAPOptionsMaxPositions() {

@@ -1069,7 +1069,12 @@ public class VWAPOptionsStrategy {
                     "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
             return String.format("%02d", year) + monthCodes[month];
         } else {
-            return String.format("%02d", year) + "D" + String.format("%02d", day);
+            // Weekly format: YY + M + DD (e.g., 26106 for January 6, 2026)
+            // Example: NFO:NIFTY2610626050PE
+            String[] monthCodes = {"1", "2", "3", "4", "5", "6",
+                    "7", "8", "9", "O", "N", "D"};
+            String result = String.format("%02d", year) + monthCodes[month] + String.format("%02d", day);
+            return result;
         }
     }
 
@@ -2296,6 +2301,7 @@ public class VWAPOptionsStrategy {
                     System.out.println("   Breakout: " + breakoutLevel + " | Current: " + currentPrice);
                     System.out.println("   Pattern type: " + patternType);
                     stop();
+                    activeMonitors.remove(instrument);
                     return;
                 }
 
@@ -2310,6 +2316,7 @@ public class VWAPOptionsStrategy {
                                 "% below signal price. Cancelling breakout monitor.");
                         System.out.println("   Signal Close: " + signalClose + " | Current: " + currentPrice);
                         stop();
+                        activeMonitors.remove(instrument);
                         return;
                     }
                 }
@@ -2323,6 +2330,9 @@ public class VWAPOptionsStrategy {
                             " | Distance: " + String.format("%.2f", distancePercent) + "%" +
                             " | Time: " + dateFormat.format(currentTime) +
                             " | Remaining: " + getRemainingTime() + "s");
+                    if (getRemainingTime() <= 15) {
+                        activeMonitors.remove(instrument);
+                    }
                 }
 
                 // Check if LTP crosses breakout level
