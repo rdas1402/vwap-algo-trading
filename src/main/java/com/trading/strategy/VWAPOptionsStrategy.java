@@ -18,14 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 public class VWAPOptionsStrategy {
     private KiteConnect kiteConnect;
-    private final BatchVWAPAnalyzer vwapAnalyzer;
     private final Map<String, Position> currentPositions;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final Map<String, Long> symbolToTokenMap;
     private final Map<Long, String> tokenToSymbolMap;
     private Timer targetCheckTimer;
     private boolean isTargetCheckRunning = false;
-    private HistoricalDataManager historicalDataManager;
     private Timer tokenRefreshTimer;
     private boolean isTokenRefreshRunning = false;
     private double lastPreloadedSpotPrice = 0;
@@ -60,8 +58,6 @@ public class VWAPOptionsStrategy {
 
     public VWAPOptionsStrategy() {
         initializeKiteConnect();
-        this.historicalDataManager = new HistoricalDataManager(kiteConnect);
-        this.vwapAnalyzer = new BatchVWAPAnalyzer(kiteConnect, historicalDataManager);
         this.currentPositions = new HashMap<>();
         this.symbolToTokenMap = new HashMap<>();
         this.tokenToSymbolMap = new HashMap<>();
@@ -143,6 +139,9 @@ public class VWAPOptionsStrategy {
             // STEP 2: Close any positions that hit stop loss/target
             // FIXED: Check return value correctly
             boolean positionsClosed = manageExistingPositions();
+
+            // NEW: Check for red candle exits in trading cycle
+            checkRedCandlesForAllPositions();
 
             // FIXED: If we have positions AND they were NOT closed, skip signal generation
             if (!currentPositions.isEmpty() && !positionsClosed) {
@@ -257,6 +256,164 @@ public class VWAPOptionsStrategy {
         System.out.println("✅ Trading cycle completed.");
         System.out.println("⏰ Next execution in " + AppConfig.getTradingIntervalMinutes() + " minutes.");
         System.out.println("=".repeat(80) + "\n");
+    }
+
+    /**
+     * NEW: Check if candle is red (close < open)
+     */
+    private boolean isRedCandle(CandleData candle) {
+        if (candle == null) {
+            return false;
+        }
+        return candle.getClose() < candle.getOpen();
+    }
+
+    /**
+     * NEW: Check all positions for 2 consecutive red candles during trading cycle
+     * ONLY IF PROFITABLE (current price > entry price)
+     */
+    private void checkRedCandlesForAllPositions() {
+        if (currentPositions.isEmpty()) {
+            return;
+        }
+
+        System.out.println("🔍 Checking for red candles in all positions...");
+
+        for (String instrument : new ArrayList<>(currentPositions.keySet())) {
+            Position position = currentPositions.get(instrument);
+
+            if (position == null || !position.shouldExitOnRedCandles()) {
+                continue;
+            }
+
+            try {
+                // Get current price to check if profitable
+                String[] instruments = {instrument};
+                Map<String, Quote> quotes;
+                synchronized(apiCallLock) {
+                    quotes = kiteConnect.getQuote(instruments);
+                }
+
+                Quote quote = quotes.get(instrument);
+                if (quote == null) {
+                    continue;
+                }
+
+                double currentPrice = quote.lastPrice;
+                double entryPrice = position.getEntryPrice();
+                boolean isProfitable = currentPrice > entryPrice;
+
+                // Get candle data
+                CandleData currentCandle = realTimeCandleBuilder.getCurrentCandle(instrument);
+                CandleData lastCompletedCandle = realTimeCandleBuilder.getLastCompletedCandle(instrument);
+
+                boolean isCurrentRed = isRedCandle(currentCandle);
+                boolean isLastCompletedRed = isRedCandle(lastCompletedCandle);
+
+                // Update consecutive red candle count
+                if (isCurrentRed) {
+                    position.incrementConsecutiveRedCandles();
+                } else {
+                    position.resetConsecutiveRedCandles();
+                }
+
+                // Log status
+                if (currentCandle != null && lastCompletedCandle != null) {
+                    System.out.println("📊 Candle status for " + instrument + ":");
+                    System.out.println("   Current Price: " + currentPrice + " | Entry: " + entryPrice +
+                            " | Profit: " + (isProfitable ? "✅" : "❌"));
+                    System.out.println("   Current Candle: O=" + currentCandle.getOpen() +
+                            " C=" + currentCandle.getClose() +
+                            " Red=" + isCurrentRed);
+                    System.out.println("   Last Candle: O=" + lastCompletedCandle.getOpen() +
+                            " C=" + lastCompletedCandle.getClose() +
+                            " Red=" + isLastCompletedRed);
+                    System.out.println("   Consecutive red count: " + position.getConsecutiveRedCandles());
+                }
+
+                // Check if we have 2 consecutive red candles AND we're profitable
+                if (isCurrentRed && isLastCompletedRed && isProfitable) {
+                    System.out.println("🔴 TRADING CYCLE: 2 consecutive red candles detected for " + instrument);
+                    System.out.println("   ✅ PROFITABLE: Current price " + currentPrice + " > Entry " + entryPrice);
+                    System.out.println("   Current candle red: " + isCurrentRed);
+                    System.out.println("   Last completed candle red: " + isLastCompletedRed);
+                    System.out.println("   Exiting position with profit!");
+
+                    closePositionDueToRedCandles(instrument);
+                } else if (isCurrentRed && isLastCompletedRed && !isProfitable) {
+                    System.out.println("⚠️ 2 consecutive red candles but NOT profitable for " + instrument);
+                    System.out.println("   ❌ Current price " + currentPrice + " ≤ Entry " + entryPrice);
+                    System.out.println("   Waiting for profit before exiting on red candles...");
+                }
+
+            } catch (Exception | KiteException e) {
+                System.err.println("❌ Error checking red candles for " + instrument + ": " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * NEW: Close position when 2 consecutive red candles detected AND profitable
+     */
+    private void closePositionDueToRedCandles(String instrument) {
+        try {
+            Position position = currentPositions.get(instrument);
+            if (position == null) {
+                System.err.println("❌ Position not found for: " + instrument);
+                return;
+            }
+
+            // Get current price for P&L calculation
+            String[] instruments = {instrument};
+            Map<String, Quote> quotes;
+            synchronized(apiCallLock) {
+                quotes = kiteConnect.getQuote(instruments);
+            }
+            double exitPrice = quotes.get(instrument).lastPrice;
+            double entryPrice = position.getEntryPrice();
+
+            // DOUBLE CHECK: Only exit if profitable
+            if (exitPrice <= entryPrice) {
+                System.out.println("⚠️ Attempted red candle exit but NOT profitable for " + instrument);
+                System.out.println("   Exit: " + exitPrice + " ≤ Entry: " + entryPrice);
+                System.out.println("   Cancelling red candle exit...");
+                return;
+            }
+
+            OrderParams orderParams = new OrderParams();
+            orderParams.exchange = "NFO";
+            orderParams.tradingsymbol = instrument.replace("NFO:", "");
+            orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
+            orderParams.quantity = position.getQuantity();
+            orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+            orderParams.product = Constants.PRODUCT_MIS;
+            orderParams.validity = Constants.VALIDITY_DAY;
+
+            Order exitOrder;
+            synchronized(apiCallLock) {
+                exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+            }
+
+            if (exitOrder != null && exitOrder.orderId != null) {
+                double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
+
+                // Update P&L in manager
+                pnlManager.addToDailyPnL(pnl);
+
+                System.out.println("🔴 2 RED CANDLES EXIT - P&L for " + instrument + ": ₹" + pnl);
+                System.out.println("   Entry: " + position.getEntryPrice() + " | Exit: " + exitPrice);
+                System.out.println("   Profit: " + String.format("%.2f", ((exitPrice/entryPrice)-1)*100) + "%");
+                System.out.println("   Order ID: " + exitOrder.orderId);
+                System.out.println("   Total Daily P&L: ₹" + String.format("%.2f", pnlManager.getTotalDailyPnL()));
+
+                // Remove from cache and current positions
+                currentPositions.remove(instrument);
+                PositionManager.removeCachedPosition(instrument);
+            }
+
+        } catch (Exception | KiteException e) {
+            System.err.println("❌ Error closing position due to red candles: " + e.getMessage());
+        }
     }
 
     /**
@@ -607,11 +764,18 @@ public class VWAPOptionsStrategy {
                     position.setVwap(vwapPrice);
                     position.setEntryTime(new Date());
 
+                    // NEW: Enable red candle exit strategy
+                    position.setShouldExitOnRedCandles(true);
+                    position.setConsecutiveRedCandles(0);
+
                     currentPositions.put(instrument, position);
                     PositionManager.cachePosition(position);
-                    startTargetCheckTimer();
+
+                    // NEW: Don't start target check timer for red candle strategy
+                    System.out.println("⏰ Target check timer NOT started - Using red candle exit strategy");
 
                     System.out.println("✅ Position opened and cached: " + instrument);
+                    System.out.println("🎯 Exit Strategy: Will exit on 2 consecutive red candles (ONLY IF PROFITABLE)");
                 }
 
             } catch (InterruptedException e) {
@@ -682,6 +846,10 @@ public class VWAPOptionsStrategy {
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
                     position.setPatternType(patternType);
+
+                    // NEW: Enable red candle exit
+                    position.setShouldExitOnRedCandles(true);
+                    position.setConsecutiveRedCandles(0);
 
                     System.out.println("✅ Order Placed Successfully:");
                     System.out.println("   Order ID: " + order.orderId);
@@ -1240,6 +1408,11 @@ public class VWAPOptionsStrategy {
 
     // Add this method to start the target check timer
     private void startTargetCheckTimer() {
+        // NEW: Don't start target check timer for red candle strategy
+        System.out.println("⏰ Target check timer NOT started - Using red candle exit strategy");
+        return;
+
+        /* OLD CODE (commented out):
         if (isTargetCheckRunning) {
             return;
         }
@@ -1256,10 +1429,15 @@ public class VWAPOptionsStrategy {
 
         isTargetCheckRunning = true;
         System.out.println("⏰ Target check timer started (3 second intervals)");
+        */
     }
 
     // Add this method to check target conditions
     private void checkTargetConditions() {
+        // NEW: This method is not used for red candle strategy
+        // Only kept for backward compatibility
+        System.out.println("⚠️ Target check called but using red candle exit strategy");
+
         try {
             Map<String, Position> cachedPositions = PositionManager.getAllCachedPositions();
 
@@ -1282,13 +1460,32 @@ public class VWAPOptionsStrategy {
                 if (quote != null) {
                     double currentPrice = quote.lastPrice;
 
-                    // Check only for target condition (not stop loss)
-                    if (currentPrice >= position.getTarget()) {
-                        System.out.println("🎯 TARGET HIT for " + instrument + " at 3-second check!");
-                        System.out.println("   Current Price: " + currentPrice + " | Target: " + position.getTarget());
+                    // NEW: Check red candles first (even in target check)
+                    if (position.shouldExitOnRedCandles()) {
+                        CandleData currentCandle = realTimeCandleBuilder.getCurrentCandle(instrument);
+                        CandleData lastCompletedCandle = realTimeCandleBuilder.getLastCompletedCandle(instrument);
 
-                        // Close position due to target hit
-                        closePositionDueToTarget(instrument);
+                        boolean isCurrentRed = isRedCandle(currentCandle);
+                        boolean isLastCompletedRed = isRedCandle(lastCompletedCandle);
+
+                        // IMPORTANT: Only exit if profitable
+                        double entryPrice = position.getEntryPrice();
+                        boolean isProfitable = currentPrice > entryPrice;
+
+                        if (isCurrentRed && isLastCompletedRed && isProfitable) {
+                            System.out.println("🔴 2 CONSECUTIVE RED CANDLES in target check for " + instrument);
+                            closePositionDueToRedCandles(instrument);
+                            continue;
+                        }
+                    }
+
+                    // Original target check (log only, don't exit)
+                    if (currentPrice >= position.getTarget()) {
+                        System.out.println("🎯 Target reached for " + instrument +
+                                " but using red candle exit strategy");
+                        System.out.println("   Current Price: " + currentPrice +
+                                " | Target: " + position.getTarget());
+                        System.out.println("   ⚠️ Not exiting - waiting for red candles...");
                     }
                 }
             }
@@ -1300,54 +1497,8 @@ public class VWAPOptionsStrategy {
 
     // Add this method to close position when target is hit
     private void closePositionDueToTarget(String instrument) {
-        try {
-            Position position = currentPositions.get(instrument);
-            if (position == null) {
-                System.err.println("❌ Position not found for: " + instrument);
-                return;
-            }
-
-            // Get current price for P&L calculation
-            String[] instruments = {instrument};
-            Map<String, Quote> quotes;
-            synchronized(apiCallLock) {
-                quotes = kiteConnect.getQuote(instruments);
-            }
-            double exitPrice = quotes.get(instrument).lastPrice;
-
-            OrderParams orderParams = new OrderParams();
-            orderParams.exchange = "NFO";
-            orderParams.tradingsymbol = instrument.replace("NFO:", "");
-            orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
-            orderParams.quantity = position.getQuantity();
-            orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-            orderParams.product = Constants.PRODUCT_MIS;
-            orderParams.validity = Constants.VALIDITY_DAY;
-
-            Order exitOrder;
-            synchronized(apiCallLock) {
-                exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
-            }
-
-            if (exitOrder != null && exitOrder.orderId != null) {
-                double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
-
-                // Update P&L in manager
-                pnlManager.addToDailyPnL(pnl);
-
-                System.out.println("💰 TARGET ACHIEVED - P&L for " + instrument + ": ₹" + pnl);
-                System.out.println("   Entry: " + position.getEntryPrice() + " | Exit: " + exitPrice);
-                System.out.println("   Order ID: " + exitOrder.orderId);
-                System.out.println("   Total Daily P&L: ₹" + String.format("%.2f", pnlManager.getTotalDailyPnL()));
-
-                // Remove from cache and current positions
-                currentPositions.remove(instrument);
-                PositionManager.removeCachedPosition(instrument);
-            }
-
-        } catch (Exception | KiteException e) {
-            System.err.println("❌ Error closing position due to target: " + e.getMessage());
-        }
+        // NEW: This method is not used for red candle strategy
+        System.out.println("⚠️ Target exit called but using red candle exit strategy for " + instrument);
     }
 
     /**
@@ -1875,7 +2026,7 @@ public class VWAPOptionsStrategy {
                 // Return false for now - actual buy signal will come from monitor thread
                 System.out.println("   ⏳ Waiting for breakout confirmation...");
                 System.out.println("   ℹ️  Buy signal will be generated when LTP > " + breakoutLevel);
-                return false;
+                return true;
 
             } else {
                 System.out.println("   ❌ No VWAP Crossover (stricter criteria not met):");
@@ -2004,7 +2155,8 @@ public class VWAPOptionsStrategy {
                 System.out.println("     • " + position.getTradingSymbol() +
                         " | Entry: " + position.getEntryPrice() +
                         " | SL: " + position.getStopLoss() +
-                        " | Target: " + position.getTarget());
+                        " | Target: " + position.getTarget() +
+                        " | Red Candles: " + position.getConsecutiveRedCandles());
             }
         } else {
             System.out.println("   - Open Positions: None");
@@ -2018,7 +2170,8 @@ public class VWAPOptionsStrategy {
                 System.out.println("     • " + position.getTradingSymbol() +
                         " | Entry: " + position.getEntryPrice() +
                         " | SL: " + position.getStopLoss() +
-                        " | Target: " + position.getTarget());
+                        " | Target: " + position.getTarget() +
+                        " | Red Candles: " + position.getConsecutiveRedCandles());
             }
         }
 
@@ -2064,6 +2217,9 @@ public class VWAPOptionsStrategy {
         // Display buying hours status
         System.out.println("   - Buying Hours: " +
                 (isWithinBuyingHours() ? "ACTIVE (09:45-15:15) ✅" : "INACTIVE ⏸️"));
+
+        // Display exit strategy
+        System.out.println("   - Exit Strategy: 2 Consecutive Red Candles 🔴🔴 (ONLY IF PROFITABLE)");
     }
 
     /**

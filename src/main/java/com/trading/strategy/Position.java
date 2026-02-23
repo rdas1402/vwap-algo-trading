@@ -15,6 +15,10 @@ public class Position {
     private Date entryTime; // Add this field
     private String patternType;
 
+    // NEW: Red candle tracking for dynamic exit
+    private int consecutiveRedCandles = 0;
+    private boolean shouldExitOnRedCandles = true;
+
     // Getters and setters
     public String getTradingSymbol() { return tradingSymbol; }
     public void setTradingSymbol(String tradingSymbol) { this.tradingSymbol = tradingSymbol; }
@@ -50,5 +54,30 @@ public class Position {
 
     public void setPatternType(String patternType) {
         this.patternType = patternType;
+    }
+
+    // NEW: Red candle tracking methods
+    public int getConsecutiveRedCandles() {
+        return consecutiveRedCandles;
+    }
+
+    public void setConsecutiveRedCandles(int consecutiveRedCandles) {
+        this.consecutiveRedCandles = consecutiveRedCandles;
+    }
+
+    public void incrementConsecutiveRedCandles() {
+        this.consecutiveRedCandles++;
+    }
+
+    public void resetConsecutiveRedCandles() {
+        this.consecutiveRedCandles = 0;
+    }
+
+    public boolean shouldExitOnRedCandles() {
+        return shouldExitOnRedCandles;
+    }
+
+    public void setShouldExitOnRedCandles(boolean shouldExitOnRedCandles) {
+        this.shouldExitOnRedCandles = shouldExitOnRedCandles;
     }
 }

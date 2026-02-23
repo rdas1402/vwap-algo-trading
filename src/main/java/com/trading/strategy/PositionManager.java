@@ -16,10 +16,6 @@ public class PositionManager {
                          " | VWAP: " + position.getVwap());
     }
     
-    public static Position getCachedPosition(String tradingSymbol) {
-        return positionCache.get(tradingSymbol);
-    }
-    
     public static void removeCachedPosition(String tradingSymbol) {
         positionCache.remove(tradingSymbol);
         System.out.println("🗑️ Position removed from cache: " + tradingSymbol);
