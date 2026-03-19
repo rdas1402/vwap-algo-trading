@@ -2,10 +2,13 @@ package com.trading.config;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Properties;
+import java.util.*;
+import java.text.SimpleDateFormat;
 
 public class AppConfig {
     private static final Properties properties = new Properties();
+    private static final Set<String> holidays = new HashSet<>();
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * API Rate limiting configuration
@@ -15,9 +18,15 @@ public class AppConfig {
     private static long lastApiCallTime = 0;
 
     static {
+        loadProperties();
+        loadHolidays();
+    }
+
+    private static void loadProperties() {
         try (InputStream input = AppConfig.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find application.properties");
+                return;
             }
             properties.load(input);
         } catch (IOException ex) {
@@ -25,6 +34,34 @@ public class AppConfig {
         }
     }
 
+    private static void loadHolidays() {
+        String holidaysStr = properties.getProperty("market.holidays", "");
+        if (!holidaysStr.isEmpty()) {
+            String[] holidayArray = holidaysStr.split(",");
+            for (String holiday : holidayArray) {
+                holidays.add(holiday.trim());
+            }
+            System.out.println("Loaded " + holidays.size() + " market holidays");
+        } else {
+            // Add default major holidays as fallback
+            addDefaultHolidays();
+        }
+    }
+
+    private static void addDefaultHolidays() {
+        // Add common Indian market holidays for 2026
+        holidays.add("2026-01-26"); // Republic Day
+        holidays.add("2026-03-03"); // Holiday as mentioned
+        holidays.add("2026-03-25"); // Holi
+        holidays.add("2026-04-14"); // Dr. Ambedkar Jayanti
+        holidays.add("2026-08-15"); // Independence Day
+        holidays.add("2026-10-02"); // Gandhi Jayanti
+        holidays.add("2026-11-14"); // Diwali
+        holidays.add("2026-12-25"); // Christmas
+        System.out.println("Using default market holidays");
+    }
+
+    // Existing configuration methods
     public static String getApiKey() {
         return properties.getProperty("zerodha.api.key");
     }
@@ -50,7 +87,7 @@ public class AppConfig {
     }
 
     public static double getMaxDailyLoss() {
-        return Double.parseDouble(properties.getProperty("max.daily.loss"));
+        return Double.parseDouble(properties.getProperty("max.daily.loss", "10000"));
     }
 
     // VWAP Options Strategy Configuration
@@ -63,7 +100,7 @@ public class AppConfig {
     }
 
     public static int getVWAPOptionsLotSize() {
-        return Integer.parseInt(properties.getProperty("vwap.options.lot.size"));
+        return Integer.parseInt(properties.getProperty("vwap.options.lot.size", "50"));
     }
 
     public static int getVWAPOptionsMaxPositions() {
@@ -76,13 +113,118 @@ public class AppConfig {
 
     // Buying Hours Configuration (for VWAP Strategy)
     public static String getBuyingStartTime() {
-        return properties.getProperty("buying.start.time");
+        return properties.getProperty("buying.start.time", "09:30");
     }
 
     public static String getBuyingEndTime() {
         return properties.getProperty("buying.end.time", "15:15");
     }
 
+    // NEW: Holiday Management Methods
+
+    /**
+     * Check if a given date is a market holiday
+     * @param date Calendar date to check
+     * @return true if date is a holiday
+     */
+    public static boolean isHoliday(Calendar date) {
+        String dateStr = DATE_FORMAT.format(date.getTime());
+        return holidays.contains(dateStr);
+    }
+
+    /**
+     * Check if a given date string (YYYY-MM-DD) is a market holiday
+     * @param dateStr Date string in YYYY-MM-DD format
+     * @return true if date is a holiday
+     */
+    public static boolean isHoliday(String dateStr) {
+        return holidays.contains(dateStr);
+    }
+
+    /**
+     * Adjust expiry date if it falls on a holiday
+     * @param date Original expiry date
+     * @return Adjusted date (previous working day if holiday)
+     */
+    public static Calendar adjustForHoliday(Calendar date) {
+        Calendar adjustedDate = (Calendar) date.clone();
+
+        while (isHoliday(adjustedDate)) {
+            System.out.println("Date " + DATE_FORMAT.format(adjustedDate.getTime()) +
+                    " is a holiday. Adjusting to previous day.");
+            adjustedDate.add(Calendar.DATE, -1);
+        }
+
+        return adjustedDate;
+    }
+
+    /**
+     * Get all market holidays
+     * @return Unmodifiable set of holiday dates
+     */
+    public static Set<String> getHolidays() {
+        return Collections.unmodifiableSet(holidays);
+    }
+
+    /**
+     * Reload holidays from properties file
+     */
+    public static void reloadHolidays() {
+        holidays.clear();
+        loadHolidays();
+    }
+
+    /**
+     * Check if today is a trading day (not a holiday and weekday)
+     * @return true if today is a trading day
+     */
+    public static boolean isTradingDay() {
+        Calendar today = Calendar.getInstance();
+        int dayOfWeek = today.get(Calendar.DAY_OF_WEEK);
+
+        // Check if weekend (Saturday or Sunday)
+        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+            return false;
+        }
+
+        // Check if holiday
+        return !isHoliday(today);
+    }
+
+    /**
+     * Get next trading day from given date
+     * @param date Starting date
+     * @return Next trading day (skipping holidays and weekends)
+     */
+    public static Calendar getNextTradingDay(Calendar date) {
+        Calendar nextDay = (Calendar) date.clone();
+        nextDay.add(Calendar.DATE, 1);
+
+        while (!isTradingDay(nextDay)) {
+            nextDay.add(Calendar.DATE, 1);
+        }
+
+        return nextDay;
+    }
+
+    /**
+     * Check if a date is a trading day (not holiday and weekday)
+     * @param date Date to check
+     * @return true if it's a trading day
+     */
+    public static boolean isTradingDay(Calendar date) {
+        int dayOfWeek = date.get(Calendar.DAY_OF_WEEK);
+
+        // Check if weekend
+        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+            return false;
+        }
+
+        // Check if holiday
+        return !isHoliday(date);
+    }
+
+    // Rate limiting methods
     public static synchronized void rateLimitApiCall() throws InterruptedException {
         long currentTime = System.currentTimeMillis();
         long timeSinceLastCall = currentTime - lastApiCallTime;
