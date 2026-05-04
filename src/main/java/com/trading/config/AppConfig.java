@@ -150,8 +150,8 @@ public class AppConfig {
         Calendar adjustedDate = (Calendar) date.clone();
 
         while (isHoliday(adjustedDate)) {
-            System.out.println("Date " + DATE_FORMAT.format(adjustedDate.getTime()) +
-                    " is a holiday. Adjusting to previous day.");
+//            System.out.println("Date " + DATE_FORMAT.format(adjustedDate.getTime()) +
+//                    " is a holiday. Adjusting to previous day.");
             adjustedDate.add(Calendar.DATE, -1);
         }
 
@@ -249,5 +249,51 @@ public class AppConfig {
      */
     public static int getApiCallsPerMinute() {
         return API_CALLS_PER_MINUTE;
+    }
+
+    // AppConfig.java - Add these methods
+
+    /**
+     * Get target premium for option selection (default: 100)
+     */
+    public static double getTargetPremium() {
+        try {
+            return Double.parseDouble(properties.getProperty("strategy.target.premium", "100.0"));
+        } catch (NumberFormatException e) {
+            return 100.0;
+        }
+    }
+
+    /**
+     * Get premium tolerance for option selection (default: 50)
+     */
+    public static double getPremiumTolerance() {
+        try {
+            return Double.parseDouble(properties.getProperty("strategy.premium.tolerance", "50.0"));
+        } catch (NumberFormatException e) {
+            return 50.0;
+        }
+    }
+
+    /**
+     * Get premium for hammer reversal strategy (slightly lower for bottom fishing)
+     */
+    public static double getHammerTargetPremium() {
+        try {
+            return Double.parseDouble(properties.getProperty("strategy.hammer.target.premium", "100.0"));
+        } catch (NumberFormatException e) {
+            return 100.0;
+        }
+    }
+
+    /**
+     * Get premium for breakout retest strategy (slightly higher for momentum)
+     */
+    public static double getBreakoutTargetPremium() {
+        try {
+            return Double.parseDouble(properties.getProperty("strategy.breakout.target.premium", "100.0"));
+        } catch (NumberFormatException e) {
+            return 100.0;
+        }
     }
 }

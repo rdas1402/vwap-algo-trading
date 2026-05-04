@@ -1,0 +1,11 @@
+? Starting Automated Trading Strategy with Real-time Candle Analysis...
+Loaded 8 market holidays
+? TOKEN BEING USED: n4PjHWTnk5Wr9fZi1OeG3XFFtkNeAR0Q
+   (First 4 chars: n4Pj...)
+? Validating token...
+Exception in thread "main" com.zerodhatech.kiteconnect.kitehttp.exceptions.TokenException
+	at com.zerodhatech.kiteconnect.kitehttp.KiteResponseHandler.dealWithException(KiteResponseHandler.java:49)
+	at com.zerodhatech.kiteconnect.kitehttp.KiteResponseHandler.handle(KiteResponseHandler.java:21)
+	at com.zerodhatech.kiteconnect.kitehttp.KiteRequestHandler.getRequest(KiteRequestHandler.java:54)
+	at com.zerodhatech.kiteconnect.KiteConnect.getProfile(KiteConnect.java:219)
+	at com.trading.TradingApplication.main(TradingApplication.java:36)

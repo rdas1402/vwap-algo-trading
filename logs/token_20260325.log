@@ -1,0 +1,38 @@
+[25-03-2026  9:00:02.59] Starting token refresh... 
+Error: Could not find or load main class com.trading.util.AutoZerodhaLoginHelper
+Caused by: java.lang.ClassNotFoundException: com.trading.util.AutoZerodhaLoginHelper
+[25-03-2026  9:08:01.18] Starting token refresh... 
+Error: Could not find or load main class com.trading.util.AutoZerodhaLoginHelper
+Caused by: java.lang.ClassNotFoundException: com.trading.util.AutoZerodhaLoginHelper
+[25-03-2026  9:12:00.50] Starting token refresh... 
+[2026-03-25 09:12:02] ============================================================
+[2026-03-25 09:12:02] ? ZERODHA AUTOMATED LOGIN
+[2026-03-25 09:12:02] ============================================================
+[2026-03-25 09:12:02] Starting login process...
+Mar 25, 2026 9:12:05 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 25, 2026 9:12:05 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-25 09:12:35] 1. Login page loaded
+[2026-03-25 09:12:37] 2. User ID entered
+[2026-03-25 09:12:37] 3. Password entered
+[2026-03-25 09:12:37] 4. Login button clicked
+[2026-03-25 09:12:40] ? Using secret (first 4 chars): CQIA...
+[2026-03-25 09:12:40] ? Generated TOTP: 896264
+[2026-03-25 09:12:40] 5. TOTP generated: 896264
+[2026-03-25 09:12:40] 6. TOTP entered
+[2026-03-25 09:12:40]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=1RCJMPy7OalsyPeUU1aq21IvwFAiTefS
+[2026-03-25 09:12:43]    Checking URL: https://localhost:8080/?status=success&request_token=QTLleTPx0H0JEyhwydkQcyc9lnj23hFD&action=login&type=login
+[2026-03-25 09:12:43] ? Found request_token in URL!
+[2026-03-25 09:12:43] 8. Request token obtained: QTLl...3hFD
+[2026-03-25 09:12:43] 9. Session generated for user: XEJ386
+[2026-03-25 09:12:43] ========================================
+[2026-03-25 09:12:43] ? ACCESS TOKEN GENERATED:
+[2026-03-25 09:12:43]    Token: 265fK1tF17vEZ0GvbeDH0DW6yzVbpPZa
+[2026-03-25 09:12:43]    User ID: XEJ386
+[2026-03-25 09:12:43] ========================================
+[2026-03-25 09:12:45] Browser closed
+[2026-03-25 09:12:45] ? Properties file updated
+[2026-03-25 09:12:45] ? Login successful with accessToken: 265fK1tF17vEZ0GvbeDH0DW6yzVbpPZa
+[2026-03-25 09:12:45] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 

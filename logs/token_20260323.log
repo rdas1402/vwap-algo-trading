@@ -1,0 +1,31 @@
+[23-03-2026 10:27:01.24] Starting token refresh... 
+[2026-03-23 10:27:03] ============================================================
+[2026-03-23 10:27:03] ? ZERODHA AUTOMATED LOGIN
+[2026-03-23 10:27:03] ============================================================
+[2026-03-23 10:27:03] Starting login process...
+Mar 23, 2026 10:27:10 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 23, 2026 10:27:10 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-23 10:27:44] 1. Login page loaded
+[2026-03-23 10:27:46] 2. User ID entered
+[2026-03-23 10:27:47] 3. Password entered
+[2026-03-23 10:27:47] 4. Login button clicked
+[2026-03-23 10:27:50] ? Using secret (first 4 chars): CQIA...
+[2026-03-23 10:27:51] ? Generated TOTP: 492386
+[2026-03-23 10:27:51] 5. TOTP generated: 492386
+[2026-03-23 10:27:53] 6. TOTP entered
+[2026-03-23 10:27:57]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=Eps94YanAY5XcPIuFDeISB0FiBxctg9i
+[2026-03-23 10:27:57] ? Found request_token in URL!
+[2026-03-23 10:27:57] 8. Request token obtained: Eps9...tg9i
+[2026-03-23 10:27:59] 9. Session generated for user: XEJ386
+[2026-03-23 10:27:59] ========================================
+[2026-03-23 10:27:59] ? ACCESS TOKEN GENERATED:
+[2026-03-23 10:27:59]    Token: R6UpJ5hh2nWhRlpTzOaZGP9dMjymhOTr
+[2026-03-23 10:27:59]    User ID: XEJ386
+[2026-03-23 10:27:59] ========================================
+[2026-03-23 10:28:01] Browser closed
+[2026-03-23 10:28:01] ? Properties file updated
+[2026-03-23 10:28:01] ? Login successful with accessToken: R6UpJ5hh2nWhRlpTzOaZGP9dMjymhOTr
+[2026-03-23 10:28:01] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 

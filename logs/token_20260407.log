@@ -1,0 +1,63 @@
+[07-04-2026  3:22:00.69] Starting token refresh... 
+[2026-04-07 03:22:01] ============================================================
+[2026-04-07 03:22:01] ? ZERODHA AUTOMATED LOGIN
+[2026-04-07 03:22:01] ============================================================
+[2026-04-07 03:22:01] Starting login process...
+Apr 07, 2026 3:22:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Apr 07, 2026 3:22:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.165. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-04-07 03:22:35] 1. Login page loaded
+[2026-04-07 03:22:37] 2. User ID entered
+[2026-04-07 03:22:38] 3. Password entered
+[2026-04-07 03:22:38] 4. Login button clicked
+[2026-04-07 03:22:41] ? Using secret (first 4 chars): CQIA...
+[2026-04-07 03:22:41] ? Generated TOTP: 898743
+[2026-04-07 03:22:41] 5. TOTP generated: 898743
+[2026-04-07 03:22:41] 6. TOTP entered
+[2026-04-07 03:22:41]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=3IjFPYS4HK4LUxXjuYDSjBYp3uFOaJen
+[2026-04-07 03:22:43]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=HQzoYOgXti2xX4Wkap2t8D8NBsGPo1bs
+[2026-04-07 03:22:43] ? Found request_token in URL!
+[2026-04-07 03:22:43] 8. Request token obtained: HQzo...o1bs
+[2026-04-07 03:22:44] 9. Session generated for user: XEJ386
+[2026-04-07 03:22:44] ========================================
+[2026-04-07 03:22:44] ? ACCESS TOKEN GENERATED:
+[2026-04-07 03:22:44]    Token: D7j4HE0oThOjVsh856PLFia2IlICNiQk
+[2026-04-07 03:22:44]    User ID: XEJ386
+[2026-04-07 03:22:44] ========================================
+[2026-04-07 03:22:46] Browser closed
+[2026-04-07 03:22:46] ? Properties file updated
+[2026-04-07 03:22:46] ? Login successful with accessToken: D7j4HE0oThOjVsh856PLFia2IlICNiQk
+[2026-04-07 03:22:46] ? Token saved. Trading will start at scheduled time.
+^C[07-04-2026  9:10:02.67] Starting token refresh... 
+[2026-04-07 09:10:03] ============================================================
+[2026-04-07 09:10:03] ? ZERODHA AUTOMATED LOGIN
+[2026-04-07 09:10:03] ============================================================
+[2026-04-07 09:10:03] Starting login process...
+Apr 07, 2026 9:10:10 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Apr 07, 2026 9:10:10 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.165. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-04-07 09:10:40] 1. Login page loaded
+[2026-04-07 09:10:42] 2. User ID entered
+[2026-04-07 09:10:42] 3. Password entered
+[2026-04-07 09:10:42] 4. Login button clicked
+[2026-04-07 09:10:45] ? Using secret (first 4 chars): CQIA...
+[2026-04-07 09:10:45] ? Generated TOTP: 461952
+[2026-04-07 09:10:45] 5. TOTP generated: 461952
+[2026-04-07 09:10:45] 6. TOTP entered
+[2026-04-07 09:10:45]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=smspVrgJOo4Vccwt3d76ZLPlY12zM6zF
+[2026-04-07 09:10:48]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=ci2d4YD86yB7M78l6Flc7hlS5EMKWY2c
+[2026-04-07 09:10:48] ? Found request_token in URL!
+[2026-04-07 09:10:48] 8. Request token obtained: ci2d...WY2c
+[2026-04-07 09:10:48] 9. Session generated for user: XEJ386
+[2026-04-07 09:10:48] ========================================
+[2026-04-07 09:10:48] ? ACCESS TOKEN GENERATED:
+[2026-04-07 09:10:48]    Token: GYW6A9vV1T6BYyZYynpgvF7qVdHHmrgJ
+[2026-04-07 09:10:48]    User ID: XEJ386
+[2026-04-07 09:10:48] ========================================
+[2026-04-07 09:10:51] Browser closed
+[2026-04-07 09:10:51] ? Properties file updated
+[2026-04-07 09:10:51] ? Login successful with accessToken: GYW6A9vV1T6BYyZYynpgvF7qVdHHmrgJ
+[2026-04-07 09:10:51] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 

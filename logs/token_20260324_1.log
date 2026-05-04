@@ -1,0 +1,160 @@
+[24-03-2026  0:02:01.22] Starting token refresh... 
+[2026-03-24 00:02:03] ============================================================
+[2026-03-24 00:02:03] ? ZERODHA AUTOMATED LOGIN
+[2026-03-24 00:02:03] ============================================================
+[2026-03-24 00:02:03] Waiting 17 minutes until 12:20 AM
+[2026-03-24 00:20:00] Starting login process...
+Mar 24, 2026 12:20:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 24, 2026 12:20:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-24 00:20:36] 1. Login page loaded
+[2026-03-24 00:20:38] 2. User ID entered
+[2026-03-24 00:20:38] 3. Password entered
+[2026-03-24 00:20:38] 4. Login button clicked
+[2026-03-24 00:20:41] ? Using secret (first 4 chars): CQIA...
+[2026-03-24 00:20:41] ? Generated TOTP: 053498
+[2026-03-24 00:20:41] 5. TOTP generated: 053498
+[2026-03-24 00:20:41] 6. TOTP entered
+[2026-03-24 00:20:41]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=w6xQk04cCU4lPc7gkNoMnGmrG8UKd0FV
+[2026-03-24 00:20:44]    Checking URL: https://localhost:8080/?status=success&request_token=2hnpiAVPWu7IQJHLGlL53WLJnpMIkzd3&action=login&type=login
+[2026-03-24 00:20:44] ? Found request_token in URL!
+[2026-03-24 00:20:44] 8. Request token obtained: 2hnp...kzd3
+[2026-03-24 00:20:44] 9. Session generated for user: XEJ386
+[2026-03-24 00:20:44] ========================================
+[2026-03-24 00:20:44] ? ACCESS TOKEN GENERATED:
+[2026-03-24 00:20:44]    Token: R6UpJ5hh2nWhRlpTzOaZGP9dMjymhOTr
+[2026-03-24 00:20:44]    User ID: XEJ386
+[2026-03-24 00:20:44] ========================================
+[2026-03-24 00:20:46] Browser closed
+[2026-03-24 00:20:46] ? Properties file updated
+[2026-03-24 00:20:46] ? Login successful with accessToken: R6UpJ5hh2nWhRlpTzOaZGP9dMjymhOTr
+[2026-03-24 00:20:46] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 
+[24-03-2026  9:00:03.05] Starting token refresh... 
+[2026-03-24 09:00:03] ============================================================
+[2026-03-24 09:00:03] ? ZERODHA AUTOMATED LOGIN
+[2026-03-24 09:00:03] ============================================================
+[2026-03-24 09:00:03] Starting login process...
+Mar 24, 2026 9:00:10 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 24, 2026 9:00:10 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-24 09:00:40] 1. Login page loaded
+[2026-03-24 09:00:42] 2. User ID entered
+[2026-03-24 09:00:42] 3. Password entered
+[2026-03-24 09:00:43] 4. Login button clicked
+[2026-03-24 09:00:46] ? Using secret (first 4 chars): CQIA...
+[2026-03-24 09:00:46] ? Generated TOTP: 535519
+[2026-03-24 09:00:46] 5. TOTP generated: 535519
+[2026-03-24 09:00:46] 6. TOTP entered
+[2026-03-24 09:00:46]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=LdTVUiM4Tur0fKMjiCBPdfRsEdiiMiH6
+[2026-03-24 09:00:48]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=r12jyenRnor66CfGmkVgseOnDxWswtCJ
+[2026-03-24 09:00:48] ? Found request_token in URL!
+[2026-03-24 09:00:48] 8. Request token obtained: r12j...wtCJ
+[2026-03-24 09:00:49] 9. Session generated for user: XEJ386
+[2026-03-24 09:00:49] ========================================
+[2026-03-24 09:00:49] ? ACCESS TOKEN GENERATED:
+[2026-03-24 09:00:49]    Token: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 09:00:49]    User ID: XEJ386
+[2026-03-24 09:00:49] ========================================
+[2026-03-24 09:00:51] Browser closed
+[2026-03-24 09:00:51] ? Properties file updated
+[2026-03-24 09:00:51] ? Login successful with accessToken: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 09:00:51] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 
+[24-03-2026 11:08:01.27] Starting token refresh... 
+[2026-03-24 11:08:02] ============================================================
+[2026-03-24 11:08:02] ? ZERODHA AUTOMATED LOGIN
+[2026-03-24 11:08:02] ============================================================
+[2026-03-24 11:08:02] Starting login process...
+Mar 24, 2026 11:08:06 AM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 24, 2026 11:08:06 AM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-24 11:08:36] 1. Login page loaded
+[2026-03-24 11:08:38] 2. User ID entered
+[2026-03-24 11:08:38] 3. Password entered
+[2026-03-24 11:08:38] 4. Login button clicked
+[2026-03-24 11:08:41] ? Using secret (first 4 chars): CQIA...
+[2026-03-24 11:08:41] ? Generated TOTP: 171154
+[2026-03-24 11:08:41] 5. TOTP generated: 171154
+[2026-03-24 11:08:41] 6. TOTP entered
+[2026-03-24 11:08:41]    Checking URL: https://kite.zerodha.com/connect/login?sess_id=Mf6GuV2CBKvuNvjBMTOlNTXUNSvQYzPE&api_key=e85ngsrd7lekw61v
+[2026-03-24 11:08:44]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=xi5lvJKrWmsOjAEhhede1mvghLvLe6l1
+[2026-03-24 11:08:44] ? Found request_token in URL!
+[2026-03-24 11:08:44] 8. Request token obtained: xi5l...e6l1
+[2026-03-24 11:08:44] 9. Session generated for user: XEJ386
+[2026-03-24 11:08:44] ========================================
+[2026-03-24 11:08:44] ? ACCESS TOKEN GENERATED:
+[2026-03-24 11:08:44]    Token: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 11:08:44]    User ID: XEJ386
+[2026-03-24 11:08:44] ========================================
+[2026-03-24 11:08:46] Browser closed
+[2026-03-24 11:08:47] ? Properties file updated
+[2026-03-24 11:08:47] ? Login successful with accessToken: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 11:08:47] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 
+[24-03-2026 20:20:00.67] Starting token refresh... 
+[2026-03-24 20:20:02] ============================================================
+[2026-03-24 20:20:02] ? ZERODHA AUTOMATED LOGIN
+[2026-03-24 20:20:02] ============================================================
+[2026-03-24 20:20:02] Starting login process...
+Mar 24, 2026 8:20:07 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 24, 2026 8:20:07 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-24 20:20:37] 1. Login page loaded
+[2026-03-24 20:20:39] 2. User ID entered
+[2026-03-24 20:20:40] 3. Password entered
+[2026-03-24 20:20:40] 4. Login button clicked
+[2026-03-24 20:20:43] ? Using secret (first 4 chars): CQIA...
+[2026-03-24 20:20:43] ? Generated TOTP: 070337
+[2026-03-24 20:20:43] 5. TOTP generated: 070337
+[2026-03-24 20:20:43] 6. TOTP entered
+[2026-03-24 20:20:43]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=uyJfRiytam4P9JjPp6m4sM1sKLMUlHTG
+[2026-03-24 20:20:45]    Checking URL: https://localhost:8080/?status=success&request_token=HMXvXYrWohMPq8L5viHuQ4IKQp9mIStA&action=login&type=login
+[2026-03-24 20:20:45] ? Found request_token in URL!
+[2026-03-24 20:20:45] 8. Request token obtained: HMXv...IStA
+[2026-03-24 20:20:46] 9. Session generated for user: XEJ386
+[2026-03-24 20:20:46] ========================================
+[2026-03-24 20:20:46] ? ACCESS TOKEN GENERATED:
+[2026-03-24 20:20:46]    Token: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 20:20:46]    User ID: XEJ386
+[2026-03-24 20:20:46] ========================================
+[2026-03-24 20:20:48] Browser closed
+[2026-03-24 20:20:48] ? Properties file updated
+[2026-03-24 20:20:48] ? Login successful with accessToken: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 20:20:48] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 
+[24-03-2026 20:27:00.67] Starting token refresh... 
+[2026-03-24 20:27:02] ============================================================
+[2026-03-24 20:27:02] ? ZERODHA AUTOMATED LOGIN
+[2026-03-24 20:27:02] ============================================================
+[2026-03-24 20:27:02] Starting login process...
+Mar 24, 2026 8:27:05 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 146
+Mar 24, 2026 8:27:05 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 146.0.7680.154. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-24 20:27:35] 1. Login page loaded
+[2026-03-24 20:27:37] 2. User ID entered
+[2026-03-24 20:27:38] 3. Password entered
+[2026-03-24 20:27:38] 4. Login button clicked
+[2026-03-24 20:27:41] ? Using secret (first 4 chars): CQIA...
+[2026-03-24 20:27:41] ? Generated TOTP: 798301
+[2026-03-24 20:27:41] 5. TOTP generated: 798301
+[2026-03-24 20:27:41] 6. TOTP entered
+[2026-03-24 20:27:41]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=5PpKtapkrxgcTztE8wy6U61FoXcrRdtY
+[2026-03-24 20:27:43]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=Z35Hfw8hKTLIUFNKTynrSgKwOaeWm7Rv
+[2026-03-24 20:27:43] ? Found request_token in URL!
+[2026-03-24 20:27:43] 8. Request token obtained: Z35H...m7Rv
+[2026-03-24 20:27:44] 9. Session generated for user: XEJ386
+[2026-03-24 20:27:44] ========================================
+[2026-03-24 20:27:44] ? ACCESS TOKEN GENERATED:
+[2026-03-24 20:27:44]    Token: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 20:27:44]    User ID: XEJ386
+[2026-03-24 20:27:44] ========================================
+[2026-03-24 20:27:46] Browser closed
+[2026-03-24 20:27:46] ? Properties file updated
+[2026-03-24 20:27:46] ? Login successful with accessToken: B26LdVwOAgeUWyJhvumdwiMMyZyiOfKW
+[2026-03-24 20:27:46] ? Token saved. Trading will start at scheduled time.

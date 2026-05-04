@@ -1,0 +1,16 @@
+To connect to EC2 server. Run the below command in powershell.
+
+1. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\rex_trading_bot.pem" /inheritance:r
+2. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\rex_trading_bot.pem" /grant:r "$($env:USERNAME):R"
+
+To copy from local to EC2 instance:
+Note: Not to run : ssh -i "rex_trading_bot.pem" ec2-user@ec2-98-82-189-160.compute-1.amazonaws.com
+1. Run this in new powershell from deployment folder where we have key and jar: 
+scp -i "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\rex_trading_bot.pem" "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\vwap-algo-trading-1.0-SNAPSHOT.jar" ec2-user@ec2-98-82-189-160.compute-1.amazonaws.com:/home/ec2-user/
+
+Next thing -check java version in EC2 instance powershell: 
+1. java --version
+If java not there then run:
+1. Update: sudo yum update -y
+2. sudo yum install java-17-amazon-corretto -y
+3. java -jar vwap-algo-trading-1.0-SNAPSHOT.jar

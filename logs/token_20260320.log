@@ -1,0 +1,32 @@
+[20-03-2026 17:13:03.00] Starting token refresh... 
+[2026-03-20 17:13:06] ============================================================
+[2026-03-20 17:13:06] ? ZERODHA AUTOMATED LOGIN
+[2026-03-20 17:13:06] ============================================================
+[2026-03-20 17:13:06] Starting login process...
+Mar 20, 2026 5:13:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 145
+Mar 20, 2026 5:13:44 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 145.0.7632.162. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.15.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[2026-03-20 17:14:11] 1. Login page loaded
+[2026-03-20 17:14:14] 2. User ID entered
+[2026-03-20 17:14:15] 3. Password entered
+[2026-03-20 17:14:15] 4. Login button clicked
+[2026-03-20 17:14:19] ? Using secret (first 4 chars): CQIA...
+[2026-03-20 17:14:19] ? Generated TOTP: 682267
+[2026-03-20 17:14:19] 5. TOTP generated: 682267
+[2026-03-20 17:14:19] 6. TOTP entered
+[2026-03-20 17:14:19]    Checking URL: https://kite.zerodha.com/connect/login?api_key=e85ngsrd7lekw61v&sess_id=TLh1daGHjcLY2pCf98fmFzxcxCxjX8az
+[2026-03-20 17:14:23]    Checking URL: https://localhost:8080/?action=login&type=login&status=success&request_token=bwVfNL2pUPQyA3Uyfd9VkE1yXhqMjExj
+[2026-03-20 17:14:23] ? Found request_token in URL!
+[2026-03-20 17:14:23] 8. Request token obtained: bwVf...jExj
+[2026-03-20 17:14:25] 9. Session generated for user: XEJ386
+[2026-03-20 17:14:25] ========================================
+[2026-03-20 17:14:25] ? ACCESS TOKEN GENERATED:
+[2026-03-20 17:14:25]    Token: n4PjHWTnk5Wr9fZi1OeG3XFFtkNeAR0Q
+[2026-03-20 17:14:25]    User ID: XEJ386
+[2026-03-20 17:14:25] ========================================
+[2026-03-20 17:14:27] Browser closed
+[2026-03-20 17:14:27] ? Properties file updated
+[2026-03-20 17:14:27] ? Login successful with accessToken: n4PjHWTnk5Wr9fZi1OeG3XFFtkNeAR0Q
+[2026-03-20 17:14:27] ? Token saved. Trading will start at scheduled time.
+[SUCCESS] Token refreshed successfully 

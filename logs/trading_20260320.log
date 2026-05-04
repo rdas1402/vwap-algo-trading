@@ -1,0 +1,97 @@
+? Starting Automated Trading Strategy with Real-time Candle Analysis...
+Loaded 8 market holidays
+? TOKEN BEING USED: n4PjHWTnk5Wr9fZi1OeG3XFFtkNeAR0Q
+   (First 4 chars: n4Pj...)
+? Validating token...
+? Token is VALID!
+   User: Rupam Das
+setRoot method not available, using default configuration
+? VWAP Options Strategy initialized
+? Preloading option tokens for Nifty spot: 23114.5
+? Preloading token for CE: NFO:NIFTY2632422850CE
+? Preloaded CE token: NFO:NIFTY2632422850CE -> 16016386
+? Preloading token for PE: NFO:NIFTY2632422850PE
+? Preloaded PE token: NFO:NIFTY2632422850PE -> 16016642
+? Preloading token for CE: NFO:NIFTY2632422900CE
+? Preloaded CE token: NFO:NIFTY2632422900CE -> 16016898
+? Preloading token for PE: NFO:NIFTY2632422900PE
+? Preloaded PE token: NFO:NIFTY2632422900PE -> 16017154
+? Preloading token for CE: NFO:NIFTY2632422950CE
+? Preloaded CE token: NFO:NIFTY2632422950CE -> 16017410
+? Preloading token for PE: NFO:NIFTY2632422950PE
+? Preloaded PE token: NFO:NIFTY2632422950PE -> 16017666
+? Preloading token for CE: NFO:NIFTY2632423000CE
+? Preloaded CE token: NFO:NIFTY2632423000CE -> 16017922
+? Preloading token for PE: NFO:NIFTY2632423000PE
+? Preloaded PE token: NFO:NIFTY2632423000PE -> 16018178
+? Preloading token for CE: NFO:NIFTY2632423050CE
+? Preloaded CE token: NFO:NIFTY2632423050CE -> 16018434
+? Preloading token for PE: NFO:NIFTY2632423050PE
+? Preloaded PE token: NFO:NIFTY2632423050PE -> 16018946
+? Preloading token for CE: NFO:NIFTY2632423100CE
+? Preloaded CE token: NFO:NIFTY2632423100CE -> 16019202
+? Preloading token for PE: NFO:NIFTY2632423100PE
+? Preloaded PE token: NFO:NIFTY2632423100PE -> 16019714
+? Preloading token for CE: NFO:NIFTY2632423150CE
+? Preloaded CE token: NFO:NIFTY2632423150CE -> 16019970
+? Preloading token for PE: NFO:NIFTY2632423150PE
+? Preloaded PE token: NFO:NIFTY2632423150PE -> 16020226
+? Preloading token for CE: NFO:NIFTY2632423200CE
+? Preloaded CE token: NFO:NIFTY2632423200CE -> 16020482
+? Preloading token for PE: NFO:NIFTY2632423200PE
+? Preloaded PE token: NFO:NIFTY2632423200PE -> 16020738
+? Preloading token for CE: NFO:NIFTY2632423250CE
+? Preloaded CE token: NFO:NIFTY2632423250CE -> 16020994
+? Preloading token for PE: NFO:NIFTY2632423250PE
+? Preloaded PE token: NFO:NIFTY2632423250PE -> 16022274
+? Preloading token for CE: NFO:NIFTY2632423300CE
+? Preloaded CE token: NFO:NIFTY2632423300CE -> 16022530
+? Preloading token for PE: NFO:NIFTY2632423300PE
+? Preloaded PE token: NFO:NIFTY2632423300PE -> 16022786
+? Preloading token for CE: NFO:NIFTY2632423350CE
+? Preloaded CE token: NFO:NIFTY2632423350CE -> 16023042
+? Preloading token for PE: NFO:NIFTY2632423350PE
+? Preloaded PE token: NFO:NIFTY2632423350PE -> 16023298
+? Preloaded 22 option tokens
+? Token update time set to: 17:15:24
+? Token refresh timer initialized
+   Next refresh in: 15 minutes
+? Token refresh timer started (every 30 minutes at :00 and :30)
+? Token refresh timer initialized
+? Daily P&L Reset to ?0.00
+? Next execution aligned to: Fri Mar 20 17:20:00 IST 2026
+   Current time: Fri Mar 20 17:15:24 IST 2026
+   Delay: 275 seconds
+? Initial delay: 275 seconds
+? First execution at: Fri Mar 20 17:20:00 IST 2026
+? Application is running...
+? Press Ctrl+C to stop the application
+? Trading interval: 5 minutes
+? Trading hours: 09:15 to 15:15
+? Max Daily Loss: ?36000.0
+
+================================================================================
+? STARTING VWAP OPTIONS STRATEGY AT: Fri Mar 20 17:20:00 IST 2026
+? NOW WITH REAL-TIME CANDLE ANALYSIS & VWAP REVERSAL PATTERNS
+================================================================================
+?? Outside trading hours. Skipping cycle...
+================================================================================
+
+
+??  APPLICATION HEARTBEAT - Fri Mar 20 17:20:24 IST 2026
+? End of trading day detected. Stopping application...
+? Cleaning up resources...
+   - Trading timer stopped
+? Cleanup completed
+   - Uptime: 5 minutes
+   - Trading Hours: ? CLOSED
+   - VWAP Strategy: ?? INACTIVE
+   - Daily P&L: ?0.00
+   - Next Execution: in 0 minutes
+   ??  TRADING NOT ALLOWED - Outside trading hours
+   --------------------------------------------------
+?? Outside market hours, skipping token refresh
+?? Outside market hours, skipping token refresh
+?? Outside market hours, skipping token refresh
+?? Outside market hours, skipping token refresh
+?? Outside market hours, skipping token refresh
