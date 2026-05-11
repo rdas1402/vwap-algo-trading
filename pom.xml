@@ -31,28 +31,21 @@
             <version>2.10.1</version>
         </dependency>
 
-        <!-- Selenium -->
+        <!-- Selenium (headless browser automation) -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.16.1</version>
         </dependency>
+
+        <!-- WebDriverManager (optional – auto-manages ChromeDriver) -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.8.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.warrenstrange</groupId>
-            <artifactId>googleauth</artifactId>
-            <version>1.5.0</version>
-        </dependency>
-        <!-- Already present -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.16.1</version>
-        </dependency>
+
+        <!-- TOTP generation (Google Authenticator style) -->
         <dependency>
             <groupId>com.warrenstrange</groupId>
             <artifactId>googleauth</artifactId>
@@ -66,7 +59,7 @@
             <version>2.0.9</version>
         </dependency>
 
-        <!-- Commons Codec -->
+        <!-- Commons Codec (for custom TOTP if needed) -->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -86,7 +79,7 @@
     <build>
         <plugins>
 
-            <!-- Java Compile -->
+            <!-- Java Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -96,7 +89,7 @@
                 </configuration>
             </plugin>
 
-            <!-- FAT JAR (IMPORTANT FIX) -->
+            <!-- FAT JAR (with all dependencies) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>

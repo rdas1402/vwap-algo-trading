@@ -1,7 +1,7 @@
 To connect to EC2 server. Run the below command in powershell.
 
-1. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\rex_trading_bot.pem" /inheritance:r
-2. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\rex_trading_bot.pem" /grant:r "$($env:USERNAME):R"
+1. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\Rex_Trading_Bot_140292_keykit.pem" /inheritance:r
+2. icacls "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\Rex_Trading_Bot_140292_keykit.pem" /grant:r "$($env:USERNAME):R"
 
 To copy from local to EC2 instance:
 Note: Not to run : ssh -i "rex_trading_bot.pem" ec2-user@ec2-98-82-189-160.compute-1.amazonaws.com
@@ -14,3 +14,38 @@ If java not there then run:
 1. Update: sudo yum update -y
 2. sudo yum install java-17-amazon-corretto -y
 3. java -jar vwap-algo-trading-1.0-SNAPSHOT.jar
+
+
+To new EC2 instance created:
+Instance name :
+
+Steps:
+1. Open git bash and goto deployment where pem is there
+2. Run: ssh -i "Rex_Trading_Bot_140292_keykit.pem" ec2-user@ec2-13-234-78-254.ap-south-1.compute.amazonaws.com
+3. sudo yum install git -y //to install git in EC2 instance. One time activity
+4. git clone https://github.com/rdas1402/vwap-algo-trading.git  //One time activity
+5. ls -l
+drwxr-xr-x. 6 ec2-user ec2-user 16384 May 11 18:21 vwap-algo-trading
+6. mvn -v
+7. java -v
+8. sudo yum install maven -y  //One time activity
+9. cd vwap-algo-trading/
+10. git pull origin release/30.06.2026
+11. mvn clean package
+12. java -jar target/vwap-algo-trading-1.0-SNAPSHOT.jar
+
+
+INstall chrome driver:
+1. sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
+2. google-chrome --version
+3. wget https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.96/linux64/chromedriver-linux64.zip
+4. chromedriver --version
+5. wget https://storage.googleapis.com/chrome-for-testing-public/148.0.7778.96/linux64/chromedriver-linux64.zip
+6. unzip chromedriver-linux64.zip
+7. sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+8. sudo chmod +x /usr/local/bin/chromedriver
+9.unzip chromedriver-linux64.zip
+10. sudo mv chromedriver-linux64/chromedriver /usr/local/bin/
+11.  sudo chmod +x /usr/local/bin/chromedriver
+12.  chromedriver --version
+

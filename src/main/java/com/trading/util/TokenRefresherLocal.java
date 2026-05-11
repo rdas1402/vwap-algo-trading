@@ -37,7 +37,7 @@ public class TokenRefresherLocal {
 
         ChromeOptions options = new ChromeOptions();
         // Keep visible for debugging
-        // options.addArguments("--headless");
+        options.addArguments("--headless");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
 

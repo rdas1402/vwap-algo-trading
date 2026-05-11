@@ -296,4 +296,8 @@ public class AppConfig {
             return 100.0;
         }
     }
+
+    public static String getApiSecret() {
+        return properties.getProperty("zerodha.api.secret");
+    }
 }
