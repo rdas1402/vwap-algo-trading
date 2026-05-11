@@ -49,3 +49,63 @@ INstall chrome driver:
 11.  sudo chmod +x /usr/local/bin/chromedriver
 12.  chromedriver --version
 
+
+
+echo 'export ZERODHA_USER_ID="7019211971"' >> ~/.bashrc
+echo 'export ZERODHA_PASSWORD="Welcome@123"' >> ~/.bashrc
+echo 'export ZERODHA_TOTP_SECRET="oqm11fvqp3rwdsvbwicaeo5jpahizvzk"' >> ~/.bashrc
+source ~/.bashrc
+
+
+
+chmod +x daily_trading.sh
+crontab -e
+
+
+# Install cronie
+sudo yum install -y cronie
+
+# Start the cron service
+sudo systemctl start crond
+
+# Enable it to start on boot
+sudo systemctl enable crond
+
+# Check status
+sudo systemctl status crond
+
+
+
+crontab -e
+
+tHis opens an empty file in vim.
+
+2. Insert the cron line
+Press i to enter insert mode.
+Then type or paste the line:
+
+text
+45 8 * * 1-5 /home/ec2-user/vwap-algo-trading/daily_trading.sh
+3. Save and exit vim
+Press Esc to exit insert mode.
+
+Type :wq and press Enter.
+(w = write/save, q = quit)
+
+4. Verify the crontab
+bash
+crontab -l
+You should see the line you added.
+
+
+
+******* if i want to run it at 02:05am for testing, how can I do that
+
+Option 1 – Just change cron time (the script will wait until 9:15 AM)
+- crontab -e
+Change the line to:TO INSERT CLICK i then 
+- 5 2 * * * /home/ec2-user/vwap-algo-trading/daily_trading.sh
+Save and exit. (click i again and then :wq)
+
+After testing, revert to:
+ - 45 8 * * 1-5 /home/ec2-user/vwap-algo-trading/daily_trading.sh
