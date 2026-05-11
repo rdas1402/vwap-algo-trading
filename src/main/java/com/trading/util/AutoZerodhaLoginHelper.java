@@ -66,8 +66,15 @@ public class AutoZerodhaLoginHelper {
         log("Starting login process...");
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
+// Headless mode for EC2
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
         options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--window-size=1920,1080");
+// Remove the maximized argument because headless doesn't support it
+// options.addArguments("--start-maximized");
 
         WebDriver driver = new ChromeDriver(options);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
