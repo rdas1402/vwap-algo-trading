@@ -53,7 +53,9 @@ INstall chrome driver:
 
 echo 'export ZERODHA_USER_ID="7019211971"' >> ~/.bashrc
 echo 'export ZERODHA_PASSWORD="Welcome@123"' >> ~/.bashrc
-echo 'export ZERODHA_TOTP_SECRET="oqm11fvqp3rwdsvbwicaeo5jpahizvzk"' >> ~/.bashrc
+echo 'export ZERODHA_TOTP_SECRET="CQIATWTCH6ZDPDX4ZEV53X343K7GGQON"' >> ~/.bashrc
+echo 'export ZERODHA_PIN="625886"' >> ~/.bashrc
+
 source ~/.bashrc
 
 
@@ -109,3 +111,34 @@ Save and exit. (click i again and then :wq)
 
 After testing, revert to:
  - 45 8 * * 1-5 /home/ec2-user/vwap-algo-trading/daily_trading.sh
+
+
+chmod +x refresh_token_retry.sh
+crontab -e
+45 2 * * * /home/ec2-user/vwap-algo-trading/refresh_token_retry.sh    //2:45am
+chmod +x start_trading.sh
+15 9 * * * /home/ec2-user/vwap-algo-trading/start_trading.sh  //will run at 9:15am
+
+
+the script writes to:
+
+bash
+cat /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
+To follow the log in real time (as it runs):
+
+bash
+tail -f /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
+
+
+tail -50 /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
+
+
+cat /home/ec2-user/vwap-algo-trading/logs/daily_trading.log
+
+
+
+ps aux | grep refresh_token_retry.sh
+
+kill 12345   # replace with the actual PID
+
+curl ifconfig.me

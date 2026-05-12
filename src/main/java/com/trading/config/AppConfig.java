@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class AppConfig {
     private static final Properties properties = new Properties();
@@ -23,14 +26,25 @@ public class AppConfig {
     }
 
     private static void loadProperties() {
-        try (InputStream input = AppConfig.class.getClassLoader().getResourceAsStream("application.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find application.properties");
+        // 1. Try external config file (outside JAR)
+        Path externalConfig = Paths.get(System.getProperty("user.home"), "vwap-algo-trading/config/application.properties");
+        if (Files.exists(externalConfig)) {
+            try (InputStream in = Files.newInputStream(externalConfig)) {
+                properties.load(in);
+                System.out.println("✅ Loaded configuration from: " + externalConfig);
                 return;
+            } catch (IOException e) {
+                System.err.println("⚠️ Failed to load external config, falling back to classpath.");
             }
-            properties.load(input);
+        }
+        // 2. Fallback to classpath (inside JAR)
+        try (InputStream in = AppConfig.class.getClassLoader().getResourceAsStream("application.properties")) {
+            if (in == null) throw new IOException("Resource not found");
+            properties.load(in);
+            System.out.println("✅ Loaded configuration from classpath");
         } catch (IOException ex) {
             ex.printStackTrace();
+            throw new RuntimeException("Cannot load application.properties");
         }
     }
 

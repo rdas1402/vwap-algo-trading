@@ -20,7 +20,7 @@ public class AutoZerodhaLoginHelper {
 
     private static final String API_KEY = "e85ngsrd7lekw61v";
     private static final String API_SECRET = "oqm11fvqp3rwdsvbwicaeo5jpahizvzk";
-    private static final String PROPERTIES_FILE_PATH = "src/main/resources/application.properties";
+    private static final String PROPERTIES_FILE_PATH = System.getProperty("user.home") + "/vwap-algo-trading/config/application.properties";
 
     private static final String ZERODHA_USER_ID = System.getenv("ZERODHA_USER_ID");
     private static final String ZERODHA_PASSWORD = System.getenv("ZERODHA_PASSWORD");
