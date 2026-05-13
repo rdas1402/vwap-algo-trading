@@ -1237,15 +1237,6 @@ public class TradingStrategyEngine {
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
-            double limitPrice = entryPrice;
-
-            System.out.println("📋 Placing PULLBACK LIMIT BUY Order:");
-            System.out.println("   Symbol: " + tradingSymbol);
-            System.out.println("   Quantity: " + quantity);
-            System.out.println("   Limit Price: " + limitPrice);
-            System.out.println("   Stop Loss: " + stopLoss);
-            System.out.println("   Target: " + target);
-
             synchronized(apiCallLock) {
                 Thread.sleep(100);
 
@@ -1254,17 +1245,10 @@ public class TradingStrategyEngine {
                 orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
                 orderParams.quantity = quantity;
-
-//                orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
-//                orderParams.price = limitPrice;
-//                orderParams.product = Constants.PRODUCT_MIS;
-//                orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-                orderParams.price = (double) 0;
+                orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1278,14 +1262,27 @@ public class TradingStrategyEngine {
                     position.setSignalType(SignalType.BUY);
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
-
-                    System.out.println("✅ Pullback Order Placed: " + order.orderId);
+                    position.setPatternType("ema_vwap_pullback");
+                    position.setSimulated(false);
                     return position;
                 }
             }
-
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing pullback order: " + e.getMessage());
+            System.err.println("❌ Real pullback order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated pullback position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_PB_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType("ema_vwap_pullback");
+                simPosition.setSimulated(true);
+                return simPosition;
+            }
         }
         return null;
     }
@@ -1862,6 +1859,79 @@ public class TradingStrategyEngine {
         } catch (Exception e) {
             System.err.println("❌ Error stopping trading: " + e.getMessage());
         }
+    }
+
+    // Add this method to TradingStrategyEngine.java
+    public void closePosition(String symbol, String reason) {
+        Position position = currentPositions.get(symbol);
+        if (position == null) {
+            position = PositionManager.getCachedPosition(symbol);
+        }
+        if (position == null) {
+            System.err.println("Cannot close position – not found: " + symbol);
+            return;
+        }
+
+        try {
+            double exitPrice;
+            boolean isSimulated = position.isSimulated();
+
+            // Get current market price
+            String[] instruments = {symbol};
+            Map<String, Quote> quotes;
+            synchronized(apiCallLock) {
+                quotes = kiteConnect.getQuote(instruments);
+            }
+            Quote quote = quotes.get(symbol);
+            if (quote == null) {
+                System.err.println("Cannot get quote for " + symbol);
+                return;
+            }
+            exitPrice = quote.lastPrice;
+
+            if (!isSimulated) {
+                // Real sell order
+                OrderParams orderParams = new OrderParams();
+                orderParams.exchange = "NFO";
+                orderParams.tradingsymbol = symbol.replace("NFO:", "");
+                orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
+                orderParams.quantity = position.getQuantity();
+                orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+                orderParams.product = Constants.PRODUCT_MIS;
+                orderParams.validity = Constants.VALIDITY_DAY;
+                orderParams.marketProtection = -1;
+
+                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                if (exitOrder == null || exitOrder.orderId == null) {
+                    System.err.println("Failed to place sell order for " + symbol);
+                    return;
+                }
+                System.out.println("🔒 Position closed (REAL) for " + symbol + " at " + exitPrice + " – reason: " + reason);
+            } else {
+                System.out.println("🧪 SIMULATED position closed for " + symbol + " at " + exitPrice + " – reason: " + reason);
+            }
+
+            double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
+            pnlManager.addToDailyPnL(pnl);
+            pnlManager.addTradeLog(symbol, position.getEntryPrice(), exitPrice, pnl,
+                    reason, position.getPatternType(), isSimulated);
+
+            currentPositions.remove(symbol);
+            PositionManager.removeCachedPosition(symbol);
+
+        } catch (Exception | KiteException e) {
+            System.err.println("Error closing position " + symbol + ": " + e.getMessage());
+        }
+    }
+
+    public boolean hasOpenPosition(String symbol) {
+        return currentPositions.containsKey(symbol) || PositionManager.hasCachedPosition(symbol);
+    }
+
+    public Position getPosition(String symbol) {
+        Position pos = currentPositions.get(symbol);
+        if (pos == null) pos = PositionManager.getCachedPosition(symbol);
+        return pos;
     }
 
     // ====================================================================

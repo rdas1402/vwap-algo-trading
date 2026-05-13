@@ -4,10 +4,10 @@ com\trading\strategy\TradingStrategy.class
 com\trading\strategy\TradingStrategyEngine$1.class
 com\trading\test\MockRealTimeCandleBuilder.class
 com\trading\strategy\CandleHistoryManager.class
+com\trading\util\TokenRefresherLocal.class
 com\trading\strategy\CandleData.class
 com\trading\strategy\StrategyRegistry.class
 com\trading\test\CSVMarketDataLoader.class
-com\trading\strategy\BullishEngulfingStrategy$ActiveTradeData.class
 com\trading\test\BacktestCandleData.class
 com\trading\test\BacktestContext.class
 com\trading\strategy\TradingStrategyEngine.class

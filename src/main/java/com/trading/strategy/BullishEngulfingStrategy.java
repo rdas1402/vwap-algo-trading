@@ -1,4 +1,4 @@
-// BullishEngulfingStrategy.java
+// BullishEngulfingStrategy.java – Integrated with engine’s position management
 package com.trading.strategy;
 
 import com.trading.config.AppConfig;
@@ -6,64 +6,16 @@ import com.zerodhatech.kiteconnect.kitehttp.exceptions.KiteException;
 import com.zerodhatech.models.Quote;
 
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * Case 5: Bullish Engulfing Pattern Strategy
- *
- * Stop Loss : Half of the bullish engulfing candle body length from entry
- * Target    : Entry + 2 × Risk (1:2 Risk-Reward)
- *
- * SL Trigger: ONLY on 5-minute candle closure below stop loss level
- * Target Trigger: Checked every 1 second (real-time)
- */
 public class BullishEngulfingStrategy implements TradingStrategy {
 
     private static final int    DOWNTREND_LOOKBACK    = 3;
     private static final double MIN_DOWNTREND_PCT     = 1.0;
     private static final double MIN_ENGULF_RATIO      = 1.0;
-    private static final double VOLUME_CONFIRM_RATIO  = 1.2;
-    private static final int    VOLUME_AVG_PERIOD     = 10;
-    private static final int    MAX_HISTORY           = 60;
     private static final double STOP_LOSS_FACTOR      = 0.5;
 
-    private static final long   TARGET_CHECK_INTERVAL_MS = 1000;
-    private static final int    CANDLE_DURATION_MINUTES  = 5;
-
-    private final Map<String, ActiveTradeData> activeTrades = new ConcurrentHashMap<>();
-    private final ScheduledExecutorService targetMonitorExecutor = Executors.newScheduledThreadPool(5);
-
-    private static class ActiveTradeData {
-        final String instrument;
-        final double entryPrice;
-        final double stopLoss;
-        final double target;
-        final Date   entryTime;
-        final AtomicBoolean isClosed;
-        volatile long lastCandleCloseTime;
-        volatile double lastCandleClosePrice;
-        volatile boolean stopLossTriggeredThisCandle;
-
-        ScheduledFuture<?> monitorTask;
-
-        ActiveTradeData(String instrument, double entryPrice, double stopLoss, double target) {
-            this.instrument = instrument;
-            this.entryPrice = entryPrice;
-            this.stopLoss = stopLoss;
-            this.target = target;
-            this.entryTime = new Date();
-            this.isClosed = new AtomicBoolean(false);
-            this.stopLossTriggeredThisCandle = false;
-            this.lastCandleCloseTime = 0;
-            this.lastCandleClosePrice = entryPrice;
-        }
-
-        void markClosed() {
-            isClosed.set(true);
-            if (monitorTask != null) monitorTask.cancel(false);
-        }
-    }
+    private final Map<String, Long> lastCandleCloseTime = new HashMap<>();
+    private final Map<String, Boolean> stopLossTriggeredThisCandle = new HashMap<>();
 
     @Override
     public int getPriority() { return 5; }
@@ -99,7 +51,8 @@ public class BullishEngulfingStrategy implements TradingStrategy {
         try {
             System.out.println("\n🕯️ [Case 5] Analyzing Bullish Engulfing for: " + instrument);
 
-            if (activeTrades.containsKey(instrument)) {
+            // If there is already an open position for this instrument, check stop-loss on candle close
+            if (context.hasOpenPosition(instrument)) {
                 checkStopLossOnCandleCompletion(instrument, context);
                 return result;
             }
@@ -141,7 +94,7 @@ public class BullishEngulfingStrategy implements TradingStrategy {
             System.out.println("   Entry Trigger    : " + String.format("%.2f", entryTrigger));
             System.out.println("🕯️".repeat(15));
 
-            // Start unified breakout monitor (5 minutes, 3-second checks)
+            // Start breakout monitor (engine will call executeBullishEngulfingBuySignal on breakout)
             context.startEngulfingBreakoutMonitor(instrument, entryTrigger, stopLoss, target);
 
         } catch (Exception e) {
@@ -152,68 +105,50 @@ public class BullishEngulfingStrategy implements TradingStrategy {
 
     @Override
     public void executeBuySignal(String instrument, Map<String, Object> signalDetails, TradingStrategyEngine context) {
-        // This method is not used because the breakout monitor calls executeBullishEngulfingBuySignal directly.
-        // Kept for interface compliance.
+        // Not used – breakout monitor calls executeBullishEngulfingBuySignal directly
     }
 
     // ------------------------------------------------------------------
-    //  Trade Management (SL on candle close, target every 1 second)
+    //  Stop Loss Management (only on 5‑minute candle close)
     // ------------------------------------------------------------------
-    private void startTargetMonitoring(ActiveTradeData trade, TradingStrategyEngine context) {
-        ScheduledFuture<?> monitorTask = targetMonitorExecutor.scheduleAtFixedRate(() -> {
-            try {
-                if (trade.isClosed.get()) return;
-                double currentPrice = getCurrentLTP(trade.instrument, context);
-                if (currentPrice <= 0) return;
-                if (currentPrice >= trade.target) {
-                    System.out.println("\n" + "🎯".repeat(20));
-                    System.out.println("🎯 [Case 5] TARGET HIT! (Real-time check)");
-                    System.out.println("   Instrument  : " + trade.instrument);
-                    System.out.println("   Entry Price : " + String.format("%.2f", trade.entryPrice));
-                    System.out.println("   Target      : " + String.format("%.2f", trade.target));
-                    System.out.println("   Exit Price  : " + String.format("%.2f", currentPrice));
-                    System.out.println("   Profit      : " + String.format("%.2f", currentPrice - trade.entryPrice));
-                    System.out.println("🎯".repeat(20));
-                    trade.markClosed();
-                    closePosition(trade.instrument, currentPrice, "TARGET_HIT", context);
-                    activeTrades.remove(trade.instrument);
-                }
-            } catch (Exception e) {
-                System.err.println("❌ [Case 5] Target monitor error: " + e.getMessage());
-            }
-        }, 0, TARGET_CHECK_INTERVAL_MS, TimeUnit.MILLISECONDS);
-        trade.monitorTask = monitorTask;
-    }
-
     private void checkStopLossOnCandleCompletion(String instrument, TradingStrategyEngine context) {
-        ActiveTradeData trade = activeTrades.get(instrument);
-        if (trade == null || trade.isClosed.get()) return;
         try {
+            // Get the position from engine
+            Position position = context.getPosition(instrument);
+            if (position == null) return;
+
             RealTimeCandleBuilder candleBuilder = context.getRealTimeCandleBuilder();
             CandleData lastCompleted = candleBuilder.getLastCompletedCandle(instrument);
             if (lastCompleted == null) return;
+
             long candleCloseTime = lastCompleted.getTimestamp().getTime();
             double candleClose = lastCompleted.getClose();
-            boolean isNewCandle = (candleCloseTime != trade.lastCandleCloseTime);
+
+            Long lastTime = lastCandleCloseTime.get(instrument);
+            boolean isNewCandle = (lastTime == null || candleCloseTime != lastTime);
+
             if (isNewCandle) {
-                trade.lastCandleCloseTime = candleCloseTime;
-                trade.lastCandleClosePrice = candleClose;
-                trade.stopLossTriggeredThisCandle = false;
+                lastCandleCloseTime.put(instrument, candleCloseTime);
+                stopLossTriggeredThisCandle.put(instrument, false);
+
                 System.out.println("   📊 [Case 5] New 5-min candle completed for " + instrument
                         + " | Close: " + String.format("%.2f", candleClose));
-                if (candleClose < trade.stopLoss && !trade.stopLossTriggeredThisCandle) {
-                    trade.stopLossTriggeredThisCandle = true;
+
+                boolean slHit = candleClose < position.getStopLoss() &&
+                        !stopLossTriggeredThisCandle.getOrDefault(instrument, false);
+
+                if (slHit) {
+                    stopLossTriggeredThisCandle.put(instrument, true);
                     System.out.println("\n" + "⛔".repeat(20));
                     System.out.println("⛔ [Case 5] STOP LOSS TRIGGERED (5-min candle closure)");
                     System.out.println("   Instrument    : " + instrument);
-                    System.out.println("   Entry Price   : " + String.format("%.2f", trade.entryPrice));
-                    System.out.println("   Stop Loss     : " + String.format("%.2f", trade.stopLoss));
+                    System.out.println("   Entry Price   : " + String.format("%.2f", position.getEntryPrice()));
+                    System.out.println("   Stop Loss     : " + String.format("%.2f", position.getStopLoss()));
                     System.out.println("   Candle Close  : " + String.format("%.2f", candleClose));
-                    System.out.println("   Loss          : " + String.format("%.2f", trade.entryPrice - candleClose));
                     System.out.println("⛔".repeat(20));
-                    trade.markClosed();
-                    closePosition(instrument, candleClose, "STOP_LOSS", context);
-                    activeTrades.remove(instrument);
+
+                    // Use engine's public close method (handles real/simulated and logs P&L)
+                    context.closePosition(instrument, "STOP_LOSS_ENGULFING");
                 }
             }
         } catch (Exception e) {
@@ -221,26 +156,9 @@ public class BullishEngulfingStrategy implements TradingStrategy {
         }
     }
 
-    private void closePosition(String instrument, double price, String reason, TradingStrategyEngine context) {
-        System.out.println("🔒 [Case 5] Closing position for " + instrument);
-        System.out.println("   Exit Price: " + String.format("%.2f", price));
-        System.out.println("   Reason    : " + reason);
-        // TODO: Implement actual position closing if needed – currently just removes from active trades.
-        activeTrades.remove(instrument);
-    }
-
     // ------------------------------------------------------------------
-    //  Helper methods
+    //  Helper methods (unchanged)
     // ------------------------------------------------------------------
-    private double getCurrentLTP(String instrument, TradingStrategyEngine context) {
-        try {
-            String[] instrumentArr = {instrument};
-            Map<String, Quote> quotes = context.getKiteConnect().getQuote(instrumentArr);
-            Quote quote = quotes.get(instrument);
-            return quote != null ? quote.lastPrice : 0;
-        } catch (Exception | KiteException e) { return 0; }
-    }
-
     private boolean isBullishEngulfing(CandleData previous, CandleData current) {
         if (previous == null || current == null) return false;
         boolean prevBearish = previous.getClose() < previous.getOpen();
@@ -276,19 +194,8 @@ public class BullishEngulfingStrategy implements TradingStrategy {
         return highestClose > 0 ? ((highestClose - currentClose) / highestClose) * 100.0 : 0;
     }
 
-    public void shutdown() {
-        targetMonitorExecutor.shutdown();
-        try {
-            if (!targetMonitorExecutor.awaitTermination(5, TimeUnit.SECONDS))
-                targetMonitorExecutor.shutdownNow();
-        } catch (InterruptedException e) {
-            targetMonitorExecutor.shutdownNow();
-        }
-    }
-
     @Override
     public boolean shouldSkipInstrument(String instrument, TradingStrategyEngine context) {
-        if (activeTrades.containsKey(instrument)) return true;
         return context.shouldSkipInstrument(instrument);
     }
 }

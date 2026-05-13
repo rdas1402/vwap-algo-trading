@@ -75,7 +75,7 @@ public class PnLManager {
             System.out.printf("  %s %s %s | Entry %.2f Exit %.2f | P&L %.2f | %s%n",
                     t.get("timestamp"), t.get("instrument"), t.get("pattern"),
                     t.get("entry"), t.get("exit"), t.get("pnl"),
-                    t.get("simulated") ? "SIM" : "REAL");
+                    (boolean) t.get("simulated") ? "SIM" : "REAL");
         }
     }
 }
