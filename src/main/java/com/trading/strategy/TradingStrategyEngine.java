@@ -454,47 +454,56 @@ public class TradingStrategyEngine {
      * Force close a position (for end-of-day)
      */
     private void closePositionForced(String symbol) {
+        Position position = currentPositions.get(symbol);
+        if (position == null) return;
+
         try {
-            Position position = currentPositions.get(symbol);
-            if (position == null) return;
+            double exitPrice;
+            boolean isSimulated = position.isSimulated();
 
             String[] instruments = {symbol};
             Map<String, Quote> quotes;
             synchronized(apiCallLock) {
                 quotes = kiteConnect.getQuote(instruments);
             }
-            double exitPrice = quotes.get(symbol).lastPrice;
+            Quote quote = quotes.get(symbol);
+            if (quote == null) {
+                System.err.println("Cannot get quote for forced close of " + symbol);
+                return;
+            }
+            exitPrice = quote.lastPrice;
 
-            OrderParams orderParams = new OrderParams();
-            orderParams.exchange = "NFO";
-            orderParams.tradingsymbol = symbol.replace("NFO:", "");
-            orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
-            orderParams.quantity = position.getQuantity();
-            orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-            orderParams.product = Constants.PRODUCT_MIS;
-            orderParams.validity = Constants.VALIDITY_DAY;
+            if (!isSimulated) {
+                OrderParams orderParams = new OrderParams();
+                orderParams.exchange = "NFO";
+                orderParams.tradingsymbol = symbol.replace("NFO:", "");
+                orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
+                orderParams.quantity = position.getQuantity();
+                orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+                orderParams.product = Constants.PRODUCT_MIS;
+                orderParams.validity = Constants.VALIDITY_DAY;
+                orderParams.marketProtection = -1;
 
-            // Market protection for MIS sell orders
-            orderParams.marketProtection = -1;
-
-            Order exitOrder;
-            synchronized(apiCallLock) {
-                exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                if (exitOrder == null || exitOrder.orderId == null) {
+                    System.err.println("Failed to force close " + symbol);
+                    return;
+                }
+                System.out.println("🔴 FORCED CLOSE (REAL) for " + symbol + " at " + exitPrice);
+            } else {
+                System.out.println("🧪 SIMULATED FORCED CLOSE for " + symbol + " at " + exitPrice);
             }
 
-            if (exitOrder != null && exitOrder.orderId != null) {
-                double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
-                pnlManager.addToDailyPnL(pnl);
+            double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
+            pnlManager.addToDailyPnL(pnl);
+            pnlManager.addTradeLog(symbol, position.getEntryPrice(), exitPrice, pnl,
+                    "FORCED_CLOSE", position.getPatternType(), isSimulated);
 
-                System.out.println("🛑 FORCED CLOSE - P&L for " + symbol + ": ₹" + String.format("%.2f", pnl));
-                System.out.println("   Entry: " + position.getEntryPrice() + " | Exit: " + exitPrice);
-
-                currentPositions.remove(symbol);
-                PositionManager.removeCachedPosition(symbol);
-            }
+            currentPositions.remove(symbol);
+            PositionManager.removeCachedPosition(symbol);
 
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error closing position: " + e.getMessage());
+            System.err.println("Error in forced close: " + e.getMessage());
         }
     }
 
@@ -598,94 +607,112 @@ public class TradingStrategyEngine {
     }
 
     private void closePositionDueToStopLoss(String symbol) {
-        try {
-            Position position = currentPositions.get(symbol);
-            if (position == null) return;
+        Position position = currentPositions.get(symbol);
+        if (position == null) return;
 
+        try {
+            double exitPrice;
+            boolean isSimulated = position.isSimulated();
+
+            // Get current market price (needed for both real and simulated)
             String[] instruments = {symbol};
             Map<String, Quote> quotes;
             synchronized(apiCallLock) {
                 quotes = kiteConnect.getQuote(instruments);
             }
-            double exitPrice = quotes.get(symbol).lastPrice;
+            Quote quote = quotes.get(symbol);
+            if (quote == null) {
+                System.err.println("Cannot get quote for " + symbol);
+                return;
+            }
+            exitPrice = quote.lastPrice;
 
-            OrderParams orderParams = new OrderParams();
-            orderParams.exchange = "NFO";
-            orderParams.tradingsymbol = symbol.replace("NFO:", "");
-            orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
-            orderParams.quantity = position.getQuantity();
-            orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-            orderParams.product = Constants.PRODUCT_MIS;
-            orderParams.validity = Constants.VALIDITY_DAY;
+            if (!isSimulated) {
+                // Real order: place sell order
+                OrderParams orderParams = new OrderParams();
+                orderParams.exchange = "NFO";
+                orderParams.tradingsymbol = symbol.replace("NFO:", "");
+                orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
+                orderParams.quantity = position.getQuantity();
+                orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+                orderParams.product = Constants.PRODUCT_MIS;
+                orderParams.validity = Constants.VALIDITY_DAY;
+                orderParams.marketProtection = -1;
 
-            // Market protection for MIS sell orders
-            orderParams.marketProtection = -1;
-
-            Order exitOrder;
-            synchronized(apiCallLock) {
-                exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                if (exitOrder == null || exitOrder.orderId == null) {
+                    System.err.println("Failed to place sell order for " + symbol);
+                    return;
+                }
+                System.out.println("🛑 STOP LOSS EXECUTED (REAL) for " + symbol + " at " + exitPrice);
+            } else {
+                System.out.println("🧪 SIMULATED STOP LOSS for " + symbol + " at " + exitPrice);
             }
 
-            if (exitOrder != null && exitOrder.orderId != null) {
-                double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
-                pnlManager.addToDailyPnL(pnl);
+            double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
+            pnlManager.addToDailyPnL(pnl);
+            pnlManager.addTradeLog(symbol, position.getEntryPrice(), exitPrice, pnl,
+                    "STOP_LOSS", position.getPatternType(), isSimulated);
 
-                System.out.println("🛑 STOP LOSS EXECUTED - P&L for " + symbol + ": ₹" + String.format("%.2f", pnl));
-                System.out.println("   Entry: " + position.getEntryPrice() + " | Exit: " + exitPrice);
-                System.out.println("   Total Daily P&L: ₹" + String.format("%.2f", pnlManager.getTotalDailyPnL()));
-
-                currentPositions.remove(symbol);
-                PositionManager.removeCachedPosition(symbol);
-            }
+            currentPositions.remove(symbol);
+            PositionManager.removeCachedPosition(symbol);
 
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error closing position due to stop loss: " + e.getMessage());
+            System.err.println("Error closing position due to stop loss: " + e.getMessage());
         }
     }
 
     private void closePositionDueToTarget(String instrument) {
+        Position position = currentPositions.get(instrument);
+        if (position == null) return;
+
         try {
-            Position position = currentPositions.get(instrument);
-            if (position == null) return;
+            double exitPrice;
+            boolean isSimulated = position.isSimulated();
 
             String[] instruments = {instrument};
             Map<String, Quote> quotes;
             synchronized(apiCallLock) {
                 quotes = kiteConnect.getQuote(instruments);
             }
-            double exitPrice = quotes.get(instrument).lastPrice;
+            Quote quote = quotes.get(instrument);
+            if (quote == null) {
+                System.err.println("Cannot get quote for " + instrument);
+                return;
+            }
+            exitPrice = quote.lastPrice;
 
-            OrderParams orderParams = new OrderParams();
-            orderParams.exchange = "NFO";
-            orderParams.tradingsymbol = instrument.replace("NFO:", "");
-            orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
-            orderParams.quantity = position.getQuantity();
-            orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-            orderParams.product = Constants.PRODUCT_MIS;
-            orderParams.validity = Constants.VALIDITY_DAY;
+            if (!isSimulated) {
+                OrderParams orderParams = new OrderParams();
+                orderParams.exchange = "NFO";
+                orderParams.tradingsymbol = instrument.replace("NFO:", "");
+                orderParams.transactionType = Constants.TRANSACTION_TYPE_SELL;
+                orderParams.quantity = position.getQuantity();
+                orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+                orderParams.product = Constants.PRODUCT_MIS;
+                orderParams.validity = Constants.VALIDITY_DAY;
+                orderParams.marketProtection = -1;
 
-            // Market protection for MIS sell orders
-            orderParams.marketProtection = -1;
-
-            Order exitOrder;
-            synchronized(apiCallLock) {
-                exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                if (exitOrder == null || exitOrder.orderId == null) {
+                    System.err.println("Failed to place target sell order for " + instrument);
+                    return;
+                }
+                System.out.println("💰 TARGET HIT (REAL) for " + instrument + " at " + exitPrice);
+            } else {
+                System.out.println("🧪 SIMULATED TARGET HIT for " + instrument + " at " + exitPrice);
             }
 
-            if (exitOrder != null && exitOrder.orderId != null) {
-                double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
-                pnlManager.addToDailyPnL(pnl);
+            double pnl = (exitPrice - position.getEntryPrice()) * position.getQuantity();
+            pnlManager.addToDailyPnL(pnl);
+            pnlManager.addTradeLog(instrument, position.getEntryPrice(), exitPrice, pnl,
+                    "TARGET", position.getPatternType(), isSimulated);
 
-                System.out.println("💰 TARGET ACHIEVED - P&L for " + instrument + ": ₹" + String.format("%.2f", pnl));
-                System.out.println("   Entry: " + position.getEntryPrice() + " | Exit: " + exitPrice);
-                System.out.println("   Total Daily P&L: ₹" + String.format("%.2f", pnlManager.getTotalDailyPnL()));
-
-                currentPositions.remove(instrument);
-                PositionManager.removeCachedPosition(instrument);
-            }
+            currentPositions.remove(instrument);
+            PositionManager.removeCachedPosition(instrument);
 
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error closing position due to target: " + e.getMessage());
+            System.err.println("Error closing position due to target: " + e.getMessage());
         }
     }
 
@@ -1098,8 +1125,6 @@ public class TradingStrategyEngine {
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
-            double limitPrice = entryPrice;
-
             synchronized(apiCallLock) {
                 Thread.sleep(100);
 
@@ -1108,12 +1133,10 @@ public class TradingStrategyEngine {
                 orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
                 orderParams.quantity = quantity;
-                orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
-                orderParams.price = limitPrice;
+                orderParams.orderType = Constants.ORDER_TYPE_MARKET;
+                orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
-                // Market protection for MIS sell orders
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1128,16 +1151,25 @@ public class TradingStrategyEngine {
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
                     position.setPatternType(patternType);
-
-                    System.out.println("✅ Order Placed: " + order.orderId);
+                    position.setSimulated(false);
                     return position;
                 }
             }
-
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing order: " + e.getMessage());
-            if (e instanceof KiteException) {
-                System.err.println("   Code: " + ((KiteException) e).code);
+            System.err.println("❌ Real order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType(patternType);
+                simPosition.setSimulated(true);
+                return simPosition;
             }
         }
         return null;
@@ -1361,8 +1393,6 @@ public class TradingStrategyEngine {
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
-            double limitPrice = entryPrice;
-
             synchronized(apiCallLock) {
                 Thread.sleep(100);
 
@@ -1371,15 +1401,10 @@ public class TradingStrategyEngine {
                 orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
                 orderParams.quantity = quantity;
-//                orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
-//                orderParams.price = limitPrice;
-//                orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.orderType = Constants.ORDER_TYPE_MARKET;
                 orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
-                // MARKET PROTECTION (required for MIS market orders)
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1393,11 +1418,27 @@ public class TradingStrategyEngine {
                     position.setSignalType(SignalType.BUY);
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
+                    position.setPatternType("hammer_reversal");
+                    position.setSimulated(false);
                     return position;
                 }
             }
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing hammer order: " + e.getMessage());
+            System.err.println("❌ Real hammer order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated hammer position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_HM_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType("hammer_reversal");
+                simPosition.setSimulated(true);
+                return simPosition;
+            }
         }
         return null;
     }
@@ -1407,8 +1448,6 @@ public class TradingStrategyEngine {
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
-            double limitPrice = entryPrice;
-
             synchronized(apiCallLock) {
                 Thread.sleep(100);
 
@@ -1417,16 +1456,10 @@ public class TradingStrategyEngine {
                 orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
                 orderParams.quantity = quantity;
-//                orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
-//                orderParams.price = limitPrice;
-//                orderParams.product = Constants.PRODUCT_MIS;
-//                orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-                orderParams.price = (double) 0;
+                orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1440,11 +1473,27 @@ public class TradingStrategyEngine {
                     position.setSignalType(SignalType.BUY);
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
+                    position.setPatternType("breakout_retest");
+                    position.setSimulated(false);
                     return position;
                 }
             }
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing breakout+retest order: " + e.getMessage());
+            System.err.println("❌ Real breakout+retest order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated breakout+retest position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_BR_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType("breakout_retest");
+                simPosition.setSimulated(true);
+                return simPosition;
+            }
         }
         return null;
     }
@@ -1498,7 +1547,6 @@ public class TradingStrategyEngine {
         try {
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
-            double limitPrice = entryPrice;
 
             synchronized(apiCallLock) {
                 Thread.sleep(100);
@@ -1508,16 +1556,10 @@ public class TradingStrategyEngine {
                 orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
                 orderParams.quantity = quantity;
-//                orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
-//                orderParams.price = limitPrice;
-//                orderParams.product = Constants.PRODUCT_MIS;
-//                orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-                orderParams.price = (double) 0;
+                orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1531,11 +1573,27 @@ public class TradingStrategyEngine {
                     position.setSignalType(SignalType.BUY);
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
+                    position.setPatternType("morning_star");
+                    position.setSimulated(false);
                     return position;
                 }
             }
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing morning star order: " + e.getMessage());
+            System.err.println("❌ Real morning star order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated morning star position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_MS_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType("morning_star");
+                simPosition.setSimulated(true);
+                return simPosition;
+            }
         }
         return null;
     }
@@ -1628,40 +1686,23 @@ public class TradingStrategyEngine {
     // BLOCK 2 – Private order placement method  (add after placeBreakoutRetestOrder)
     // ───────────────────────────────────────────────────────────────────────────
 
-    private Position placeBullishEngulfingOrder(String symbol,
-                                                double entryPrice,
-                                                double stopLoss,
-                                                double target) {
+    private Position placeBullishEngulfingOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
-            int    quantity      = AppConfig.getVWAPOptionsLotSize();
+            int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
-            double limitPrice    = entryPrice;
 
-            System.out.println("📋 Placing BULLISH ENGULFING LIMIT BUY Order:");
-            System.out.println("   Symbol    : " + tradingSymbol);
-            System.out.println("   Quantity  : " + quantity);
-            System.out.println("   Limit Price: " + String.format("%.2f", limitPrice));
-            System.out.println("   Stop Loss : " + String.format("%.2f", stopLoss));
-            System.out.println("   Target    : " + String.format("%.2f", target));
-
-            synchronized (apiCallLock) {
+            synchronized(apiCallLock) {
                 Thread.sleep(100);
 
                 OrderParams orderParams = new OrderParams();
-                orderParams.exchange        = "NFO";
-                orderParams.tradingsymbol   = tradingSymbol;
+                orderParams.exchange = "NFO";
+                orderParams.tradingsymbol = tradingSymbol;
                 orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
-                orderParams.quantity        = quantity;
-//                orderParams.orderType       = Constants.ORDER_TYPE_LIMIT;
-//                orderParams.price           = limitPrice;
-//                orderParams.product         = Constants.PRODUCT_MIS;
-//                orderParams.validity        = Constants.VALIDITY_DAY;
-
+                orderParams.quantity = quantity;
                 orderParams.orderType = Constants.ORDER_TYPE_MARKET;
-                orderParams.price = (double) 0;
+                orderParams.price = 0d;
                 orderParams.product = Constants.PRODUCT_MIS;
                 orderParams.validity = Constants.VALIDITY_DAY;
-
                 orderParams.marketProtection = -1;
 
                 Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
@@ -1675,14 +1716,27 @@ public class TradingStrategyEngine {
                     position.setSignalType(SignalType.BUY);
                     position.setStopLoss(stopLoss);
                     position.setTarget(target);
-
-                    System.out.println("✅ Bullish Engulfing Order Placed: " + order.orderId);
+                    position.setPatternType("bullish_engulfing");
+                    position.setSimulated(false);
                     return position;
                 }
             }
-
         } catch (Exception | KiteException e) {
-            System.err.println("❌ Error placing bullish engulfing order: " + e.getMessage());
+            System.err.println("❌ Real bullish engulfing order failed for " + symbol + ": " + e.getMessage());
+            if (AppConfig.isSimulateFailedOrders()) {
+                System.out.println("⚠️ SIMULATION MODE: Creating simulated bullish engulfing position for " + symbol);
+                Position simPosition = new Position();
+                simPosition.setTradingSymbol(symbol);
+                simPosition.setOrderId("SIM_BE_" + System.currentTimeMillis());
+                simPosition.setEntryPrice(entryPrice);
+                simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+                simPosition.setSignalType(SignalType.BUY);
+                simPosition.setStopLoss(stopLoss);
+                simPosition.setTarget(target);
+                simPosition.setPatternType("bullish_engulfing");
+                simPosition.setSimulated(true);
+                return simPosition;
+            }
         }
         return null;
     }

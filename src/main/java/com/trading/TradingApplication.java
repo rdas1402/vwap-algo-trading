@@ -14,11 +14,15 @@ public class TradingApplication {
     private static boolean isTradingActive = false;
     private static boolean tradingDayEnded = false;
 
+
     private static final PnLManager pnlManager = PnLManager.getInstance();
 
     public static void main(String[] args) {
         try {
             System.out.println("🚀 Starting Automated Trading Strategy Engine...");
+
+            AppConfig.setSimulateFailedOrders(true);   // Test mode
+            // AppConfig.setSimulateFailedOrders(false); // Real trading
 
             // Initialize Trading Engine
             tradingEngine = new TradingStrategyEngine();

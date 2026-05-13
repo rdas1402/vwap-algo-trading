@@ -132,8 +132,10 @@ tail -f /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
 
 tail -50 /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
 
+tail -200 /home/ec2-user/vwap-algo-trading/logs/trading_start.log
 
-cat /home/ec2-user/vwap-algo-trading/logs/daily_trading.log
+
+cat /home/ec2-user/vwap-algo-trading/logs/trading_start.log
 
 
 
@@ -142,3 +144,63 @@ ps aux | grep refresh_token_retry.sh
 kill 12345   # replace with the actual PID
 
 curl ifconfig.me
+
+unzip -p /home/ec2-user/vwap-algo-trading/target/vwap-algo-trading-1.0-SNAPSHOT.jar application.properties | grep zerodha.access.token
+
+
+mkdir -p /home/ec2-user/vwap-algo-trading/config
+cp /home/ec2-user/vwap-algo-trading/src/main/resources/application.properties /home/ec2-user/vwap-algo-trading/config/
+
+
+
+1. List all running Java processes
+bash
+ps aux | grep java
+Look for processes containing TradingApplication (or vwap-algo-trading). Example output:
+
+text
+ec2-user   12345  0.5  2.1  ... java -cp ... TradingApplication
+ec2-user   12346  0.3  2.0  ... java -cp ... TradingApplication
+2. Kill all trading app processes
+bash
+pkill -f TradingApplication
+Or kill by specific PID:
+
+bash
+kill -9 <PID1> <PID2>
+3. Verify killed
+bash
+ps aux | grep TradingApplication | grep -v grep
+No output means all instances are stopped.
+
+
+*********The script permissions*********
+----------------------------------------
+chmod +x /home/ec2-user/vwap-algo-trading/refresh_token_retry.sh
+chmod +x /home/ec2-user/vwap-algo-trading/start_trading.sh
+
+
+Verify:
+ls -l /home/ec2-user/vwap-algo-trading/refresh_token_retry.sh
+Should now show -rwxr-xr-x.
+
+✅ Fix the test cron line
+Edit your crontab:
+
+bash
+crontab -e
+Change the test line from:
+
+text
+* * * * * /bin/echo "Test from cron at $(date)" >> /tmp/cron_test.logi
+to:
+
+text
+* * * * * /bin/echo "Test from cron at $(date)" >> /tmp/cron_test.log
+Save and exit.
+
+Wait a minute, then check:
+
+bash
+cat /tmp/cron_test.log
+If you see output, cron is now executing user jobs.

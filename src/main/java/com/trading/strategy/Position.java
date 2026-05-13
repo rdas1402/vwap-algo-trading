@@ -14,6 +14,7 @@ public class Position {
     private double vwap; // Add this field
     private Date entryTime; // Add this field
     private String patternType;
+    private boolean simulated;
 
     // Getters and setters
     public String getTradingSymbol() { return tradingSymbol; }
@@ -51,4 +52,7 @@ public class Position {
     public void setPatternType(String patternType) {
         this.patternType = patternType;
     }
+
+    public boolean isSimulated() { return simulated; }
+    public void setSimulated(boolean simulated) { this.simulated = simulated; }
 }
