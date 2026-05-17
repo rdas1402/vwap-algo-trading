@@ -38,11 +38,6 @@ public class MorningStarStrategy implements TradingStrategy {
     }
 
     @Override
-    public boolean canExecute(TradingStrategyEngine context) {
-        return context.isWithinBuyingHours();
-    }
-
-    @Override
     public Map<String, String> findInstruments(TradingStrategyEngine context) throws Exception, KiteException {
         Map<String, String> options = new HashMap<>();
         double targetPremium = AppConfig.getTargetPremium(); // Use same config as others
@@ -129,6 +124,10 @@ public class MorningStarStrategy implements TradingStrategy {
             boolean atBottom = isPatternAtBottom(instrument, candleBuilder, candle3);
             System.out.println("\n   📍 Position Analysis:");
             System.out.println("      - Pattern at recent bottom: " + atBottom);
+            if (!atBottom) {
+                System.out.println("   ❌ Not a valid Morning Star pattern – pattern not at recent bottom (higher lows exist within last 10 candles)");
+                return result;
+            }
 
             // ========== Setup Trade ==========
             double entryPrice = candle3.getHigh(); // Break of third candle's high
@@ -160,8 +159,11 @@ public class MorningStarStrategy implements TradingStrategy {
             System.out.println("      - 🎯 Target: " + String.format("%.2f", target) + " (1:2 Risk-Reward)");
             System.out.println("⭐".repeat(20));
 
-            // Start breakout monitor (5 minutes, 3-second checks) – same as hammer
-            context.startBreakoutMonitor(instrument, entryPrice, stopLoss, target, "morning_star", 3);
+            if (!context.isPatternBuyTimeAllowed("morning_star")) {
+                System.out.println("⏸️ Morning Star trading allowed only from 09:45 – monitor not started");
+                return result;
+            }
+            context.startMorningStarBreakoutMonitor(instrument, entryPrice, stopLoss, target);
 
             result.put("message", "Morning Star detected – monitoring breakout (5 min, 3s checks)");
             result.put("entryPrice", entryPrice);

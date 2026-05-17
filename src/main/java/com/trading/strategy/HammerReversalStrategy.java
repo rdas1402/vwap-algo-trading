@@ -21,9 +21,6 @@ public class HammerReversalStrategy implements TradingStrategy {
     public String getStrategyName() { return "Case 2: Hammer Reversal Strategy (Bottom Reversal after Downtrend)"; }
 
     @Override
-    public boolean canExecute(TradingStrategyEngine context) { return context.isWithinBuyingHours(); }
-
-    @Override
     public Map<String, String> findInstruments(TradingStrategyEngine context) throws Exception, KiteException {
         Map<String, String> options = new HashMap<>();
         double targetPremium = AppConfig.getHammerTargetPremium();
@@ -114,6 +111,10 @@ public class HammerReversalStrategy implements TradingStrategy {
             double riskAmount = (hammerCandle.getHigh() - hammerCandle.getLow()) * 0.75;
             double target = hammerCandle.getHigh() + (riskAmount * 2);
 
+            if (!context.isPatternBuyTimeAllowed("hammer")) {
+                System.out.println("⏸️ Hammer trading allowed only from 09:45 – monitor not started");
+                return result;
+            }
             context.startHammerBreakoutMonitor(instrument, hammerCandle.getHigh(), hammerCandle.getLow(), target);
 
             result.put("message", "Hammer detected – monitoring breakout (5 min, 3s checks)");

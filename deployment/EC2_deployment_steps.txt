@@ -19,6 +19,7 @@ If java not there then run:
 To new EC2 instance created:
 Instance name :
 
+ ssh -i "Rex_Trading_Bot_140292_keykit.pem" ec2-user@ec2-13-234-78-254.ap-south-1.compute.amazonaws.com
 Steps:
 1. Open git bash and goto deployment where pem is there
 2. Run: ssh -i "Rex_Trading_Bot_140292_keykit.pem" ec2-user@ec2-13-234-78-254.ap-south-1.compute.amazonaws.com
@@ -204,3 +205,115 @@ Wait a minute, then check:
 bash
 cat /tmp/cron_test.log
 If you see output, cron is now executing user jobs.
+
+
+
+Run:
+
+chmod +x /home/ec2-user/vwap-algo-trading/refresh_token_retry.sh
+chmod +x /home/ec2-user/vwap-algo-trading/start_trading.sh
+
+Or simply:
+
+chmod +x /home/ec2-user/vwap-algo-trading/*.sh
+🔍 Verify
+ls -l /home/ec2-user/vwap-algo-trading/*.sh
+
+
+
+
+✅ Step 1 – Force‑reload the user crontab and restart cron
+bash
+crontab -r                     # remove all jobs
+crontab -e                     # add your two lines again
+Add:
+
+cron
+45 8 * * * /home/ec2-user/vwap-algo-trading/refresh_token_retry.sh
+15 9 * * * /home/ec2-user/vwap-algo-trading/start_trading.sh
+Save. Then restart cron:
+
+bash
+sudo systemctl restart crond
+✅ Step 2 – Add a test cron job (every minute) to verify execution
+bash
+crontab -e
+Add this line above your existing lines:
+
+cron
+* * * * * /bin/echo "Cron test at $(date)" >> /tmp/cron_test.log
+Wait 1–2 minutes, then check:
+
+bash
+cat /tmp/cron_test.log
+If the file appears, cron now works. Remove the test line (crontab -e) and your original jobs will run tomorrow.
+
+If not, proceed to Step 3.
+
+✅ Step 3 – Check for cron.allow / cron.deny
+bash
+cat /etc/cron.allow     # if exists, user must be listed
+cat /etc/cron.deny      # if exists, user must NOT be listed
+If these files exist and block ec2-user, edit them (as root) to allow ec2-user.
+
+✅ Step 4 – Verify SELinux is permissive (already done)
+bash
+getenforce
+If Enforcing, run:
+
+bash
+sudo setenforce 0
+Then test cron again.
+
+✅ Step 5 – Check if any syntax error in crontab file
+bash
+crontab -l | cat -A
+Look for hidden characters like ^M (carriage return). If present, recreate the crontab.
+
+✅ Step 6 – Check cron’s internal log for errors
+bash
+sudo journalctl -u crond -n 50 | grep -i "ec2-user\|error\|failed\|not found"
+If you see “pam_unix(crond:session): session opened for user ec2-user”, cron is reading the user crontab. If not, the user crontab is ignored.
+
+
+Download logs:
+scp -i "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\Rex_Trading_Bot_140292_keykit.pem" ec2-user@13.234.78.254:"/home/ec2-user/vwap-algo-trading/logs/*.log" ./
+
+
+
+[ec2-user@ip-172-31-44-252 ~]$ ls -l
+total 24
+-rw-r--r--.  1 ec2-user ec2-user   371 May 14 16:30 token_cron.log
+-rw-r--r--.  1 ec2-user ec2-user   188 May 14 16:41 trading_cron.log
+drwxr-xr-x. 10 ec2-user ec2-user 16384 May 14 02:36 vwap-algo-trading
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$
+[ec2-user@ip-172-31-44-252 ~]$ scp -i "D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\Rex_Trading_Bot_140292_keykit.pem" ec2-user@13.234.78.254:"/home/ec2-user/vwap-algo-trading/logs/*.log" ./
+Warning: Identity file D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\deployment\Rex_Trading_Bot_140292_keykit.pem not accessible: No such file or directory.
+The authenticity of host '13.234.78.254 (13.234.78.254)' can't be established.
+ED25519 key fingerprint is SHA256:ot3v0nT0ecnYDA1lpZixW1uBAxTb6pPnRHWB/8N+5kE.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '13.234.78.254' (ED25519) to the list of known hosts.
+ec2-user@13.234.78.254: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+Connection closed
+[ec2-user@ip-172-31-44-252 ~]$
+

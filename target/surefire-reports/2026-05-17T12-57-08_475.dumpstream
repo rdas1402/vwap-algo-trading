@@ -1,4 +1,4 @@
-# Created at 2026-05-14T02:33:15.532
+# Created at 2026-05-17T12:57:08.856
 Boot Manifest-JAR contains absolute paths in classpath 'D:\aPPLICATION_i_DEVELOP\vwap-algo-trading\target\test-classes'
 Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
 'other' has different root

@@ -51,9 +51,6 @@ public class BreakoutRetestStrategy implements TradingStrategy {
     public String getStrategyName() { return "Case 3: Breakout + Retest Strategy (Most Powerful Setup)"; }
 
     @Override
-    public boolean canExecute(TradingStrategyEngine context) { return context.isWithinBuyingHours(); }
-
-    @Override
     public Map<String, String> findInstruments(TradingStrategyEngine context) throws Exception, KiteException {
         Map<String, String> options = new HashMap<>();
         double targetPremium = AppConfig.getBreakoutTargetPremium();

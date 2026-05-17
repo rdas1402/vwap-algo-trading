@@ -2,7 +2,6 @@ package com.trading.strategy;
 
 import com.trading.config.AppConfig;
 import com.zerodhatech.kiteconnect.kitehttp.exceptions.KiteException;
-import com.zerodhatech.models.Quote;
 
 import java.util.*;
 
@@ -10,7 +9,6 @@ public class EMAVWAPPullbackStrategy implements TradingStrategy, EngineAware {
 
     private static final int EMA_PERIOD = 10;
     private static final int ATR_PERIOD = 14;
-    private static final int VOLUME_MA_PERIOD = 10;
 
     private final Map<String, Double> atrCache = new HashMap<>();
     private transient TradingStrategyEngine engineContext;
@@ -28,11 +26,6 @@ public class EMAVWAPPullbackStrategy implements TradingStrategy, EngineAware {
     @Override
     public String getStrategyName() {
         return "Case 1: EMA/VWAP Pullback Strategy (Complete Implementation)";
-    }
-
-    @Override
-    public boolean canExecute(TradingStrategyEngine context) {
-        return context.isWithinBuyingHours();
     }
 
     @Override
@@ -179,7 +172,10 @@ public class EMAVWAPPullbackStrategy implements TradingStrategy, EngineAware {
             }
             System.out.println("🎯".repeat(20));
 
-            // Start unified breakout monitor (5 minutes, 5-second checks)
+            if (!context.isPatternBuyTimeAllowed("pullback")) {
+                System.out.println("⏸️ Pullback trading allowed only from 09:45 – monitor not started");
+                return result;
+            }
             context.startPullbackBreakoutMonitor(instrument, entryPrice, stopLoss, target1);
 
             result.put("message", "Pullback pattern detected – monitoring breakout (5 min)");

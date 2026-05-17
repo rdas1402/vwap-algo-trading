@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /home/ec2-user/vwap-algo-trading
 
 # Configuration
 MAX_RETRIES=12              # Retry up to 12 times (5 min * 12 = 1 hour)

@@ -22,11 +22,6 @@ public interface TradingStrategy {
     String getStrategyName();
     
     /**
-     * Check if this strategy can be executed (time conditions, market state, etc.)
-     */
-    boolean canExecute(TradingStrategyEngine context);
-    
-    /**
      * Find suitable instruments for this strategy
      * @return Map with "CE" and/or "PE" instrument symbols
      */

@@ -4,13 +4,11 @@ package com.trading.strategy;
 import com.trading.config.AppConfig;
 import com.zerodhatech.kiteconnect.kitehttp.exceptions.KiteException;
 
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VWAPStrategy implements TradingStrategy {
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private final Map<String, ReversalPatternData> reversalPatternData = new ConcurrentHashMap<>();
 
     private static class ReversalPatternData {
@@ -30,11 +28,6 @@ public class VWAPStrategy implements TradingStrategy {
     @Override
     public String getStrategyName() {
         return "Case 4: Original VWAP Options Strategy (Reversal & Crossover)";
-    }
-
-    @Override
-    public boolean canExecute(TradingStrategyEngine context) {
-        return context.isWithinBuyingHours();
     }
 
     @Override
@@ -171,13 +164,17 @@ public class VWAPStrategy implements TradingStrategy {
             double highestHigh = Math.max(prevHigh, Math.max(lastHigh, currentHigh));
             double lowestLow = Math.min(prevLow, Math.min(lastLow, currentLow));
             double lowToCurrentPercent = Math.abs(currentClose - lowestLow) / currentClose * 100;
-            double stopLossLevel = (lowToCurrentPercent > 20.0) ? currentClose * 0.80 : lowestLow;
+            double stopLossLevel = (lowToCurrentPercent > 20.0) ? currentClose * 0.90 : lowestLow;
 
             reversalPatternData.put(instrument, new ReversalPatternData(highestHigh, stopLossLevel));
 
             if (currentClose >= highestHigh) {
                 return true;
             } else {
+                if (!context.isPatternBuyTimeAllowed("reversal")) {
+                    System.out.println("⏸️ Reversal trading allowed only from 10:00 – monitor not started");
+                    return false;
+                }
                 context.startReversalBreakoutMonitor(instrument, highestHigh, stopLossLevel);
                 return false;
             }
@@ -211,10 +208,7 @@ public class VWAPStrategy implements TradingStrategy {
             }
 
             boolean crossoverDetected = false;
-            if (previousBelowVWAP && lastBelowVWAP && currentAboveVWAP) {
-                crossoverDetected = true;
-                System.out.println("   📈 Crossover Pattern A detected (2 below, 1 above)");
-            } else if (twoBackBelowVWAP && previousBelowVWAP && lastBelowVWAP && currentAboveVWAP) {
+            if (twoBackBelowVWAP && previousBelowVWAP && lastBelowVWAP && currentAboveVWAP) {
                 crossoverDetected = true;
                 System.out.println("   📈 Crossover Pattern B detected (3 below, 1 above) - STRONGER");
             }
@@ -226,6 +220,10 @@ public class VWAPStrategy implements TradingStrategy {
                 System.out.println("      - Last Close: " + lastClose + " < VWAP: " + lastVWAP);
                 System.out.println("      - Current Close: " + currentClose + " > VWAP: " + currentVWAP);
                 System.out.println("      - Breakout Level: " + breakoutLevel);
+                if (!context.isPatternBuyTimeAllowed("crossover")) {
+                    System.out.println("⏸️ Crossover trading allowed only from 09:45 – monitor not started");
+                    return false;
+                }
                 context.startCrossoverBreakoutMonitor(instrument, breakoutLevel, lastCompletedCandle.getHigh(), currentClose);
                 return false;
             }

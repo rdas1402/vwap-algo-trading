@@ -28,7 +28,7 @@ public class StrategyRegistry {
     private static final List<StrategyEntry> REGISTRY = Arrays.asList(
 
         // P1 — highest priority
-        StrategyEntry.of("EMA/VWAP Pullback",        EMAVWAPPullbackStrategy.class,  true),
+//        StrategyEntry.of("EMA/VWAP Pullback",        EMAVWAPPullbackStrategy.class,  true),
 
         // P2
         StrategyEntry.of("Bullish Engulfing",         BullishEngulfingStrategy.class, true),

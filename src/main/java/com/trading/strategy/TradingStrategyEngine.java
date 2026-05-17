@@ -75,7 +75,6 @@ public class TradingStrategyEngine {
             double niftySpot = getNiftySpotPrice();
             preloadOptionTokens(niftySpot);
             lastPreloadedSpotPrice = niftySpot;
-            updateLastTokenUpdateTime();
 
             // Start the token refresh timer
             startTokenRefreshTimer();
@@ -330,11 +329,6 @@ public class TradingStrategyEngine {
 
             for (TradingStrategy strategy : strategies) {
                 try {
-                    if (!strategy.canExecute(this)) {
-                        System.out.println("⏸️ " + strategy.getStrategyName() + " - execution conditions not met");
-                        continue;
-                    }
-
                     System.out.println("\n" + "🎯".repeat(30));
                     System.out.println("EXECUTING: " + strategy.getStrategyName());
                     System.out.println("🎯".repeat(30));
@@ -1598,10 +1592,12 @@ public class TradingStrategyEngine {
     /**
      * Start breakout monitors
      */
+    public void startMorningStarBreakoutMonitor(String instrument, double breakoutLevel, double stopLoss, double target) {
+        startBreakoutMonitor(instrument, breakoutLevel, stopLoss, target, "morning_star", 3);
+    }
     public void startHammerBreakoutMonitor(String instrument, double breakoutLevel, double stopLoss, double target) {
         startBreakoutMonitor(instrument, breakoutLevel, stopLoss, target, "hammer", 3);
     }
-
     public void startEngulfingBreakoutMonitor(String instrument, double breakoutLevel, double stopLoss, double target) {
         startBreakoutMonitor(instrument, breakoutLevel, stopLoss, target, "engulfing", 3);
     }
@@ -1758,12 +1754,6 @@ public class TradingStrategyEngine {
         return false;
     }
 
-    public boolean isWithinBuyingHours() {
-        // This method is for strategy execution, not for buy orders
-        // Strategies should run all day for analysis
-        return true;
-    }
-
     public RealTimeCandleBuilder getRealTimeCandleBuilder() {
         return realTimeCandleBuilder;
     }
@@ -1810,7 +1800,6 @@ public class TradingStrategyEngine {
                     System.out.println("🔄 Refreshing option tokens (price moved by " + String.format("%.2f", priceChange) + " points)");
                     preloadOptionTokens(currentSpot);
                     lastPreloadedSpotPrice = currentSpot;
-                    updateLastTokenUpdateTime();
                 }
             }
         } catch (Exception | KiteException e) {
@@ -1818,8 +1807,31 @@ public class TradingStrategyEngine {
         }
     }
 
-    private void updateLastTokenUpdateTime() {
-        // Token update tracking
+    public boolean isPatternBuyTimeAllowed(String patternType) {
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minute = cal.get(Calendar.MINUTE);
+        int currentMinutes = hour * 60 + minute;
+
+        // End time for all patterns: 3:15 PM
+        if (currentMinutes > 15 * 60 + 15) return false;
+
+        int startMinutes;
+        switch (patternType.toLowerCase()) {
+            case "hammer":
+            case "engulfing":
+            case "pullback":
+            case "crossover":
+            case "morning_star":
+                startMinutes = 9 * 60 + 45;   // 9:45 AM
+                break;
+            case "reversal":
+                startMinutes = 10 * 60 + 0;   // 10:00 AM
+                break;
+            default:
+                startMinutes = 9 * 60 + 45;
+        }
+        return currentMinutes >= startMinutes;
     }
 
     /**

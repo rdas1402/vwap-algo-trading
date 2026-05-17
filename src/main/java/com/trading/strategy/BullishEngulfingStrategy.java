@@ -24,9 +24,6 @@ public class BullishEngulfingStrategy implements TradingStrategy {
     public String getStrategyName() { return "Case 5: Bullish Engulfing Reversal Strategy"; }
 
     @Override
-    public boolean canExecute(TradingStrategyEngine context) { return context.isWithinBuyingHours(); }
-
-    @Override
     public Map<String, String> findInstruments(TradingStrategyEngine context) throws Exception, KiteException {
         Map<String, String> options = new HashMap<>();
         double targetPremium = AppConfig.getTargetPremium();
@@ -94,7 +91,10 @@ public class BullishEngulfingStrategy implements TradingStrategy {
             System.out.println("   Entry Trigger    : " + String.format("%.2f", entryTrigger));
             System.out.println("🕯️".repeat(15));
 
-            // Start breakout monitor (engine will call executeBullishEngulfingBuySignal on breakout)
+            if (!context.isPatternBuyTimeAllowed("engulfing")) {
+                System.out.println("⏸️ Engulfing trading allowed only from 09:45 – monitor not started");
+                return result;
+            }
             context.startEngulfingBreakoutMonitor(instrument, entryTrigger, stopLoss, target);
 
         } catch (Exception e) {
