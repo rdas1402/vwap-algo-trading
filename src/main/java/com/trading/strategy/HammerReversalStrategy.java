@@ -109,13 +109,13 @@ public class HammerReversalStrategy implements TradingStrategy {
             System.out.println("🔨".repeat(20));
 
             double riskAmount = (hammerCandle.getHigh() - hammerCandle.getLow()) * 0.75;
-            double target = hammerCandle.getHigh() + (riskAmount * 2);
+            double target = hammerCandle.getHigh() + ((hammerCandle.getHigh() - hammerCandle.getLow()) * 2);
 
             if (!context.isPatternBuyTimeAllowed("hammer")) {
                 System.out.println("⏸️ Hammer trading allowed only from 09:45 – monitor not started");
                 return result;
             }
-            context.startHammerBreakoutMonitor(instrument, hammerCandle.getHigh(), hammerCandle.getLow(), target);
+            context.startHammerBreakoutMonitor(instrument, hammerCandle.getHigh(), riskAmount, target);
 
             result.put("message", "Hammer detected – monitoring breakout (5 min, 3s checks)");
             result.put("entryPrice", hammerCandle.getHigh());

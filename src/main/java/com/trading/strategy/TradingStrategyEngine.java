@@ -1604,7 +1604,7 @@ public class TradingStrategyEngine {
     public void startPullbackBreakoutMonitor(String instrument, double breakoutLevel, double stopLoss, double target) {
         startBreakoutMonitor(instrument, breakoutLevel, stopLoss, target, "pullback", 5);
     }
-    public void startCrossoverBreakoutMonitor(String instrument, double breakoutLevel, double signalHigh, double signalClose) {
+    public void startCrossoverBreakoutMonitor(String instrument, double breakoutLevel) {
         startBreakoutMonitor(instrument, breakoutLevel, 0, 0, "crossover", 5);
     }
     public void startReversalBreakoutMonitor(String instrument, double breakoutLevel, double stopLossLevel) {

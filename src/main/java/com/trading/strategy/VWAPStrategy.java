@@ -224,7 +224,7 @@ public class VWAPStrategy implements TradingStrategy {
                     System.out.println("⏸️ Crossover trading allowed only from 09:45 – monitor not started");
                     return false;
                 }
-                context.startCrossoverBreakoutMonitor(instrument, breakoutLevel, lastCompletedCandle.getHigh(), currentClose);
+                context.startCrossoverBreakoutMonitor(instrument, breakoutLevel);
                 return false;
             }
             return false;
