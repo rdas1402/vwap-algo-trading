@@ -56,30 +56,32 @@ public class VWAPStrategy implements TradingStrategy {
             System.out.println("🔍 [Case 4] Analyzing with Real-time Candles for: " + instrument);
             RealTimeCandleBuilder candleBuilder = context.getRealTimeCandleBuilder();
             int completedCandleCount = candleBuilder.getCompletedCandleCount(instrument);
-            if (completedCandleCount < 3) {
-                System.out.println("⏳ [Case 4] Waiting for more candle data for " + instrument + " (have " + completedCandleCount + ", need 3)");
+            if (completedCandleCount < 4) {  // need at least 4 completed candles for 3+1 pattern
+                System.out.println("⏳ [Case 4] Need 4 completed candles, have " + completedCandleCount);
                 return result;
             }
 
-            CandleData currentCandle = candleBuilder.getCurrentCandle(instrument);
-            CandleData lastCompletedCandle = candleBuilder.getLastCompletedCandle(instrument);
-            CandleData previousCandle = candleBuilder.getPreviousCompletedCandle(instrument);
-            CandleData twoCandlesBack = candleBuilder.getCompletedCandleAtIndex(instrument, 3);
+            // Use ONLY completed candles – most recent is index 1
+            CandleData current = candleBuilder.getLastCompletedCandle(instrument);      // T (just closed)
+            CandleData prev1    = candleBuilder.getPreviousCompletedCandle(instrument); // T-1
+            CandleData prev2    = candleBuilder.getCompletedCandleAtIndex(instrument, 3); // T-2
+            CandleData prev3    = candleBuilder.getCompletedCandleAtIndex(instrument, 4);
 
-            boolean isCurrentCandleEmpty = isCandleEmpty(currentCandle);
-            if (isCurrentCandleEmpty && lastCompletedCandle != null && completedCandleCount >= 2) {
-                currentCandle = lastCompletedCandle;
-                lastCompletedCandle = previousCandle;
-                previousCandle = twoCandlesBack;
-                if (completedCandleCount >= 4) twoCandlesBack = candleBuilder.getCompletedCandleAtIndex(instrument, 4);
-            }
-
-            if (currentCandle == null || lastCompletedCandle == null || previousCandle == null) {
-                System.out.println("❌ [Case 4] Missing required candle data for " + instrument);
+            if (current == null || prev1 == null || prev2 == null || prev3 == null) {
+                System.out.println("❌ [Case 4] Missing completed candle data");
                 return result;
             }
 
-            boolean vwapReversal = checkVWAPReversalPattern(instrument, currentCandle, lastCompletedCandle, previousCandle, context);
+            System.out.println("❌❌❌❌❌❌ current  O:" + current.getOpen() + " H:" + current.getHigh() + " L:" + current.getLow() +
+                    " C:" + current.getClose() + " VWAP:" + String.format("%.2f", current.getVWAP()));
+            System.out.println("❌❌❌❌❌❌ prev1  O:" + prev1.getOpen() + " H:" + prev1.getHigh() + " L:" + prev1.getLow() +
+                    " C:" + prev1.getClose() + " VWAP:" + String.format("%.2f", prev1.getVWAP()));
+            System.out.println("❌❌❌❌❌❌ prev2  O:" + prev2.getOpen() + " H:" + prev2.getHigh() + " L:" + prev2.getLow() +
+                    " C:" + prev2.getClose() + " VWAP:" + String.format("%.2f", prev2.getVWAP()));
+            System.out.println("❌❌❌❌❌❌ prev3  O:" + prev3.getOpen() + " H:" + prev3.getHigh() + " L:" + prev3.getLow() +
+                    " C:" + prev3.getClose() + " VWAP:" + String.format("%.2f", prev3.getVWAP()));
+
+            boolean vwapReversal = checkVWAPReversalPattern(instrument, current, prev1, prev2, context);
             if (vwapReversal) {
                 System.out.println("🎯 [Case 4] VWAP REVERSAL PATTERN DETECTED for " + instrument);
                 result.put("signal", true);
@@ -87,7 +89,7 @@ public class VWAPStrategy implements TradingStrategy {
                 return result;
             }
 
-            boolean originalCrossover = checkOriginalVWAPCrossover(instrument, currentCandle, lastCompletedCandle, previousCandle, twoCandlesBack, context);
+            boolean originalCrossover = checkOriginalVWAPCrossover(instrument, current, prev1, prev2, prev3, context);
             if (originalCrossover) {
                 System.out.println("🎯 [Case 4] VWAP CROSSOVER DETECTED for " + instrument);
                 result.put("signal", true);

@@ -193,7 +193,7 @@ crontab -e
 Change the test line from:
 
 text
-* * * * * /bin/echo "Test from cron at $(date)" >> /tmp/cron_test.logi
+* * * * * /bin/echo "Test from cron at $(date)" >> /tmp/cron_test.log
 to:
 
 text
@@ -317,3 +317,12 @@ ec2-user@13.234.78.254: Permission denied (publickey,gssapi-keyex,gssapi-with-mi
 Connection closed
 [ec2-user@ip-172-31-44-252 ~]$
 
+
+
+To restart and if job is nit running:
+-------------------------------------
+sudo systemctl restart crond
+
+chmod +x /home/ec2-user/vwap-algo-trading/*.sh
+
+ls -l /home/ec2-user/vwap-algo-trading/*.sh
