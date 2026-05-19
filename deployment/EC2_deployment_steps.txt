@@ -321,6 +321,7 @@ Connection closed
 
 To restart and if job is nit running:
 -------------------------------------
+crontab -e
 sudo systemctl restart crond
 
 chmod +x /home/ec2-user/vwap-algo-trading/*.sh

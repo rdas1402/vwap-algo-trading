@@ -108,7 +108,7 @@ public class HammerReversalStrategy implements TradingStrategy {
             System.out.println("      🎯 Target: 2 × Stop Loss distance");
             System.out.println("🔨".repeat(20));
 
-            double riskAmount = (hammerCandle.getHigh() - hammerCandle.getLow()) * 0.75;
+            double riskAmount = hammerCandle.getHigh() + (hammerCandle.getHigh() - hammerCandle.getLow()) * 0.75;
             double target = hammerCandle.getHigh() + ((hammerCandle.getHigh() - hammerCandle.getLow()) * 2);
 
             if (!context.isPatternBuyTimeAllowed("hammer")) {
