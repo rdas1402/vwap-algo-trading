@@ -73,6 +73,7 @@ public class AutoZerodhaLoginHelper {
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--user-data-dir=/home/ec2-user/chrome-profile");
 // Remove the maximized argument because headless doesn't support it
 // options.addArguments("--start-maximized");
 
