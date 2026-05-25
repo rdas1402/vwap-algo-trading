@@ -21,7 +21,7 @@ public class TradingApplication {
         try {
             System.out.println("🚀 Starting Automated Trading Strategy Engine...");
 
-            AppConfig.setSimulateFailedOrders(true);   // Test mode
+            AppConfig.setSimulateFailedOrders(false);   // Test mode
             // AppConfig.setSimulateFailedOrders(false); // Real trading
 
             // Initialize Trading Engine

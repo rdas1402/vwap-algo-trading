@@ -22,7 +22,7 @@ public class OrderTest {
 
             initializeKiteConnect();
 
-            String testSymbol = "NFO:NIFTY2651923400PE";
+            String testSymbol = "NFO:NIFTY2663023400PE";
             double currentPrice = getCurrentPrice(testSymbol);
             System.out.println("📊 Current price for " + testSymbol + ": " + currentPrice);
 
@@ -143,9 +143,9 @@ public class OrderTest {
         System.out.println("🔍".repeat(20));
 
         String[] testSymbols = {
-                "NFO:NIFTY2651923400PE",
-                "NIFTY2651923400PE",
-                "NFO:NIFTY2651923400PE",
+                "NFO:NIFTY2663023400PE",
+                "NIFTY2663023400PE",
+                "NFO:NIFTY2663023400PE",
                 "NSE:NIFTY 50",
         };
 

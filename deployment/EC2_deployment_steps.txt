@@ -131,9 +131,9 @@ bash
 tail -f /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
 
 
-tail -50 /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
+tail -20 /home/ec2-user/vwap-algo-trading/logs/token_refresh.log
 
-tail -200 /home/ec2-user/vwap-algo-trading/logs/trading_start.log
+tail -10 /home/ec2-user/vwap-algo-trading/logs/trading_start.log
 
 
 cat /home/ec2-user/vwap-algo-trading/logs/trading_start.log

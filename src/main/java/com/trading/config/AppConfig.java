@@ -19,7 +19,7 @@ public class AppConfig {
     private static final int API_CALLS_PER_MINUTE = 50; // Kite's rate limit is typically 60/min
     private static final long API_MIN_INTERVAL_MS = 60000 / API_CALLS_PER_MINUTE;
     private static long lastApiCallTime = 0;
-    private static boolean simulateFailedOrders = true;  // true = test mode (simulate on failure), false = real mode
+    private static boolean simulateFailedOrders = false;  // true = test mode (simulate on failure), false = real mode
 
     static {
         loadProperties();
