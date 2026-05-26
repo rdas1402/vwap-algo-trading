@@ -1,0 +1,10 @@
+[Unit]
+Description=Run VWAP trading application every trading morning
+
+[Timer]
+OnCalendar=Mon..Fri 09:14:00
+Persistent=true
+Unit=vwap-start-trading.service
+
+[Install]
+WantedBy=timers.target

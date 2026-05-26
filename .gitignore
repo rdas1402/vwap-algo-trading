@@ -1,0 +1,29 @@
+# Compiled files
+*.class
+*.jar
+*.war
+*.ear
+
+# Build directories
+/target/
+/build/
+
+# IDE files
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.vscode/
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
+*.lock

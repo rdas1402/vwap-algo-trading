@@ -126,6 +126,18 @@ public class AppConfig {
         return Double.parseDouble(properties.getProperty("vwap.options.stoploss.multiplier", "2.0"));
     }
 
+    public static double getMarketableLimitBufferPercent() {
+        return Double.parseDouble(properties.getProperty("execution.marketable.limit.buffer.percent", "0.5"));
+    }
+
+    public static double getMaxEntrySlippagePercent() {
+        return Double.parseDouble(properties.getProperty("execution.max.entry.slippage.percent", "1.5"));
+    }
+
+    public static double getMinRewardRiskAfterSlippage() {
+        return Double.parseDouble(properties.getProperty("execution.min.reward.risk.after.slippage", "1.2"));
+    }
+
     // Buying Hours Configuration (for VWAP Strategy)
     public static String getBuyingStartTime() {
         return properties.getProperty("buying.start.time", "09:30");

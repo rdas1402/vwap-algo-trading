@@ -1,0 +1,17 @@
+[Unit]
+Description=VWAP Zerodha token refresh
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=__APP_USER__
+Group=__APP_GROUP__
+Environment=ENV_FILE=/opt/vwap-algo-trading/config/vwap.env
+Environment=APP_CONFIG=/opt/vwap-algo-trading/config/application.properties
+WorkingDirectory=/opt/vwap-algo-trading
+ExecStart=/opt/vwap-algo-trading/bin/refresh_token_retry.sh
+TimeoutStartSec=5400
+
+[Install]
+WantedBy=multi-user.target

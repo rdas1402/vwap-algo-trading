@@ -1116,6 +1116,9 @@ public class TradingStrategyEngine {
     private Position placeBuyOrder(String symbol, double entryPrice, double stopLoss,
                                    double target, String patternType) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, patternType, "SIM_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1228,6 +1231,9 @@ public class TradingStrategyEngine {
 
     private Position placePullbackBuyOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, "ema_vwap_pullback", "SIM_PB_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1381,6 +1387,9 @@ public class TradingStrategyEngine {
 
     private Position placeHammerOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, "hammer_reversal", "SIM_HM_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1436,6 +1445,9 @@ public class TradingStrategyEngine {
 
     private Position placeBreakoutRetestOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, "breakout_retest", "SIM_BR_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1536,6 +1548,9 @@ public class TradingStrategyEngine {
 
     private Position placeMorningStarOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, "morning_star", "SIM_MS_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1681,6 +1696,9 @@ public class TradingStrategyEngine {
 
     private Position placeBullishEngulfingOrder(String symbol, double entryPrice, double stopLoss, double target) {
         try {
+            if (useManagedEntryExecution()) {
+                return placeManagedLimitBuyOrder(symbol, entryPrice, stopLoss, target, "bullish_engulfing", "SIM_BE_");
+            }
             int quantity = AppConfig.getVWAPOptionsLotSize();
             String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1732,6 +1750,147 @@ public class TradingStrategyEngine {
             }
         }
         return null;
+    }
+
+    private Position placeManagedLimitBuyOrder(String symbol, double triggerEntryPrice, double stopLoss,
+                                               double target, String patternType,
+                                               String simulationOrderPrefix) throws Exception, KiteException {
+        int quantity = AppConfig.getVWAPOptionsLotSize();
+        String tradingSymbol = symbol.replace("NFO:", "");
+
+        synchronized(apiCallLock) {
+            Thread.sleep(100);
+
+            String[] instruments = {symbol};
+            Map<String, Quote> quotes = kiteConnect.getQuote(instruments);
+            Quote quote = quotes.get(symbol);
+            if (quote == null || quote.lastPrice <= 0) {
+                System.err.println("âŒ Unable to get live price for: " + symbol);
+                return null;
+            }
+
+            double livePrice = quote.lastPrice;
+            double effectiveEntryPrice = Math.max(triggerEntryPrice, livePrice);
+            if (!isEntrySlippageAcceptable(symbol, triggerEntryPrice, effectiveEntryPrice)) {
+                return null;
+            }
+
+            double limitPrice = calculateMarketableLimitPrice(effectiveEntryPrice);
+            if (!hasAcceptableRewardRiskAfterSlippage(symbol, limitPrice, stopLoss, target)) {
+                return null;
+            }
+
+            OrderParams orderParams = new OrderParams();
+            orderParams.exchange = "NFO";
+            orderParams.tradingsymbol = tradingSymbol;
+            orderParams.transactionType = Constants.TRANSACTION_TYPE_BUY;
+            orderParams.quantity = quantity;
+            orderParams.orderType = Constants.ORDER_TYPE_LIMIT;
+            orderParams.price = limitPrice;
+            orderParams.product = Constants.PRODUCT_MIS;
+            orderParams.validity = Constants.VALIDITY_DAY;
+
+            System.out.println("ðŸ“Œ Using marketable LIMIT buy order");
+            System.out.println("   Trigger Entry: " + String.format("%.2f", triggerEntryPrice));
+            System.out.println("   Live Price: " + String.format("%.2f", livePrice));
+            System.out.println("   Limit Price: " + String.format("%.2f", limitPrice));
+
+            Order order = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+
+            if (order != null && order.orderId != null) {
+                Position position = new Position();
+                position.setTradingSymbol(symbol);
+                position.setOrderId(order.orderId);
+                position.setEntryPrice(limitPrice);
+                position.setQuantity(quantity);
+                position.setSignalType(SignalType.BUY);
+                position.setStopLoss(stopLoss);
+                position.setTarget(target);
+                position.setPatternType(patternType);
+                position.setSimulated(false);
+                return position;
+            }
+        }
+
+        if (AppConfig.isSimulateFailedOrders()) {
+            return createSimulatedPosition(symbol, triggerEntryPrice, stopLoss, target, patternType, simulationOrderPrefix);
+        }
+        return null;
+    }
+
+    private Position createSimulatedPosition(String symbol, double entryPrice, double stopLoss,
+                                             double target, String patternType, String orderPrefix) {
+        System.out.println("âš ï¸ SIMULATION MODE: Creating simulated position for " + symbol);
+        Position simPosition = new Position();
+        simPosition.setTradingSymbol(symbol);
+        simPosition.setOrderId(orderPrefix + System.currentTimeMillis());
+        simPosition.setEntryPrice(entryPrice);
+        simPosition.setQuantity(AppConfig.getVWAPOptionsLotSize());
+        simPosition.setSignalType(SignalType.BUY);
+        simPosition.setStopLoss(stopLoss);
+        simPosition.setTarget(target);
+        simPosition.setPatternType(patternType);
+        simPosition.setSimulated(true);
+        return simPosition;
+    }
+
+    private boolean useManagedEntryExecution() {
+        return true;
+    }
+
+    private boolean isEntrySlippageAcceptable(String symbol, double triggerEntryPrice, double effectiveEntryPrice) {
+        if (triggerEntryPrice <= 0) {
+            return true;
+        }
+
+        double slippagePercent = ((effectiveEntryPrice - triggerEntryPrice) / triggerEntryPrice) * 100.0;
+        double maxAllowedSlippage = AppConfig.getMaxEntrySlippagePercent();
+
+        System.out.println("   Entry Slippage: " + String.format("%.2f", slippagePercent) + "%");
+        System.out.println("   Max Allowed Slippage: " + String.format("%.2f", maxAllowedSlippage) + "%");
+
+        if (slippagePercent > maxAllowedSlippage) {
+            System.out.println("â¸ï¸ Skipping " + symbol + " - entry slippage too high");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean hasAcceptableRewardRiskAfterSlippage(String symbol, double adjustedEntryPrice,
+                                                         double stopLoss, double target) {
+        if (stopLoss <= 0 || target <= 0) {
+            return true;
+        }
+
+        double risk = adjustedEntryPrice - stopLoss;
+        double reward = target - adjustedEntryPrice;
+        if (risk <= 0 || reward <= 0) {
+            System.out.println("â¸ï¸ Skipping " + symbol + " - invalid post-slippage trade structure");
+            return false;
+        }
+
+        double rewardRisk = reward / risk;
+        double minRewardRisk = AppConfig.getMinRewardRiskAfterSlippage();
+
+        System.out.println("   Reward/Risk After Slippage: " + String.format("%.2f", rewardRisk));
+        System.out.println("   Minimum Required Reward/Risk: " + String.format("%.2f", minRewardRisk));
+
+        if (rewardRisk < minRewardRisk) {
+            System.out.println("â¸ï¸ Skipping " + symbol + " - reward/risk degraded after slippage");
+            return false;
+        }
+        return true;
+    }
+
+    private double calculateMarketableLimitPrice(double referencePrice) {
+        double limitBufferPercent = AppConfig.getMarketableLimitBufferPercent();
+        double rawLimitPrice = referencePrice * (1 + limitBufferPercent / 100.0);
+        return roundToTick(rawLimitPrice);
+    }
+
+    private double roundToTick(double price) {
+        double tickSize = 0.05;
+        return Math.ceil(price / tickSize) * tickSize;
     }
 
 

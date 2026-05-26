@@ -1,0 +1,17 @@
+[Unit]
+Description=VWAP trading application start
+After=network-online.target vwap-refresh-token.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__APP_USER__
+Group=__APP_GROUP__
+Environment=ENV_FILE=/opt/vwap-algo-trading/config/vwap.env
+Environment=APP_CONFIG=/opt/vwap-algo-trading/config/application.properties
+WorkingDirectory=/opt/vwap-algo-trading
+ExecStart=/opt/vwap-algo-trading/bin/start_trading.sh
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
