@@ -2,7 +2,7 @@
 Description=Run VWAP token refresh every trading morning
 
 [Timer]
-OnCalendar=Mon..Fri 08:30:00
+OnCalendar=Mon..Fri 07:30:00
 Persistent=true
 Unit=vwap-refresh-token.service
 

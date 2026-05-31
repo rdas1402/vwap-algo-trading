@@ -48,9 +48,8 @@ public class BullishEngulfingStrategy implements TradingStrategy {
         try {
             System.out.println("\n🕯️ [Case 5] Analyzing Bullish Engulfing for: " + instrument);
 
-            // If there is already an open position for this instrument, check stop-loss on candle close
+            // Open positions are managed centrally by the engine's 3-second live exit watcher.
             if (context.hasOpenPosition(instrument)) {
-                checkStopLossOnCandleCompletion(instrument, context);
                 return result;
             }
 

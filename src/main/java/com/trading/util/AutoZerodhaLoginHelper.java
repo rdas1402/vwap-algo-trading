@@ -34,6 +34,7 @@ public class AutoZerodhaLoginHelper {
     private static final By TOTP_LOCATOR = By.cssSelector("input[name='userotp'], input[name='otp'], input[autocomplete='one-time-code'], input[inputmode='numeric'], input[type='tel'], input[type='number']");
     private static final By CONTINUE_BUTTON_LOCATOR = By.xpath("//button[contains(normalize-space(),'Continue') or contains(normalize-space(),'Submit')]");
     private static final int FIELD_INTERACTION_RETRIES = 3;
+    private static final Duration PAGE_WAIT_TIMEOUT = Duration.ofSeconds(45);
 
     static {
         new File("logs").mkdirs();
@@ -75,25 +76,25 @@ public class AutoZerodhaLoginHelper {
         log("Starting login process...");
 
         ChromeOptions options = new ChromeOptions();
-// Headless mode for EC2
+        Path chromeProfileDir = Files.createTempDirectory("zerodha-chrome-profile-");
+
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--window-size=1920,1080");
-        options.addArguments("--user-data-dir=" + System.getProperty("user.home") + "/chrome-profile");
-// Remove the maximized argument because headless doesn't support it
-// options.addArguments("--start-maximized");
+        options.addArguments("--user-data-dir=" + chromeProfileDir.toAbsolutePath());
 
         WebDriver driver = new ChromeDriver(options);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, PAGE_WAIT_TIMEOUT);
 
         try {
             KiteConnect kite = new KiteConnect(API_KEY);
             driver.get(kite.getLoginURL());
             log("1. Login page loaded");
             waitForDocumentReady(driver, wait);
+            waitForLoginForm(driver, wait);
 
             // User ID
             typeIntoField(driver, wait, USER_ID_LOCATOR, ZERODHA_USER_ID, "User ID");
@@ -172,6 +173,7 @@ public class AutoZerodhaLoginHelper {
         } finally {
             Thread.sleep(2000);
             driver.quit();
+            deleteQuietly(chromeProfileDir);
             log("Browser closed");
         }
     }
@@ -210,11 +212,27 @@ public class AutoZerodhaLoginHelper {
         });
     }
 
+    private static void waitForLoginForm(WebDriver driver, WebDriverWait wait) {
+        wait.until(webDriver -> {
+            Object loginFieldFound = ((JavascriptExecutor) driver).executeScript(
+                    "return !!document.querySelector('#userid, input[name=\"userid\"], input[name=\"user_id\"], input[type=\"text\"]');");
+            return Boolean.TRUE.equals(loginFieldFound);
+        });
+    }
+
     private static WebElement waitForVisibleElement(WebDriverWait wait, By locator, String label) {
         try {
             return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
             throw new TimeoutException("Timed out waiting for " + label + " using locator " + locator, e);
+        }
+    }
+
+    private static WebElement waitForPresentElement(WebDriverWait wait, By locator, String label) {
+        try {
+            return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        } catch (TimeoutException e) {
+            throw new TimeoutException("Timed out waiting for presence of " + label + " using locator " + locator, e);
         }
     }
 
@@ -233,7 +251,19 @@ public class AutoZerodhaLoginHelper {
                 }
                 throw new ElementNotInteractableException(label + " field did not accept input");
             } catch (StaleElementReferenceException | ElementNotInteractableException | TimeoutException e) {
-                lastFailure = new RuntimeException(label + " interaction failed on attempt " + attempt + "/" + FIELD_INTERACTION_RETRIES + ": " + e.getMessage(), e);
+                try {
+                    WebElement presentElement = waitForPresentElement(wait, locator, label);
+                    setFieldValueWithJavaScript(driver, presentElement, value);
+                    if (hasFieldValue(presentElement)) {
+                        return;
+                    }
+                } catch (RuntimeException fallbackFailure) {
+                    lastFailure = new RuntimeException(label + " interaction failed on attempt " + attempt + "/" + FIELD_INTERACTION_RETRIES + ": " + fallbackFailure.getMessage(), fallbackFailure);
+                }
+                if (lastFailure == null) {
+                    lastFailure = new RuntimeException(label + " interaction failed on attempt " + attempt + "/" + FIELD_INTERACTION_RETRIES + ": " + e.getMessage(), e);
+                }
+                takeScreenshot(driver, "field_timeout_" + label.toLowerCase().replace(" ", "_"));
                 sleepQuietly(750L);
             }
         }
@@ -301,6 +331,14 @@ public class AutoZerodhaLoginHelper {
         ((JavascriptExecutor) driver).executeScript("arguments[0].value='';", element);
     }
 
+    private static void setFieldValueWithJavaScript(WebDriver driver, WebElement element, String value) {
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].value = arguments[1];" +
+                        "arguments[0].dispatchEvent(new Event('input', { bubbles: true }));" +
+                        "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
+                element, value);
+    }
+
     private static boolean hasFieldValue(WebElement element) {
         String currentValue = element.getAttribute("value");
         return currentValue != null && !currentValue.isBlank();
@@ -311,6 +349,28 @@ public class AutoZerodhaLoginHelper {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+        }
+    }
+
+    private static void deleteQuietly(Path path) {
+        if (path == null) {
+            return;
+        }
+        try {
+            if (Files.notExists(path)) {
+                return;
+            }
+            Files.walk(path)
+                    .sorted((left, right) -> right.compareTo(left))
+                    .forEach(currentPath -> {
+                        try {
+                            Files.deleteIfExists(currentPath);
+                        } catch (IOException ignored) {
+                            // Best effort cleanup only.
+                        }
+                    });
+        } catch (IOException ignored) {
+            // Best effort cleanup only.
         }
     }
 

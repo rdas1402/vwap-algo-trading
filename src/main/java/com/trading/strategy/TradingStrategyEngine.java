@@ -726,7 +726,7 @@ public class TradingStrategyEngine {
         }, interval, interval);
 
         isTargetCheckRunning = true;
-        System.out.println("⏰ Target check timer started (3 second intervals)");
+        System.out.println("Exit check timer started (3 second intervals for target + stop loss)");
     }
 
     private void checkTargetConditions() {
@@ -750,9 +750,13 @@ public class TradingStrategyEngine {
 
                 if (quote != null) {
                     double currentPrice = quote.lastPrice;
-
-                    if (currentPrice >= position.getTarget()) {
-                        System.out.println("🎯 TARGET HIT for " + instrument);
+                    if (currentPrice <= position.getStopLoss()) {
+                        System.out.println("STOP LOSS HIT for " + instrument + " at live price " +
+                                String.format("%.2f", currentPrice) + " (SL " +
+                                String.format("%.2f", position.getStopLoss()) + ")");
+                        closePositionDueToStopLoss(instrument);
+                    } else if (currentPrice >= position.getTarget()) {
+                        System.out.println("TARGET HIT for " + instrument);
                         closePositionDueToTarget(instrument);
                     }
                 }
