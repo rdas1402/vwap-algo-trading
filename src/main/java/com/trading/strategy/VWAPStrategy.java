@@ -14,9 +14,11 @@ public class VWAPStrategy implements TradingStrategy {
     private static class ReversalPatternData {
         final double breakoutLevel;
         final double stopLossLevel;
-        ReversalPatternData(double breakoutLevel, double stopLossLevel) {
+        final double targetLevel;
+        ReversalPatternData(double breakoutLevel, double stopLossLevel, double targetLevel) {
             this.breakoutLevel = breakoutLevel;
             this.stopLossLevel = stopLossLevel;
+            this.targetLevel = targetLevel;
         }
     }
 
@@ -86,6 +88,12 @@ public class VWAPStrategy implements TradingStrategy {
                 System.out.println("🎯 [Case 4] VWAP REVERSAL PATTERN DETECTED for " + instrument);
                 result.put("signal", true);
                 result.put("pattern", "reversal");
+                ReversalPatternData setup = reversalPatternData.get(instrument);
+                if (setup != null) {
+                    result.put("entryPrice", setup.breakoutLevel);
+                    result.put("stopLoss", setup.stopLossLevel);
+                    result.put("target", setup.targetLevel);
+                }
                 return result;
             }
 
@@ -94,6 +102,12 @@ public class VWAPStrategy implements TradingStrategy {
                 System.out.println("🎯 [Case 4] VWAP CROSSOVER DETECTED for " + instrument);
                 result.put("signal", true);
                 result.put("pattern", "crossover");
+                ReversalPatternData setup = reversalPatternData.get(instrument);
+                if (setup != null) {
+                    result.put("entryPrice", setup.breakoutLevel);
+                    result.put("stopLoss", setup.stopLossLevel);
+                    result.put("target", setup.targetLevel);
+                }
                 return result;
             }
 
@@ -108,12 +122,28 @@ public class VWAPStrategy implements TradingStrategy {
     @Override
     public void executeBuySignal(String instrument, Map<String, Object> signalDetails, TradingStrategyEngine context) {
         String patternType = (String) signalDetails.get("pattern");
-        context.executeBuySignal(instrument, patternType);
+        double entryPrice = getDouble(signalDetails, "entryPrice", 0);
+        double stopLoss = getDouble(signalDetails, "stopLoss", 0);
+        double target = getDouble(signalDetails, "target", 0);
+
+        if (entryPrice > 0 && stopLoss > 0 && target > 0) {
+            context.executeStructuredBuySignal(instrument, patternType, entryPrice, stopLoss, target);
+        } else {
+            context.executeBuySignal(instrument, patternType);
+        }
     }
 
     @Override
     public boolean shouldSkipInstrument(String instrument, TradingStrategyEngine context) {
         return context.shouldSkipInstrument(instrument);
+    }
+
+    private double getDouble(Map<String, Object> values, String key, double fallback) {
+        Object value = values.get(key);
+        if (value instanceof Number) {
+            return ((Number) value).doubleValue();
+        }
+        return fallback;
     }
 
     private boolean isCandleEmpty(CandleData candle) {
@@ -165,10 +195,12 @@ public class VWAPStrategy implements TradingStrategy {
 
             double highestHigh = Math.max(prevHigh, Math.max(lastHigh, currentHigh));
             double lowestLow = Math.min(prevLow, Math.min(lastLow, currentLow));
-            double lowToCurrentPercent = Math.abs(currentClose - lowestLow) / currentClose * 100;
-            double stopLossLevel = (lowToCurrentPercent > 20.0) ? currentClose * 0.90 : lowestLow;
+            double setupRange = Math.max(0.05, highestHigh - lowestLow);
+            double stopBuffer = Math.max(0.25, setupRange * 0.10);
+            double stopLossLevel = Math.max(0.05, lowestLow - stopBuffer);
+            double targetLevel = highestHigh + ((highestHigh - stopLossLevel) * 2.0);
 
-            reversalPatternData.put(instrument, new ReversalPatternData(highestHigh, stopLossLevel));
+            reversalPatternData.put(instrument, new ReversalPatternData(highestHigh, stopLossLevel, targetLevel));
 
             if (currentClose >= highestHigh) {
                 return true;
@@ -177,7 +209,7 @@ public class VWAPStrategy implements TradingStrategy {
                     System.out.println("⏸️ Reversal trading allowed only from 10:00 – monitor not started");
                     return false;
                 }
-                context.startReversalBreakoutMonitor(instrument, highestHigh, stopLossLevel);
+                context.startReversalBreakoutMonitor(instrument, highestHigh, stopLossLevel, targetLevel);
                 return false;
             }
         } catch (Exception e) {
@@ -193,12 +225,15 @@ public class VWAPStrategy implements TradingStrategy {
             double currentClose = currentCandle.getClose();
             double currentVWAP = currentCandle.getVWAP();
             double currentHigh = currentCandle.getHigh();
+            double currentLow = currentCandle.getLow();
 
             double lastClose = lastCompletedCandle.getClose();
             double lastVWAP = lastCompletedCandle.getVWAP();
+            double lastLow = lastCompletedCandle.getLow();
 
             double previousClose = previousCandle.getClose();
             double previousVWAP = previousCandle.getVWAP();
+            double previousLow = previousCandle.getLow();
 
             boolean previousBelowVWAP = previousClose < previousVWAP;
             boolean lastBelowVWAP = lastClose < lastVWAP;
@@ -217,6 +252,14 @@ public class VWAPStrategy implements TradingStrategy {
 
             if (crossoverDetected) {
                 double breakoutLevel = currentHigh + 1.0;
+                double twoBackLow = twoCandlesBack != null ? twoCandlesBack.getLow() : currentLow;
+                double lowestLow = Math.min(Math.min(previousLow, lastLow), Math.min(currentLow, twoBackLow));
+                double setupRange = Math.max(0.05, breakoutLevel - lowestLow);
+                double stopBuffer = Math.max(0.25, setupRange * 0.10);
+                double stopLossLevel = Math.max(0.05, lowestLow - stopBuffer);
+                double targetLevel = breakoutLevel + ((breakoutLevel - stopLossLevel) * 2.0);
+
+                reversalPatternData.put(instrument, new ReversalPatternData(breakoutLevel, stopLossLevel, targetLevel));
                 System.out.println("   🎯 VWAP Crossover Confirmed!");
                 System.out.println("      - Previous Close: " + previousClose + " < VWAP: " + previousVWAP);
                 System.out.println("      - Last Close: " + lastClose + " < VWAP: " + lastVWAP);
@@ -226,7 +269,7 @@ public class VWAPStrategy implements TradingStrategy {
                     System.out.println("⏸️ Crossover trading allowed only from 09:45 – monitor not started");
                     return false;
                 }
-                context.startCrossoverBreakoutMonitor(instrument, breakoutLevel);
+                context.startCrossoverBreakoutMonitor(instrument, breakoutLevel, stopLossLevel, targetLevel);
                 return false;
             }
             return false;

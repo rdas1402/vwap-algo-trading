@@ -92,6 +92,11 @@ public class HammerReversalStrategy implements TradingStrategy {
                 return result;
             }
 
+            double hammerRange = Math.max(0.05, hammerCandle.getHigh() - hammerCandle.getLow());
+            double stopBuffer = Math.max(0.25, hammerRange * 0.10);
+            double stopLoss = Math.max(0.05, hammerCandle.getLow() - stopBuffer);
+            double target = hammerCandle.getHigh() + ((hammerCandle.getHigh() - stopLoss) * 2.0);
+
             // All conditions satisfied
             System.out.println("\n" + "🔨".repeat(20));
             System.out.println("🔨 [Case 2] VALID HAMMER REVERSAL DETECTED!");
@@ -108,18 +113,15 @@ public class HammerReversalStrategy implements TradingStrategy {
             System.out.println("      🎯 Target: 2 × Stop Loss distance");
             System.out.println("🔨".repeat(20));
 
-            double riskAmount = hammerCandle.getHigh() - (hammerCandle.getHigh() - hammerCandle.getLow()) * 0.75;
-            double target = hammerCandle.getHigh() + ((hammerCandle.getHigh() - hammerCandle.getLow()) * 2);
-
             if (!context.isPatternBuyTimeAllowed("hammer")) {
                 System.out.println("⏸️ Hammer trading allowed only from 09:45 – monitor not started");
                 return result;
             }
-            context.startHammerBreakoutMonitor(instrument, hammerCandle.getHigh(), riskAmount, target);
+            context.startHammerBreakoutMonitor(instrument, hammerCandle.getHigh(), stopLoss, target);
 
             result.put("message", "Hammer detected – monitoring breakout (5 min, 3s checks)");
             result.put("entryPrice", hammerCandle.getHigh());
-            result.put("stopLoss", hammerCandle.getLow());
+            result.put("stopLoss", stopLoss);
             result.put("target", target);
 
         } catch (Exception e) {

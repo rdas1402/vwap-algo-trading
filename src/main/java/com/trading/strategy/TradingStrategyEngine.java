@@ -56,6 +56,19 @@ public class TradingStrategyEngine {
     // Simple rate limiter: 2 calls per second (500ms between calls)
     private final AtomicLong lastApiCallTime = new AtomicLong(0);
     private final long MIN_API_CALL_INTERVAL_MS = 500;
+    private static final String NIFTY_SPOT_SYMBOL = "NSE:NIFTY 50";
+    private static final long NIFTY_TREND_CACHE_TTL_MS = 15_000;
+    private static final double NIFTY_TREND_MIN_MOVE_PERCENT = 0.05;
+    private static final long HAMMER_RETEST_HOLD_MS = 15_000;
+    private static final double HAMMER_RETEST_BUFFER_PERCENT = 0.25;
+    private NiftyTrend cachedNiftyTrend = NiftyTrend.NEUTRAL;
+    private long lastNiftyTrendUpdateTime = 0;
+
+    private enum NiftyTrend {
+        BULLISH,
+        BEARISH,
+        NEUTRAL
+    }
 
     public TradingStrategyEngine() {
         initializeKiteConnect();
@@ -66,6 +79,7 @@ public class TradingStrategyEngine {
         // Initialize RealTimeCandleBuilder
         this.realTimeCandleBuilder = new RealTimeCandleBuilder(kiteConnect);
         this.trackedInstruments = new HashSet<>();
+        this.trackedInstruments.add(NIFTY_SPOT_SYMBOL);
 
         // Register strategies in priority order
         registerStrategies();
@@ -229,6 +243,10 @@ public class TradingStrategyEngine {
      * Check if buy orders can be placed (between 9:45 AM and 3:15 PM)
      */
     public boolean canPlaceBuyOrders() {
+        if (pnlManager.isDailyLossLimitReached()) {
+            return false;
+        }
+
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         int minute = cal.get(Calendar.MINUTE);
@@ -269,7 +287,17 @@ public class TradingStrategyEngine {
 
             cleanupBreakoutMonitors();
 
+            if (handleDailyLossLimitIfNeeded()) {
+                displayMarketStatus();
+                return;
+            }
+
             boolean positionsClosed = manageExistingPositions();
+
+            if (handleDailyLossLimitIfNeeded()) {
+                displayMarketStatus();
+                return;
+            }
 
             if (!currentPositions.isEmpty() && !positionsClosed) {
                 System.out.println("⏸️ Open positions exist (" + currentPositions.size() + ") - managing positions only");
@@ -343,9 +371,21 @@ public class TradingStrategyEngine {
                     String ceOption = selectedOptions.get("CE");
                     String peOption = selectedOptions.get("PE");
 
+                    if (ceOption != null && !isOptionAllowedByNiftyTrend(ceOption)) {
+                        ceOption = null;
+                    }
+                    if (peOption != null && !isOptionAllowedByNiftyTrend(peOption)) {
+                        peOption = null;
+                    }
+
                     System.out.println("✅ Selected Options:");
                     if (ceOption != null) System.out.println("   CE: " + ceOption);
                     if (peOption != null) System.out.println("   PE: " + peOption);
+
+                    if (ceOption == null && peOption == null) {
+                        System.out.println("No selected options passed NIFTY trend filter for " + strategy.getStrategyName());
+                        continue;
+                    }
 
                     List<Map<String, Object>> signals = new ArrayList<>();
 
@@ -478,9 +518,10 @@ public class TradingStrategyEngine {
                 orderParams.validity = Constants.VALIDITY_DAY;
                 orderParams.marketProtection = -1;
 
-                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = placeSellOrderSafely(symbol, position, exitPrice, "FORCED_CLOSE", orderParams);
                 if (exitOrder == null || exitOrder.orderId == null) {
                     System.err.println("Failed to force close " + symbol);
+                    reconcilePositionAfterFailedSell(symbol, position, exitPrice, "FORCED_CLOSE", "Sell order returned no order id");
                     return;
                 }
                 System.out.println("🔴 FORCED CLOSE (REAL) for " + symbol + " at " + exitPrice);
@@ -531,6 +572,29 @@ public class TradingStrategyEngine {
             System.err.println("❌ Error checking early trading end conditions: " + e.getMessage());
             return false;
         }
+    }
+
+    private boolean handleDailyLossLimitIfNeeded() {
+        if (!pnlManager.isDailyLossLimitReached()) {
+            return false;
+        }
+
+        canPlaceBuyOrders = false;
+        System.out.println("DAILY LOSS KILL SWITCH ACTIVE - no more buy orders today.");
+
+        synchronized(activeMonitors) {
+            for (BreakoutMonitor monitor : activeMonitors.values()) {
+                monitor.stop();
+            }
+            activeMonitors.clear();
+        }
+
+        if (!currentPositions.isEmpty()) {
+            System.out.println("Closing open positions because daily loss limit is reached.");
+            exitAllPositions();
+        }
+
+        return true;
     }
 
     /**
@@ -633,9 +697,10 @@ public class TradingStrategyEngine {
                 orderParams.validity = Constants.VALIDITY_DAY;
                 orderParams.marketProtection = -1;
 
-                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = placeSellOrderSafely(symbol, position, exitPrice, "STOP_LOSS", orderParams);
                 if (exitOrder == null || exitOrder.orderId == null) {
                     System.err.println("Failed to place sell order for " + symbol);
+                    reconcilePositionAfterFailedSell(symbol, position, exitPrice, "STOP_LOSS", "Sell order returned no order id");
                     return;
                 }
                 System.out.println("🛑 STOP LOSS EXECUTED (REAL) for " + symbol + " at " + exitPrice);
@@ -687,9 +752,10 @@ public class TradingStrategyEngine {
                 orderParams.validity = Constants.VALIDITY_DAY;
                 orderParams.marketProtection = -1;
 
-                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = placeSellOrderSafely(instrument, position, exitPrice, "TARGET", orderParams);
                 if (exitOrder == null || exitOrder.orderId == null) {
                     System.err.println("Failed to place target sell order for " + instrument);
+                    reconcilePositionAfterFailedSell(instrument, position, exitPrice, "TARGET", "Sell order returned no order id");
                     return;
                 }
                 System.out.println("💰 TARGET HIT (REAL) for " + instrument + " at " + exitPrice);
@@ -708,6 +774,151 @@ public class TradingStrategyEngine {
         } catch (Exception | KiteException e) {
             System.err.println("Error closing position due to target: " + e.getMessage());
         }
+    }
+
+    private Order placeSellOrderSafely(String symbol, Position position, double exitPrice,
+                                       String exitReason, OrderParams orderParams) {
+        try {
+            return kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+        } catch (Exception | KiteException e) {
+            System.err.println("Sell order failed for " + symbol + " (" + exitReason + "): " + e.getMessage());
+            return null;
+        }
+    }
+
+    private void reconcilePositionAfterFailedSell(String symbol, Position localPosition, double attemptedExitPrice,
+                                                  String exitReason, String failureMessage) {
+        if (localPosition == null || localPosition.isSimulated()) {
+            return;
+        }
+
+        try {
+            System.out.println("Reconciling " + symbol + " with Zerodha after failed sell: " + failureMessage);
+
+            Map<String, List<com.zerodhatech.models.Position>> brokerPositions;
+            synchronized (apiCallLock) {
+                brokerPositions = kiteConnect.getPositions();
+            }
+
+            com.zerodhatech.models.Position brokerPosition = findBrokerMisNetPosition(symbol, brokerPositions);
+            if (brokerPosition == null) {
+                clearLocalPositionAfterBrokerFlat(symbol, localPosition, attemptedExitPrice, exitReason,
+                        null, "no MIS net position found in Zerodha");
+                return;
+            }
+
+            int brokerQuantity = brokerPosition.netQuantity;
+            int localQuantity = localPosition.getQuantity();
+
+            if (brokerQuantity <= 0) {
+                clearLocalPositionAfterBrokerFlat(symbol, localPosition, attemptedExitPrice, exitReason,
+                        brokerPosition, "Zerodha net quantity is " + brokerQuantity);
+                return;
+            }
+
+            if (brokerQuantity < localQuantity) {
+                localPosition.setQuantity(brokerQuantity);
+                currentPositions.put(symbol, localPosition);
+                PositionManager.cachePosition(localPosition);
+                System.out.println("Broker reconciliation adjusted local quantity for " + symbol
+                        + " from " + localQuantity + " to " + brokerQuantity);
+                return;
+            }
+
+            if (brokerQuantity > localQuantity) {
+                System.err.println("Zerodha shows higher net quantity for " + symbol
+                        + " (broker=" + brokerQuantity + ", local=" + localQuantity
+                        + "). Keeping local quantity to avoid managing manual extra lots.");
+                return;
+            }
+
+            System.err.println("Zerodha still shows open MIS quantity for " + symbol
+                    + " (qty=" + brokerQuantity + "). Keeping local position for retry.");
+
+        } catch (Exception | KiteException e) {
+            System.err.println("Could not reconcile " + symbol + " after failed sell: " + e.getMessage());
+        }
+    }
+
+    private com.zerodhatech.models.Position findBrokerMisNetPosition(
+            String symbol,
+            Map<String, List<com.zerodhatech.models.Position>> brokerPositions) {
+
+        if (brokerPositions == null) {
+            return null;
+        }
+
+        List<com.zerodhatech.models.Position> netPositions = brokerPositions.get("net");
+        if (netPositions == null) {
+            netPositions = Collections.emptyList();
+        }
+
+        String expectedSymbol = normalizeTradingSymbol(symbol);
+        for (com.zerodhatech.models.Position brokerPosition : netPositions) {
+            if (brokerPosition == null) {
+                continue;
+            }
+
+            String brokerSymbol = normalizeTradingSymbol(brokerPosition.tradingSymbol);
+            boolean symbolMatches = expectedSymbol.equals(brokerSymbol);
+            boolean productMatches = brokerPosition.product == null
+                    || Constants.PRODUCT_MIS.equalsIgnoreCase(brokerPosition.product);
+
+            if (symbolMatches && productMatches) {
+                return brokerPosition;
+            }
+        }
+
+        return null;
+    }
+
+    private String normalizeTradingSymbol(String symbol) {
+        if (symbol == null) {
+            return "";
+        }
+
+        String normalized = symbol.trim();
+        int exchangeSeparator = normalized.indexOf(':');
+        if (exchangeSeparator >= 0 && exchangeSeparator < normalized.length() - 1) {
+            normalized = normalized.substring(exchangeSeparator + 1);
+        }
+
+        return normalized.trim().toUpperCase(Locale.ROOT);
+    }
+
+    private void clearLocalPositionAfterBrokerFlat(String symbol, Position localPosition, double attemptedExitPrice,
+                                                   String exitReason,
+                                                   com.zerodhatech.models.Position brokerPosition,
+                                                   String brokerState) {
+        double reconciledExitPrice = resolveReconciledExitPrice(brokerPosition, attemptedExitPrice);
+        double pnl = (reconciledExitPrice - localPosition.getEntryPrice()) * localPosition.getQuantity();
+
+        pnlManager.addToDailyPnL(pnl);
+        pnlManager.addTradeLog(symbol, localPosition.getEntryPrice(), reconciledExitPrice, pnl,
+                exitReason + "_BROKER_RECONCILED", localPosition.getPatternType(), false);
+
+        currentPositions.remove(symbol);
+        PositionManager.removeCachedPosition(symbol);
+
+        System.out.println("Broker reconciliation cleared local position for " + symbol + ": " + brokerState);
+        System.out.println("Reconciled exit price: " + String.format("%.2f", reconciledExitPrice)
+                + " | Estimated P&L: " + String.format("%.2f", pnl));
+    }
+
+    private double resolveReconciledExitPrice(com.zerodhatech.models.Position brokerPosition, double fallbackPrice) {
+        if (brokerPosition != null) {
+            if (brokerPosition.sellPrice != null && brokerPosition.sellPrice > 0) {
+                return brokerPosition.sellPrice;
+            }
+            if (brokerPosition.daySellPrice > 0) {
+                return brokerPosition.daySellPrice;
+            }
+            if (brokerPosition.lastPrice != null && brokerPosition.lastPrice > 0) {
+                return brokerPosition.lastPrice;
+            }
+        }
+
+        return fallbackPrice;
     }
 
     private void startTargetCheckTimer() {
@@ -762,6 +973,8 @@ public class TradingStrategyEngine {
                 }
             }
 
+            handleDailyLossLimitIfNeeded();
+
         } catch (Exception | KiteException e) {
             System.err.println("❌ Error in target check: " + e.getMessage());
         }
@@ -794,6 +1007,12 @@ public class TradingStrategyEngine {
 
     public String findOptionNearPremium(double niftySpot, boolean isCall, double targetPrice, double tolerance) {
         try {
+            if (!isOptionTypeAllowedByNiftyTrend(isCall)) {
+                System.out.println("Skipping " + (isCall ? "CE" : "PE")
+                        + " option search - NIFTY trend filter does not allow this side");
+                return null;
+            }
+
             double strikeStep = 50.0;
             double atmStrike = Math.round(niftySpot / strikeStep) * strikeStep;
 
@@ -974,7 +1193,7 @@ public class TradingStrategyEngine {
 
         try {
             double spot = retryApiCall(() -> {
-                String[] instruments = {"NSE:NIFTY 50"};
+                String[] instruments = {NIFTY_SPOT_SYMBOL};
                 Map<String, Quote> quoteData;
                 synchronized (apiCallLock) {
                     try {
@@ -983,7 +1202,12 @@ public class TradingStrategyEngine {
                         throw new RuntimeException(e);
                     }
                 }
-                return quoteData.get("NSE:NIFTY 50").lastPrice;
+                Quote niftyQuote = quoteData.get(NIFTY_SPOT_SYMBOL);
+                if (niftyQuote != null && niftyQuote.lastPrice > 0) {
+                    realTimeCandleBuilder.processTick(NIFTY_SPOT_SYMBOL, niftyQuote.lastPrice, niftyQuote.lastPrice, new Date());
+                    return niftyQuote.lastPrice;
+                }
+                throw new RuntimeException("NIFTY quote unavailable");
             }, "getNiftySpotPrice", 3);
 
             lastKnownSpotPrice = spot;
@@ -1114,6 +1338,79 @@ public class TradingStrategyEngine {
 
         } catch (Exception | KiteException e) {
             System.err.println("❌ Error executing buy signal: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Execute strategies that already calculated structural entry, stop loss and target.
+     */
+    public void executeStructuredBuySignal(String instrument, String patternType,
+                                           double triggerEntryPrice, double stopLoss, double target) {
+        if (!canPlaceBuyOrders()) {
+            System.out.println("BUY ORDER BLOCKED - outside buying hours or daily loss limit reached");
+            return;
+        }
+
+        if (!isOptionAllowedByNiftyTrend(instrument)) {
+            System.out.println("BUY ORDER BLOCKED by NIFTY trend filter for " + instrument);
+            return;
+        }
+
+        try {
+            System.out.println("\nEXECUTING STRUCTURED BUY SIGNAL for: " + instrument);
+            System.out.println("Pattern Type: " + patternType.toUpperCase(Locale.ROOT));
+
+            if (currentPositions.containsKey(instrument) || PositionManager.hasCachedPosition(instrument)) {
+                System.out.println("Position already exists - skipping");
+                return;
+            }
+
+            String[] instruments = {instrument};
+            Map<String, Quote> quotes;
+            synchronized(apiCallLock) {
+                Thread.sleep(100);
+                quotes = kiteConnect.getQuote(instruments);
+            }
+
+            Quote quote = quotes.get(instrument);
+            if (quote == null || quote.lastPrice <= 0) {
+                System.err.println("Unable to get quote for: " + instrument);
+                return;
+            }
+
+            double liveEntry = quote.lastPrice;
+            double effectiveEntry = Math.max(triggerEntryPrice, liveEntry);
+            if (stopLoss <= 0 || stopLoss >= effectiveEntry) {
+                System.out.println("Skipping " + instrument + " - invalid structural stop loss: " + stopLoss);
+                return;
+            }
+
+            if (target <= effectiveEntry) {
+                double risk = effectiveEntry - stopLoss;
+                target = effectiveEntry + (risk * 2.0);
+            }
+
+            System.out.println("Trade Details:");
+            System.out.println("   Trigger Entry: " + String.format("%.2f", triggerEntryPrice));
+            System.out.println("   Live Entry: " + String.format("%.2f", liveEntry));
+            System.out.println("   Structural Stop Loss: " + String.format("%.2f", stopLoss));
+            System.out.println("   Structural Target: " + String.format("%.2f", target));
+
+            Position position = placeBuyOrder(instrument, triggerEntryPrice, stopLoss, target, patternType);
+            if (position != null) {
+                position.setPatternType(patternType);
+                position.setVwap(quote.averagePrice);
+                position.setEntryTime(new Date());
+
+                currentPositions.put(instrument, position);
+                PositionManager.cachePosition(position);
+                startTargetCheckTimer();
+
+                System.out.println("Structured position opened: " + instrument);
+            }
+
+        } catch (Exception | KiteException e) {
+            System.err.println("Error executing structured buy signal: " + e.getMessage());
         }
     }
 
@@ -1624,10 +1921,19 @@ public class TradingStrategyEngine {
         startBreakoutMonitor(instrument, breakoutLevel, stopLoss, target, "pullback", 5);
     }
     public void startCrossoverBreakoutMonitor(String instrument, double breakoutLevel) {
-        startBreakoutMonitor(instrument, breakoutLevel, 0, 0, "crossover", 5);
+        double fallbackStopLoss = breakoutLevel * 0.90;
+        double fallbackTarget = breakoutLevel + ((breakoutLevel - fallbackStopLoss) * 2.0);
+        startCrossoverBreakoutMonitor(instrument, breakoutLevel, fallbackStopLoss, fallbackTarget);
+    }
+    public void startCrossoverBreakoutMonitor(String instrument, double breakoutLevel, double stopLossLevel, double target) {
+        startBreakoutMonitor(instrument, breakoutLevel, stopLossLevel, target, "crossover", 5);
     }
     public void startReversalBreakoutMonitor(String instrument, double breakoutLevel, double stopLossLevel) {
-        startBreakoutMonitor(instrument, breakoutLevel, stopLossLevel, 0, "reversal", 5);
+        double fallbackTarget = breakoutLevel + ((breakoutLevel - stopLossLevel) * 2.0);
+        startReversalBreakoutMonitor(instrument, breakoutLevel, stopLossLevel, fallbackTarget);
+    }
+    public void startReversalBreakoutMonitor(String instrument, double breakoutLevel, double stopLossLevel, double target) {
+        startBreakoutMonitor(instrument, breakoutLevel, stopLossLevel, target, "reversal", 5);
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
@@ -1759,6 +2065,16 @@ public class TradingStrategyEngine {
     private Position placeManagedLimitBuyOrder(String symbol, double triggerEntryPrice, double stopLoss,
                                                double target, String patternType,
                                                String simulationOrderPrefix) throws Exception, KiteException {
+        if (pnlManager.isDailyLossLimitReached()) {
+            System.out.println("Skipping " + symbol + " - daily loss limit reached");
+            return null;
+        }
+
+        if (!isOptionAllowedByNiftyTrend(symbol)) {
+            System.out.println("Skipping " + symbol + " - NIFTY trend filter blocked this side");
+            return null;
+        }
+
         int quantity = AppConfig.getVWAPOptionsLotSize();
         String tradingSymbol = symbol.replace("NFO:", "");
 
@@ -1908,6 +2224,7 @@ public class TradingStrategyEngine {
     public boolean shouldSkipInstrument(String instrument) {
         if (currentPositions.containsKey(instrument)) return true;
         if (PositionManager.hasCachedPosition(instrument)) return true;
+        if (!isOptionAllowedByNiftyTrend(instrument)) return true;
 
         synchronized(activeMonitors) {
             BreakoutMonitor monitor = activeMonitors.get(instrument);
@@ -1915,6 +2232,83 @@ public class TradingStrategyEngine {
         }
 
         return false;
+    }
+
+    public boolean isOptionAllowedByNiftyTrend(String instrument) {
+        if (instrument == null) {
+            return false;
+        }
+
+        String normalized = instrument.toUpperCase(Locale.ROOT);
+        if (normalized.endsWith("CE")) {
+            return isOptionTypeAllowedByNiftyTrend(true);
+        }
+        if (normalized.endsWith("PE")) {
+            return isOptionTypeAllowedByNiftyTrend(false);
+        }
+
+        return true;
+    }
+
+    private boolean isOptionTypeAllowedByNiftyTrend(boolean isCall) {
+        NiftyTrend trend = getNiftyTrend();
+        boolean allowed = (isCall && trend == NiftyTrend.BULLISH) || (!isCall && trend == NiftyTrend.BEARISH);
+
+        if (!allowed) {
+            System.out.println("NIFTY trend filter blocked " + (isCall ? "CE" : "PE")
+                    + " trade. Current trend: " + trend);
+        }
+
+        return allowed;
+    }
+
+    private NiftyTrend getNiftyTrend() {
+        long now = System.currentTimeMillis();
+        if (now - lastNiftyTrendUpdateTime <= NIFTY_TREND_CACHE_TTL_MS) {
+            return cachedNiftyTrend;
+        }
+
+        try {
+            String[] instruments = {NIFTY_SPOT_SYMBOL};
+            Map<String, Quote> quotes;
+            synchronized (apiCallLock) {
+                quotes = kiteConnect.getQuote(instruments);
+            }
+
+            Quote quote = quotes.get(NIFTY_SPOT_SYMBOL);
+            if (quote == null || quote.lastPrice <= 0 || quote.ohlc == null || quote.ohlc.open <= 0) {
+                cachedNiftyTrend = NiftyTrend.NEUTRAL;
+                lastNiftyTrendUpdateTime = now;
+                return cachedNiftyTrend;
+            }
+
+            double lastPrice = quote.lastPrice;
+            double dayOpen = quote.ohlc.open;
+            double previousClose = quote.ohlc.close > 0 ? quote.ohlc.close : dayOpen;
+            double moveFromOpenPercent = ((lastPrice - dayOpen) / dayOpen) * 100.0;
+            double moveFromPreviousClosePercent = ((lastPrice - previousClose) / previousClose) * 100.0;
+
+            if (moveFromOpenPercent >= NIFTY_TREND_MIN_MOVE_PERCENT && moveFromPreviousClosePercent >= 0) {
+                cachedNiftyTrend = NiftyTrend.BULLISH;
+            } else if (moveFromOpenPercent <= -NIFTY_TREND_MIN_MOVE_PERCENT && moveFromPreviousClosePercent <= 0) {
+                cachedNiftyTrend = NiftyTrend.BEARISH;
+            } else {
+                cachedNiftyTrend = NiftyTrend.NEUTRAL;
+            }
+
+            lastNiftyTrendUpdateTime = now;
+            System.out.println("NIFTY trend: " + cachedNiftyTrend
+                    + " | Spot: " + String.format("%.2f", lastPrice)
+                    + " | Open move: " + String.format("%.2f", moveFromOpenPercent) + "%"
+                    + " | Prev close move: " + String.format("%.2f", moveFromPreviousClosePercent) + "%");
+            return cachedNiftyTrend;
+
+        } catch (Exception | KiteException e) {
+            System.err.println("Could not determine NIFTY trend: " + e.getMessage());
+            cachedNiftyTrend = NiftyTrend.NEUTRAL;
+            lastNiftyTrendUpdateTime = now;
+            return cachedNiftyTrend;
+        }
     }
 
     public RealTimeCandleBuilder getRealTimeCandleBuilder() {
@@ -2076,9 +2470,10 @@ public class TradingStrategyEngine {
                 orderParams.validity = Constants.VALIDITY_DAY;
                 orderParams.marketProtection = -1;
 
-                Order exitOrder = kiteConnect.placeOrder(orderParams, Constants.VARIETY_REGULAR);
+                Order exitOrder = placeSellOrderSafely(symbol, position, exitPrice, reason, orderParams);
                 if (exitOrder == null || exitOrder.orderId == null) {
                     System.err.println("Failed to place sell order for " + symbol);
+                    reconcilePositionAfterFailedSell(symbol, position, exitPrice, reason, "Sell order returned no order id");
                     return;
                 }
                 System.out.println("🔒 Position closed (REAL) for " + symbol + " at " + exitPrice + " – reason: " + reason);
@@ -2126,6 +2521,8 @@ public class TradingStrategyEngine {
         private volatile boolean buySignalGenerated = false;
         private ScheduledExecutorService scheduler;
         private ScheduledFuture<?> monitorFuture;
+        private boolean hammerRetestSeen = false;
+        private long hammerRetestSeenAt = 0;
 
         BreakoutMonitor(String instrument, double breakoutLevel, double stopLoss, double target,
                         String patternType, long durationSeconds, long checkIntervalSeconds) {
@@ -2159,7 +2556,14 @@ public class TradingStrategyEngine {
                 Quote q = quotes.get(instrument);
                 if (q == null) return;
                 double price = q.lastPrice;
-                if (price > breakoutLevel) {
+
+                if (!isOptionAllowedByNiftyTrend(instrument)) {
+                    System.out.println("Monitor stopped for " + instrument + " - NIFTY trend filter no longer allows this side");
+                    stop();
+                    return;
+                }
+
+                if (isBreakoutConfirmed(price)) {
                     buySignalGenerated = true;
                     System.out.printf("🚀 [%s] Breakout at %.2f (level %.2f)%n",
                             patternType, price, breakoutLevel);
@@ -2178,7 +2582,10 @@ public class TradingStrategyEngine {
                             executePullbackBuySignal(instrument, price, stopLoss, pbTarget);
                             break;
                         case "crossover":
-                            executeBuySignal(instrument, "crossover");
+                            executeStructuredBuySignal(instrument, "crossover", price, stopLoss, target);
+                            break;
+                        case "reversal":
+                            executeStructuredBuySignal(instrument, "reversal", price, stopLoss, target);
                             break;
                         case "morning_star":
                             double msTarget = target > 0 ? target : price * 1.20;
@@ -2192,6 +2599,42 @@ public class TradingStrategyEngine {
             } catch (Exception | KiteException e) {
                 System.err.println("Monitor error: " + e.getMessage());
             }
+        }
+
+        private boolean isBreakoutConfirmed(double price) {
+            if ("hammer".equals(patternType)) {
+                return isHammerEntryConfirmed(price);
+            }
+            return price > breakoutLevel;
+        }
+
+        private boolean isHammerEntryConfirmed(double price) {
+            CandleData lastCompleted = realTimeCandleBuilder.getLastCompletedCandle(instrument);
+            if (lastCompleted != null
+                    && lastCompleted.getTimestamp().after(startTime)
+                    && lastCompleted.getClose() > breakoutLevel) {
+                System.out.printf("Hammer confirmed by 5-min close %.2f above %.2f%n",
+                        lastCompleted.getClose(), breakoutLevel);
+                return true;
+            }
+
+            double retestBuffer = Math.max(0.10, breakoutLevel * HAMMER_RETEST_BUFFER_PERCENT / 100.0);
+            if (!hammerRetestSeen && price <= breakoutLevel + retestBuffer && price >= stopLoss) {
+                hammerRetestSeen = true;
+                hammerRetestSeenAt = System.currentTimeMillis();
+                System.out.printf("Hammer retest seen for %s at %.2f near level %.2f%n",
+                        instrument, price, breakoutLevel);
+                return false;
+            }
+
+            if (hammerRetestSeen
+                    && System.currentTimeMillis() - hammerRetestSeenAt >= HAMMER_RETEST_HOLD_MS
+                    && price > breakoutLevel) {
+                System.out.printf("Hammer retest-and-hold confirmed for %s at %.2f%n", instrument, price);
+                return true;
+            }
+
+            return false;
         }
 
         void stop() {
