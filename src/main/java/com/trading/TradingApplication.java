@@ -93,7 +93,18 @@ public class TradingApplication {
         } catch (Exception e) {
             System.err.println("❌ Error in trading cycle: " + e.getMessage());
             isTradingActive = false;
+        } catch (Throwable t) {
+            if (isFatalThrowable(t)) {
+                throw t;
+            }
+            System.err.println("Non-fatal trading cycle failure: " + t.getMessage());
+            t.printStackTrace();
+            isTradingActive = false;
         }
+    }
+
+    private static boolean isFatalThrowable(Throwable throwable) {
+        return throwable instanceof ThreadDeath || throwable instanceof VirtualMachineError;
     }
 
     private static String getCurrentTime() {

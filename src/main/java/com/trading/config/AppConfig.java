@@ -78,15 +78,15 @@ public class AppConfig {
 
     // Existing configuration methods
     public static String getApiKey() {
-        return properties.getProperty("zerodha.api.key");
+        return getConfigValue("zerodha.api.key", "ZERODHA_API_KEY");
     }
 
     public static String getAccessToken() {
-        return properties.getProperty("zerodha.access.token");
+        return getConfigValue("zerodha.access.token", "ZERODHA_ACCESS_TOKEN");
     }
 
     public static String getBaseUrl() {
-        return properties.getProperty("zerodha.api.baseurl");
+        return getConfigValue("zerodha.api.baseurl", "ZERODHA_API_BASEURL", "https://api.kite.trade");
     }
 
     public static String getTradingStartTime() {
@@ -136,6 +136,38 @@ public class AppConfig {
 
     public static double getMinRewardRiskAfterSlippage() {
         return Double.parseDouble(properties.getProperty("execution.min.reward.risk.after.slippage", "1.2"));
+    }
+
+    public static double getHighProbabilityTargetPremium() {
+        return Double.parseDouble(properties.getProperty("highprob.target.premium", properties.getProperty("vwap.options.target.price", "100.0")));
+    }
+
+    public static double getHighProbabilityPremiumTolerance() {
+        return Double.parseDouble(properties.getProperty("highprob.premium.tolerance", properties.getProperty("vwap.options.price.tolerance", "30.0")));
+    }
+
+    public static int getHighProbabilityOpeningRangeMinutes() {
+        return Integer.parseInt(properties.getProperty("highprob.opening.range.minutes", "15"));
+    }
+
+    public static double getHighProbabilityMinAdx() {
+        return Double.parseDouble(properties.getProperty("highprob.min.adx", "18.0"));
+    }
+
+    public static double getHighProbabilityMinAtrPercent() {
+        return Double.parseDouble(properties.getProperty("highprob.min.atr.percent", "0.05"));
+    }
+
+    public static double getHighProbabilityStopBufferPercent() {
+        return Double.parseDouble(properties.getProperty("highprob.stop.buffer.percent", "0.15"));
+    }
+
+    public static double getHighProbabilityMinRewardRisk() {
+        return Double.parseDouble(properties.getProperty("highprob.min.reward.risk", "1.5"));
+    }
+
+    public static String getHighProbabilityNoTradeWindows() {
+        return properties.getProperty("highprob.no.trade.windows", "12:00-13:15,14:30-15:30");
     }
 
     // Buying Hours Configuration (for VWAP Strategy)
@@ -332,6 +364,24 @@ public class AppConfig {
     }
 
     public static String getApiSecret() {
-        return properties.getProperty("zerodha.api.secret");
+        return getConfigValue("zerodha.api.secret", "ZERODHA_API_SECRET");
+    }
+
+    private static String getConfigValue(String propertyKey, String envKey) {
+        return getConfigValue(propertyKey, envKey, null);
+    }
+
+    private static String getConfigValue(String propertyKey, String envKey, String defaultValue) {
+        String envValue = System.getenv(envKey);
+        if (envValue != null && !envValue.isBlank()) {
+            return envValue.trim();
+        }
+
+        String propertyValue = properties.getProperty(propertyKey);
+        if (propertyValue != null && !propertyValue.isBlank()) {
+            return propertyValue.trim();
+        }
+
+        return defaultValue;
     }
 }

@@ -170,6 +170,7 @@ public class TradingStrategyEngine {
      */
     private void preInitializeCandleBuilder() {
         try {
+            ensureNiftySpotTracked();
             double niftySpot = getNiftySpotPrice();
 
             // Build list of potential option symbols
@@ -201,6 +202,7 @@ public class TradingStrategyEngine {
 
             // Start the candle builder BEFORE market opens
             updateRealTimeCandleBuilder();
+            ensureNiftySpotTracked();
 
             System.out.println("✅ Pre-initialized candle builder with " + trackedInstruments.size() + " instruments");
 
@@ -255,7 +257,45 @@ public class TradingStrategyEngine {
         int buyStartTime = 9 * 60 + 45;  // 9:45 AM
         int buyEndTime = 15 * 60 + 15;   // 3:15 PM
 
-        return currentTimeInMinutes >= buyStartTime && currentTimeInMinutes <= buyEndTime;
+        return currentTimeInMinutes >= buyStartTime
+                && currentTimeInMinutes <= buyEndTime
+                && !isWithinConfiguredNoTradeWindow(currentTimeInMinutes);
+    }
+
+    private boolean isWithinConfiguredNoTradeWindow(int currentTimeInMinutes) {
+        String windows = AppConfig.getHighProbabilityNoTradeWindows();
+        if (windows == null || windows.trim().isEmpty()) {
+            return false;
+        }
+
+        for (String window : windows.split(",")) {
+            String[] parts = window.trim().split("-");
+            if (parts.length != 2) {
+                continue;
+            }
+
+            int start = parseTimeToMinutes(parts[0]);
+            int end = parseTimeToMinutes(parts[1]);
+            if (start >= 0 && end >= 0
+                    && currentTimeInMinutes >= start
+                    && currentTimeInMinutes <= end) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private int parseTimeToMinutes(String time) {
+        String[] parts = time.trim().split(":");
+        if (parts.length != 2) {
+            return -1;
+        }
+        try {
+            return Integer.parseInt(parts[0]) * 60 + Integer.parseInt(parts[1]);
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     /**
@@ -324,6 +364,8 @@ public class TradingStrategyEngine {
                 System.out.println("📊 Daily P&L: ₹" + String.format("%.2f", pnlManager.getTotalDailyPnL()));
                 return;
             }
+
+            ensureNiftySpotTracked();
 
             if (realTimeCandleBuilder != null) {
                 boolean canProceed = realTimeCandleBuilder.waitForCandleFinalizationAndProceed();
@@ -433,6 +475,10 @@ public class TradingStrategyEngine {
                     // Continue with next strategy
                 } catch (Exception | KiteException e) {
                     System.err.println("❌ Error in strategy " + strategy.getStrategyName() + ": " + e.getMessage());
+                    e.printStackTrace();
+                    // Continue with next strategy
+                } catch (LinkageError e) {
+                    System.err.println("Non-fatal linkage error in strategy " + strategy.getStrategyName() + ": " + e.getMessage());
                     e.printStackTrace();
                     // Continue with next strategy
                 }
@@ -984,6 +1030,7 @@ public class TradingStrategyEngine {
      * Update real-time candle builder with all tracked instruments
      */
     private void updateRealTimeCandleBuilder() {
+        ensureNiftySpotTracked();
         if (trackedInstruments.isEmpty()) {
             return;
         }
@@ -1000,8 +1047,16 @@ public class TradingStrategyEngine {
      * Start real-time candle builder if not already running
      */
     private void ensureRealTimeCandleBuilderRunning() {
+        ensureNiftySpotTracked();
         if (!trackedInstruments.isEmpty() && !realTimeCandleBuilder.isRunning()) {
             updateRealTimeCandleBuilder();
+        }
+    }
+
+    private void ensureNiftySpotTracked() {
+        trackedInstruments.add(NIFTY_SPOT_SYMBOL);
+        if (realTimeCandleBuilder != null && realTimeCandleBuilder.isRunning()) {
+            realTimeCandleBuilder.addInstrument(NIFTY_SPOT_SYMBOL);
         }
     }
 
@@ -1188,6 +1243,7 @@ public class TradingStrategyEngine {
     public double getNiftySpotPrice() throws KiteException, IOException {
         // Return cached value if fresh
         if (System.currentTimeMillis() - lastSpotPriceUpdateTime < SPOT_PRICE_CACHE_TTL_MS && lastKnownSpotPrice > 0) {
+            recordNiftySpotTick(lastKnownSpotPrice, lastKnownSpotPrice);
             return lastKnownSpotPrice;
         }
 
@@ -1204,7 +1260,7 @@ public class TradingStrategyEngine {
                 }
                 Quote niftyQuote = quoteData.get(NIFTY_SPOT_SYMBOL);
                 if (niftyQuote != null && niftyQuote.lastPrice > 0) {
-                    realTimeCandleBuilder.processTick(NIFTY_SPOT_SYMBOL, niftyQuote.lastPrice, niftyQuote.lastPrice, new Date());
+                    recordNiftySpotTick(niftyQuote.lastPrice, niftyQuote.lastPrice);
                     return niftyQuote.lastPrice;
                 }
                 throw new RuntimeException("NIFTY quote unavailable");
@@ -1217,10 +1273,19 @@ public class TradingStrategyEngine {
         } catch (Exception e) {
             if (lastKnownSpotPrice > 0) {
                 System.err.println("⚠️ Using cached Nifty spot price: " + lastKnownSpotPrice);
+                recordNiftySpotTick(lastKnownSpotPrice, lastKnownSpotPrice);
                 return lastKnownSpotPrice;
             }
             throw new RuntimeException("Cannot fetch Nifty spot price and no cache available", e);
         }
+    }
+
+    private void recordNiftySpotTick(double price, double vwap) {
+        if (price <= 0 || realTimeCandleBuilder == null) {
+            return;
+        }
+        ensureNiftySpotTracked();
+        realTimeCandleBuilder.processTick(NIFTY_SPOT_SYMBOL, price, vwap > 0 ? vwap : price, new Date());
     }
 
     /**
@@ -2219,6 +2284,35 @@ public class TradingStrategyEngine {
      */
     public KiteConnect getKiteConnect() {
         return kiteConnect;
+    }
+
+    public Long getInstrumentToken(String fullSymbol) throws Exception, KiteException {
+        Long cachedToken = symbolToTokenMap.get(fullSymbol);
+        if (cachedToken != null) {
+            return cachedToken;
+        }
+
+        String[] parts = fullSymbol.split(":", 2);
+        if (parts.length != 2) {
+            return null;
+        }
+
+        String exchange = parts[0];
+        String tradingSymbol = parts[1];
+        List<Instrument> instruments;
+        synchronized(apiCallLock) {
+            Thread.sleep(100);
+            instruments = kiteConnect.getInstruments(exchange);
+        }
+
+        for (Instrument instrument : instruments) {
+            if (instrument.tradingsymbol.equalsIgnoreCase(tradingSymbol)) {
+                symbolToTokenMap.put(fullSymbol, instrument.instrument_token);
+                return instrument.instrument_token;
+            }
+        }
+
+        return null;
     }
 
     public boolean shouldSkipInstrument(String instrument) {

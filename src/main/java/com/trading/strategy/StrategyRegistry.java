@@ -28,6 +28,8 @@ public class StrategyRegistry {
     private static final List<StrategyEntry> REGISTRY = Arrays.asList(
 
         // P1 — highest priority
+        StrategyEntry.of("High Probability NIFTY Stack", HighProbabilityNiftyOptionStrategy.class, true),
+
 //        StrategyEntry.of("EMA/VWAP Pullback",        EMAVWAPPullbackStrategy.class,  true),
 
         // P2
