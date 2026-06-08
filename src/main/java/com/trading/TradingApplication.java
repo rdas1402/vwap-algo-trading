@@ -3,13 +3,13 @@ package com.trading;
 
 import com.trading.config.AppConfig;
 import com.trading.config.PnLManager;
-import com.trading.strategy.TradingStrategyEngine;
+import com.trading.strategy.NweTradingEngine;
 
 import java.util.*;
 
 public class TradingApplication {
 
-    private static TradingStrategyEngine tradingEngine;
+    private static NweTradingEngine tradingEngine;
     private static Timer timer;
     private static boolean isTradingActive = false;
     private static boolean tradingDayEnded = false;
@@ -24,8 +24,9 @@ public class TradingApplication {
             AppConfig.setSimulateFailedOrders(false);   // Test mode
             // AppConfig.setSimulateFailedOrders(false); // Real trading
 
-            // Initialize Trading Engine
-            tradingEngine = new TradingStrategyEngine();
+            // Initialize the clean NWE engine. Legacy strategies remain in source
+            // only for rollback/reference and are not executed by this app path.
+            tradingEngine = new NweTradingEngine();
 
             // Reset daily P&L
             pnlManager.resetDailyPnL();
@@ -122,10 +123,7 @@ public class TradingApplication {
             if (!isAfter245PM) return false;
 
             double dailyPnL = pnlManager.getTotalDailyPnL();
-            boolean isProfitable = dailyPnL > 0;
-            boolean hasNoPositions = tradingEngine != null && tradingEngine.hasNoOpenPositions();
-
-            return isProfitable && hasNoPositions;
+            return false;
 
         } catch (Exception e) {
             return false;

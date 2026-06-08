@@ -179,6 +179,71 @@ public class AppConfig {
         return properties.getProperty("buying.end.time", "15:15");
     }
 
+    public static double getNweBandwidth() {
+        return Double.parseDouble(properties.getProperty("nwe.bandwidth", "8.0"));
+    }
+
+    public static double getNweMultiplier() {
+        return Double.parseDouble(properties.getProperty("nwe.multiplier", "3.0"));
+    }
+
+    public static double getNweCandleNearThresholdPoints() {
+        return Double.parseDouble(properties.getProperty("nwe.candle.near.threshold.points", "30.0"));
+    }
+
+    public static double getNweLiveTriggerThresholdPoints() {
+        return Double.parseDouble(properties.getProperty("nwe.live.trigger.threshold.points", "10.0"));
+    }
+
+    public static int getNweMonitorIntervalSeconds() {
+        return Integer.parseInt(properties.getProperty("nwe.monitor.interval.seconds", "2"));
+    }
+
+    public static String getNweBuyStartTime() {
+        return properties.getProperty("nwe.buy.start.time", "09:35");
+    }
+
+    public static String getNweBuyEndTime() {
+        return properties.getProperty("nwe.buy.end.time", "15:10");
+    }
+
+    public static double getNweOptionTargetPremium() {
+        return Double.parseDouble(properties.getProperty("nwe.option.target.premium", "100.0"));
+    }
+
+    public static double getNweOptionStopLossPoints() {
+        return Double.parseDouble(properties.getProperty("nwe.option.stoploss.points", "30.0"));
+    }
+
+    public static double getNweOptionTargetPoints() {
+        return Double.parseDouble(properties.getProperty("nwe.option.target.points", "80.0"));
+    }
+
+    public static String getNweExcelOutputDir() {
+        return properties.getProperty(
+                "nwe.excel.output.dir",
+                Paths.get(System.getProperty("user.home"), "vwap-algo-trading", "data", "nwe").toString()
+        );
+    }
+
+    public static String getNweConstituentCsvUrl() {
+        return properties.getProperty(
+                "nwe.constituent.csv.url",
+                "https://www.niftyindices.com/IndexConstituent/ind_nifty50list.csv"
+        );
+    }
+
+    public static String getNweFallbackConstituents() {
+        return properties.getProperty("nwe.fallback.constituents",
+                "ADANIENT,ADANIPORTS,APOLLOHOSP,ASIANPAINT,AXISBANK,BAJAJ-AUTO,"
+                        + "BAJFINANCE,BAJAJFINSV,BEL,BHARTIARTL,CIPLA,COALINDIA,DRREDDY,"
+                        + "EICHERMOT,ETERNAL,HCLTECH,HDFCBANK,HDFCLIFE,HEROMOTOCO,HINDALCO,"
+                        + "HINDUNILVR,ICICIBANK,INFY,ITC,JIOFIN,JSWSTEEL,KOTAKBANK,LT,M&M,"
+                        + "MARUTI,MAXHEALTH,NESTLEIND,NTPC,ONGC,POWERGRID,RELIANCE,SBILIFE,"
+                        + "SBIN,SHRIRAMFIN,SUNPHARMA,TATACONSUM,TATAMOTORS,TATASTEEL,TCS,"
+                        + "TECHM,TITAN,TRENT,ULTRACEMCO,WIPRO");
+    }
+
     public static boolean isSimulateFailedOrders() {
         return simulateFailedOrders;
     }
